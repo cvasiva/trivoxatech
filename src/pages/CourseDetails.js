@@ -47,7 +47,6 @@ function StickyBack({ course }) {
 
 /* ================= HERO ================= */
 function CourseHero({ course }) {
-  const navigate = useNavigate();
   const h = d.hero;
   return (
     <section className="bg-[#f5f6fa] px-4 sm:px-8 lg:px-16 py-16">

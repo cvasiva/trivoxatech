@@ -13,19 +13,19 @@ const Footer = () => {
             </div>
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">Building talent and products for the future of technology.</p>
             <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-5">
-              <a href="#" className="text-gray-400 hover:text-indigo-400 transition text-xs sm:text-sm font-medium">LinkedIn</a>
-              <a href="#" className="text-gray-400 hover:text-indigo-400 transition text-xs sm:text-sm font-medium">Twitter</a>
-              <a href="#" className="text-gray-400 hover:text-indigo-400 transition text-xs sm:text-sm font-medium">Facebook</a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-indigo-400 transition text-xs sm:text-sm font-medium">LinkedIn</a>
+              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-indigo-400 transition text-xs sm:text-sm font-medium">Twitter</a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-indigo-400 transition text-xs sm:text-sm font-medium">Facebook</a>
             </div>
           </div>
 
           <div>
             <h4 className="text-white font-bold mb-4 sm:mb-5 text-sm md:text-base">Courses</h4>
             <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 text-xs sm:text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-indigo-400 transition">Full Stack Web</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-indigo-400 transition">Product Design</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-indigo-400 transition">Digital Marketing</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-indigo-400 transition">Cloud & DevOps</a></li>
+              <li><a href="/courses" className="text-gray-400 hover:text-indigo-400 transition">Full Stack Web</a></li>
+              <li><a href="/courses" className="text-gray-400 hover:text-indigo-400 transition">Product Design</a></li>
+              <li><a href="/courses" className="text-gray-400 hover:text-indigo-400 transition">Digital Marketing</a></li>
+              <li><a href="/courses" className="text-gray-400 hover:text-indigo-400 transition">Cloud &amp; DevOps</a></li>
             </ul>
           </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-2.5 md:space-y-3 text-xs sm:text-sm">
               <li><Link to="/about" className="text-gray-400 hover:text-indigo-400 transition">About Us</Link></li>
               <li><Link to="/services" className="text-gray-400 hover:text-indigo-400 transition">Services</Link></li>
-              <li><a href="#" className="text-gray-400 hover:text-indigo-400 transition">Blog</a></li>
+              <li><Link to="/blogs" className="text-gray-400 hover:text-indigo-400 transition">Blog</Link></li>
               <li><Link to="/contact" className="text-gray-400 hover:text-indigo-400 transition">Contact</Link></li>
             </ul>
           </div>
@@ -59,9 +59,9 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
             <p>© {new Date().getFullYear()} Trivoxa Technologies. All rights reserved.</p>
             <div className="flex gap-4 sm:gap-6">
-              <a href="#" className="hover:text-indigo-400 transition">Privacy Policy</a>
-              <a href="#" className="hover:text-indigo-400 transition">Terms of Service</a>
-              <a href="#" className="hover:text-indigo-400 transition">Cookie Policy</a>
+              <a href="https://trivoxatech.com/privacy" className="hover:text-indigo-400 transition">Privacy Policy</a>
+              <a href="https://trivoxatech.com/terms" className="hover:text-indigo-400 transition">Terms of Service</a>
+              <a href="https://trivoxatech.com/cookies" className="hover:text-indigo-400 transition">Cookie Policy</a>
             </div>
           </div>
         </div>
