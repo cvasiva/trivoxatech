@@ -1,0 +1,66 @@
+{
+  "hero": {
+    "eyebrow": "subtitle",
+    "enrollBtn": "Enroll Now",
+    "demoBtn": "Book Free Demo",
+    "badge": "Industry Certified",
+    "reviewsLabel": "verified reviews",
+    "metaLabels": ["Online / Offline", "Seats Left"]
+  },
+  "whyCourse": {
+    "heading": "Why Choose This Course?",
+    "subheading": "We don't just teach syntax; we build engineers. Our curriculum is designed by industry veterans.",
+    "syllabusHeading": "Course Syllabus",
+    "syllabusPlaceholder": "Topics covered including fundamentals, real-world projects, and best practices.",
+    "earlyBirdLabel": "EARLY BIRD OFFER -25% Off",
+    "emiLabel": "EMI options starting from",
+    "enrollBtn": "Enroll Now",
+    "demoBtn": "Book Free Demo"
+  },
+  "tools": {
+    "heading": "Tools & Technologies You'll Master"
+  },
+  "certificate": {
+    "heading": "Earn Your Professional Certificate",
+    "paragraph": "Upon successful completion, receive a verified digital certificate.",
+    "points": ["Shareable on LinkedIn", "Verifiable QR code", "Endorsed by Tech Partners"],
+    "img": "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=400"
+  },
+  "career": {
+    "heading": "Your Future Career Path",
+    "subheading": "Where our graduates end up after"
+  },
+  "testimonials": {
+    "heading": "Student Success Stories"
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions"
+  },
+  "related": {
+    "heading": "You Might Also Be Interested In",
+    "viewBtn": "View Course →"
+  },
+  "cta": {
+    "heading": "Ready to Launch Your Tech Career?",
+    "subtext": "Join the next cohort starting",
+    "urgency": "Early bird pricing ends in 48 hours.",
+    "btn": "Secure My Spot"
+  },
+  "seo": {
+    "h1": "Course Details",
+    "pageUrl": "/coursedetails/:id",
+    "altTags": {
+      "certificateImg": "Trivoxa professional course completion certificate"
+    },
+    "title": "Course Details | Trivoxa Technologies",
+    "description": "Get full details on Trivoxa's industry-led courses — syllabus, tools, career outcomes, certificate, and enrollment options.",
+    "keywords": "course details, IT course syllabus, tech certification, career outcomes",
+    "ogTitle": "Course Details | Trivoxa",
+    "ogDescription": "Industry-certified courses with hands-on projects, expert mentors, and guaranteed placement support.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/coursedetails"
+  },
+  "notFound": {
+    "backBtn": "Back to Courses"
+  }
+}

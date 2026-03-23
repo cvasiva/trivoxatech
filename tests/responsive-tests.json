@@ -1,0 +1,33 @@
+{
+  "tests": [
+    {
+      "id": "nav-desktop",
+      "viewport": { "width": 1280, "height": 800 },
+      "shouldContain": ["Trivoxa Technologies", "Home", "About", "Courses", "Portfolio", "Contact", "Book Free Demo", "Enroll Now"]
+    },
+    {
+      "id": "nav-tablet",
+      "viewport": { "width": 768, "height": 1024 },
+      "shouldContain": ["Trivoxa Technologies", "Home", "About", "Courses", "Portfolio", "Contact", "Book Free Demo", "Enroll Now"],
+      "notes": "On tablet, nav links may collapse depending on CSS breakpoints; ensure CTAs visible if space allows"
+    },
+    {
+      "id": "nav-mobile",
+      "viewport": { "width": 375, "height": 812 },
+      "shouldContain": ["Trivoxa Technologies", "Enroll Now"],
+      "shouldNotContain": ["Home (visible inline)"],
+      "notes": "Hamburger menu should expand to show all links; CTAs should be present in the expanded menu"
+    },
+    {
+      "id": "hero-visibility",
+      "viewport": { "width": 1280, "height": 800 },
+      "shouldContain": ["Master the Future of", "Enroll Now", "12,000+ Students placed & trained"]
+    },
+    {
+      "id": "courses-grid",
+      "viewport": { "width": 1024, "height": 768 },
+      "shouldHaveGridColumns": 3,
+      "notes": "Courses grid should show 3 columns on desktop and collapse to 1 on mobile"
+    }
+  ]
+}

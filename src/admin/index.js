@@ -1,0 +1,17 @@
+export { default as AdminLayout }       from "./AdminLayout";
+export { default as AdminLogin }        from "./pages/AdminLogin";
+export { default as AdminDashboard }    from "./pages/AdminDashboard";
+export { default as AdminHome }         from "./pages/AdminHome";
+export { default as AdminAbout }        from "./pages/AdminAbout";
+export { default as AdminCourses }      from "./pages/AdminCourses";
+export { default as AdminCourseDetails }from "./pages/AdminCourseDetails";
+export { default as AdminBlogs }        from "./pages/AdminBlogs";
+export { default as AdminBlogDetail }   from "./pages/AdminBlogDetail";
+export { default as AdminCareers }      from "./pages/AdminCareers";
+export { default as AdminServices }     from "./pages/AdminServices";
+export { default as AdminServicesQuote }from "./pages/AdminServicesQuote";
+export { default as AdminContact }      from "./pages/AdminContact";
+export { default as AdminPortfolio }    from "./pages/AdminPortfolio";
+export { default as AdminSubmissions }  from "./pages/AdminSubmissions";
+export { default as AdminNewsletter }   from "./pages/AdminNewsletter";
+export { default as AdminAccounts }     from "./pages/AdminAccounts";

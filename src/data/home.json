@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "eyebrow": "IT & Cloud Training & Services",
+    "title": "Master the Future of",
+    "highlight": "Technology.",
+    "subtitle": "Empower your career with industry-recognized certifications or scale your business with our bespoke IT development services.",
+    "imageSrc": "hero.jpg",
+    "primaryText": "Enroll Now",
+    "secondaryText": "Book Free Demo",
+    "stats": {
+      "count": "12,000+",
+      "label": "Students placed & trained"
+    },
+    "placement": {
+      "percentage": "24.6%",
+      "label": "Guaranteed Placement improvement"
+    }
+  },
+  "courses": [
+    {
+      "id": 1,
+      "title": "Full Stack Web Development (MERN)",
+      "subtitle": "Beginner to advanced with projects",
+      "image": "fullstack.jpg",
+      "syllabus": "View Syllabus →",
+      "enrollText": "Enroll"
+    },
+    {
+      "id": 2,
+      "title": "Advanced UI/UX Product Design",
+      "subtitle": "Design systems and prototypes",
+      "image": "uxuidesign.jpg",
+      "syllabus": "View Syllabus →",
+      "enrollText": "Enroll"
+    },
+    {
+      "id": 3,
+      "title": "Digital Marketing Strategy & Growth",
+      "subtitle": "SEO, Ads, Growth tactics",
+      "image": "digitalM.jpg",
+      "syllabus": "View Syllabus →",
+      "enrollText": "Enroll"
+    }
+  ],
+  "stats": [
+    {
+      "icon": "FaUsers",
+      "value": "15K+",
+      "label": "ACTIVE LEARNERS"
+    },
+    {
+      "icon": "FaBriefcase",
+      "value": "500+",
+      "label": "HIRING PARTNERS"
+    },
+    {
+      "icon": "FaGraduationCap",
+      "value": "98%",
+      "label": "PLACEMENT RATE"
+    },
+    {
+      "icon": "FaStar",
+      "value": "4.9/5",
+      "label": "STUDENT RATING"
+    }
+  ]
+}

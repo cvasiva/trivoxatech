@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "badge": "WE ARE HIRING 12+ NEW ROLES",
+    "title": "Build the Future of",
+    "highlight": "Tech Education",
+    "paragraph": "At Trivoxa, we're not just a company; we're a community of innovators, educators, and creators dedicated to bridging the global tech talent gap. Join us and make an impact.",
+    "primaryBtn": "Explore Openings",
+    "secondaryBtn": "View Our Culture",
+    "img": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
+  },
+  "why": {
+    "heading": "Why You'll Love Trivoxa",
+    "subheading": "We believe that great work happens when talented people are supported, empowered, and inspired.",
+    "items": [
+      { "icon": "FaGlobe", "title": "Remote-First Culture", "desc": "Work from anywhere in the world. We value outcomes over hours and trust our team to manage their own schedules." },
+      { "icon": "FaBolt", "title": "Continuous Growth", "desc": "Access all our premium courses for free, plus a $2,000 annual learning stipend for external workshops." },
+      { "icon": "FaHeart", "title": "Health & Wellness", "desc": "Comprehensive medical, dental, and mental wellness programs and reimbursements." },
+      { "icon": "FaUsers", "title": "Collaborative Spirit", "desc": "Join a team of world-class experts who are passionate about sharing knowledge and helping each other grow." },
+      { "icon": "FaBolt", "title": "Modern Tech Stack", "desc": "We use the latest tools and technologies. No legacy code holding you back—only forward-thinking solutions." },
+      { "icon": "FaShieldAlt", "title": "Stability & Equity", "desc": "Competitive base salaries, performance bonuses, and stock options for all full-time team members." }
+    ]
+  },
+  "jobs": {
+    "heading": "Current Opportunities",
+    "countLabel": "6 Positions Available",
+    "departments": ["Engineering", "Design", "Marketing", "Education", "Sales"],
+    "employmentTypes": ["Full-time", "Contract", "Part-time"],
+    "noFitTitle": "Don't see a fit?",
+    "noFitDesc": "We're always looking for exceptional talent.",
+    "noFitBtn": "Open Application →",
+    "viewDetailsBtn": "View Details",
+    "applyBtn": "Apply Now",
+    "items": [
+      { "title": "Senior Full Stack Developer", "type": "Remote • Full-time" },
+      { "title": "UI/UX Product Designer", "type": "Remote • Full-time" },
+      { "title": "Technical Training Instructor", "type": "Remote • Full-time" },
+      { "title": "DevOps Engineer (Cloud Infrastructure)", "type": "Remote • Full-time" },
+      { "title": "Digital Marketing Specialist", "type": "Remote • Full-time" },
+      { "title": "Content Strategist & SEO Lead", "type": "Remote • Full-time" }
+    ]
+  },
+  "tools": {
+    "label": "The Tools We Use",
+    "items": ["Slack", "Notion", "Figma", "GitHub", "Linear", "AWS"]
+  },
+  "seo": {
+    "h1": "Build the Future of Tech Education",
+    "pageUrl": "/careers",
+    "altTags": {
+      "heroImg": "Trivoxa team working together in a collaborative environment"
+    },
+    "title": "Careers at Trivoxa Technologies | Join Our Team",
+    "description": "Explore open roles at Trivoxa. We're hiring engineers, designers, instructors and marketers. Remote-first culture with competitive benefits.",
+    "keywords": "Trivoxa careers, tech jobs, remote developer jobs, IT instructor jobs, hiring",
+    "ogTitle": "Careers at Trivoxa Technologies",
+    "ogDescription": "Build the future of tech education. Join our remote-first team of innovators and educators.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/careers"
+  },
+  "newsletter": {
+    "heading": "Stay Connected with Our Talent Network",
+    "paragraph": "Not ready to apply just yet? Join our network to get updates on new roles, culture stories, and company news.",
+    "placeholder": "Enter your email",
+    "btn": "Subscribe",
+    "privacy": "We respect your privacy. Unsubscribe at any time."
+  }
+}

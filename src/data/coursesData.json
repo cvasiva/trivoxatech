@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "eyebrow": "All Courses",
+    "heading": "Advance Your Career with",
+    "highlight": "Industry-Led Training",
+    "paragraph": "Choose from 12+ expert-designed courses in web development, design, cloud, and more.",
+    "searchPlaceholder": "Search courses..."
+  },
+  "filters": {
+    "categoryLabel": "All Categories",
+    "levelLabel": "All Levels",
+    "categories": ["All Categories", "Web Development", "Design", "Marketing", "Cloud & DevOps", "Data Science", "Cybersecurity"],
+    "levels": ["All Levels", "Beginner", "Intermediate", "Advanced"]
+  },
+  "pagination": {
+    "perPage": 6,
+    "prevBtn": "← Previous",
+    "nextBtn": "Next →"
+  },
+  "card": {
+    "enrollBtn": "Enroll Now",
+    "detailsBtn": "View Details"
+  },
+  "empty": "No courses match your search. Try different filters.",
+  "seo": {
+    "h1": "Advance Your Career with Industry-Led Training",
+    "pageUrl": "/courses",
+    "altTags": {},
+    "title": "IT Courses & Certifications | Trivoxa Technologies",
+    "description": "Browse 12+ expert-designed courses in web development, UI/UX, cloud, data science and more. Enroll today and advance your career.",
+    "keywords": "IT courses, web development training, cloud certification, UI/UX course, data science",
+    "ogTitle": "IT Courses & Certifications | Trivoxa",
+    "ogDescription": "Industry-led programs built for real-world outcomes. 98% placement rate.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/courses"
+  },
+  "enterpriseCta": {
+    "heading": "Need Enterprise Training?",
+    "paragraph": "Custom corporate training programs for teams of 10 or more. Tailored curriculum, dedicated instructors, and flexible scheduling.",
+    "primaryBtn": "Request Corporate Training",
+    "secondaryBtn": "Talk to an Advisor"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "eyebrow": "Our Purpose",
+    "title": "Bridging the gap between",
+    "highlight1": "Ambition",
+    "highlight2": "Excellence.",
+    "paragraph": "Trivoxa Technologies was founded with a singular mission: to democratize high-end IT education and provide businesses with world-class digital solutions that drive real growth.",
+    "primaryBtn": "Explore Courses",
+    "secondaryBtn": "Work with Us",
+    "img": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+  },
+  "stats": [
+    { "icon": "FaUsers", "value": "15,000+", "label": "STUDENTS TRAINED" },
+    { "icon": "FaGlobe", "value": "250+", "label": "GLOBAL PARTNERS" },
+    { "icon": "FaChartLine", "value": "94%", "label": "SUCCESS RATE" },
+    { "icon": "FaAward", "value": "12", "label": "INDUSTRY AWARDS" }
+  ],
+  "journey": {
+    "heading": "The Trivoxa Journey",
+    "milestones": [
+      {
+        "year": "2018: The Genesis",
+        "paragraph": "Starting in a small shared office in Silicon Valley, Trivoxa began as a specialized training hub for UI/UX designers. We noticed a massive disconnect between academic learning and industry demands.",
+        "bullets": ["First batch of 20 students graduated", "Partnership with 5 startups"],
+        "img": "https://images.unsplash.com/photo-1497366216548-37526070297c"
+      },
+      {
+        "year": "2022: Scaling Impact",
+        "paragraph": "By 2022, we expanded our services to B2B IT consulting. We didn't just want to train talent; we wanted to build the products they'd eventually work on.",
+        "bullets": ["Full Stack & DevOps tracks", "100+ enterprise projects"],
+        "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+      }
+    ]
+  },
+  "team": {
+    "heading": "Our Mentors & Minds",
+    "subheading": "Meet the industry veterans who guide our curriculum.",
+    "members": [
+      { "name": "Dr. Sarah Jenkins", "role": "Founder & CEO", "bio": "Former VP of Engineering with 20+ years in Silicon Valley. Passionate about equitable tech education.", "img": "https://randomuser.me/api/portraits/men/10.jpg" },
+      { "name": "Marcus Thorne", "role": "CTO", "bio": "Architecture lead for three Unicorn startups. Specializes in scalable Cloud & DevOps infrastructures.", "img": "https://randomuser.me/api/portraits/men/11.jpg" },
+      { "name": "Aisha Rahman", "role": "Head of Curriculum", "bio": "Expert educator focused on project-based learning. Designs our industry-aligned course syllabi.", "img": "https://randomuser.me/api/portraits/men/12.jpg" },
+      { "name": "David Chen", "role": "Lead Instructor", "bio": "Award-winning UI/UX director. Teaches students how to balance aesthetics with user-centricity.", "img": "https://randomuser.me/api/portraits/men/13.jpg" }
+    ]
+  },
+  "recognized": {
+    "label": "RECOGNIZED & CERTIFIED BY",
+    "logos": [
+      { "name": "Microsoft", "src": "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" },
+      { "name": "Amazon", "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+      { "name": "Google", "src": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+      { "name": "AWS", "src": "https://cdn.worldvectorlogo.com/logos/aws-2.svg" }
+    ]
+  },
+  "seo": {
+    "h1": "Bridging the gap between Ambition and Excellence",
+    "pageUrl": "/about",
+    "altTags": {
+      "heroImg": "Trivoxa Technologies team collaboration",
+      "milestone1": "Trivoxa founding office 2018 - The Genesis",
+      "milestone2": "Trivoxa scaling impact 2022 team growth"
+    },
+    "title": "About Trivoxa Technologies | Our Mission & Team",
+    "description": "Learn about Trivoxa's mission to democratize IT education. Meet our team of industry veterans and discover our journey since 2018.",
+    "keywords": "about Trivoxa, IT education company, tech training team, company mission",
+    "ogTitle": "About Trivoxa Technologies",
+    "ogDescription": "Bridging the gap between ambition and excellence in IT education and enterprise solutions.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/about"
+  },
+  "cta": {
+    "badge": "We're Hiring",
+    "heading": "Want to help us shape the future of IT?",
+    "paragraph": "We are always looking for passionate instructors, developers, and designers to join our growing global team. Discover our culture and open roles.",
+    "primaryBtn": "View Open Roles",
+    "secondaryBtn": "Contact Talent Team"
+  }
+}
