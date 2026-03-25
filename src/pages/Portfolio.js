@@ -230,7 +230,7 @@ function BottomFeatures({ d }) {
 /* ================= MAIN ================= */
 export default function PortfolioPage() {
   const d = usePageData("portfolioData", staticD);
-  const meta = usePageMeta(d.seo || {});
+  usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",
@@ -267,7 +267,6 @@ export default function PortfolioPage() {
   ]);
   return (
     <div>
-      {meta}
       <HeroSection d={d} />
       <SuccessGallery d={d} />
       <StatsSection d={d} />

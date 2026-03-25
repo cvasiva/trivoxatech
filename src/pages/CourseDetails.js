@@ -275,7 +275,7 @@ export default function CoursePage() {
   const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
   const course = allCourses.find((c) => c.id === Number(id));
 
-  const meta = usePageMeta(course ? {
+  usePageMeta(course ? {
     title: course.title,
     description: course.longDesc || course.desc,
     canonical: `https://trivoxatechnologis.vercel.app/coursedetails/${course.id}`,
@@ -347,7 +347,6 @@ export default function CoursePage() {
 
   return (
     <div>
-      {meta}
       <StickyBack />
       <CourseHero course={course} onEnroll={() => setShowEnroll(true)} d={d} />
       <WhyCourse course={course} onEnroll={() => setShowEnroll(true)} d={d} />

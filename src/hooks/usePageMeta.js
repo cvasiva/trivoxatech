@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 const DEFAULT = {
   title: "Trivoxa Technologies | IT Training & Cloud Services",
@@ -7,6 +7,11 @@ const DEFAULT = {
   ogImage: "https://trivoxatechnologis.vercel.app/logo512.png",
   canonical: "https://trivoxatechnologis.vercel.app",
 };
+
+function setMeta(selector, attr, value) {
+  let el = document.querySelector(selector);
+  if (el) el.setAttribute(attr, value);
+}
 
 export default function usePageMeta(seo = {}) {
   const title         = seo.title         || DEFAULT.title;
@@ -17,30 +22,19 @@ export default function usePageMeta(seo = {}) {
   const ogImage       = seo.ogImage       || DEFAULT.ogImage;
   const canonical     = seo.canonical     || DEFAULT.canonical;
 
-  return (
-    <Helmet>
-      {/* Primary */}
-      <title>{title}</title>
-      <meta name="title"       content={title} />
-      <meta name="description" content={description} />
-      <meta name="keywords"    content={keywords} />
-      <meta name="robots"      content="index, follow" />
-      <link rel="canonical"    href={canonical} />
-
-      {/* Open Graph */}
-      <meta property="og:type"        content="website" />
-      <meta property="og:url"         content={canonical} />
-      <meta property="og:site_name"   content="Trivoxa Technologies" />
-      <meta property="og:title"       content={ogTitle} />
-      <meta property="og:description" content={ogDescription} />
-      <meta property="og:image"       content={ogImage} />
-
-      {/* Twitter */}
-      <meta name="twitter:card"        content="summary_large_image" />
-      <meta name="twitter:url"         content={canonical} />
-      <meta name="twitter:title"       content={ogTitle} />
-      <meta name="twitter:description" content={ogDescription} />
-      <meta name="twitter:image"       content={ogImage} />
-    </Helmet>
-  );
+  useEffect(() => {
+    document.title = title;
+    setMeta('meta[name="title"]',           "content", title);
+    setMeta('meta[name="description"]',     "content", description);
+    setMeta('meta[name="keywords"]',        "content", keywords);
+    setMeta('meta[property="og:title"]',    "content", ogTitle);
+    setMeta('meta[property="og:description"]', "content", ogDescription);
+    setMeta('meta[property="og:image"]',    "content", ogImage);
+    setMeta('meta[property="og:url"]',      "content", canonical);
+    setMeta('meta[name="twitter:title"]',   "content", ogTitle);
+    setMeta('meta[name="twitter:description"]', "content", ogDescription);
+    setMeta('meta[name="twitter:image"]',   "content", ogImage);
+    setMeta('meta[name="twitter:url"]',     "content", canonical);
+    setMeta('link[rel="canonical"]',        "href",    canonical);
+  }, [title, description, keywords, ogTitle, ogDescription, ogImage, canonical]);
 }

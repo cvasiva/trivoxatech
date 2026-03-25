@@ -40,7 +40,7 @@ export default function BlogDetail() {
   const blogs = blogDetailData?.posts || staticBlogDetail.posts;
   const blog = blogs.find((b) => b.id === parseInt(id));
   const d = blogDetailData;
-  const meta = usePageMeta(blog ? {
+  usePageMeta(blog ? {
     title: blog.title,
     description: blog.desc,
     canonical: `https://trivoxatechnologis.vercel.app/blogs/${blog.id}`,
@@ -87,7 +87,6 @@ export default function BlogDetail() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {meta}
       <StickyBack />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 

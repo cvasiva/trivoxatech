@@ -30,6 +30,7 @@ app.use("/api/contact",     require("./routes/contact"));
 app.use("/api/quote",       require("./routes/quote"));
 app.use("/api/newsletter",  require("./routes/newsletter"));
 app.use("/api/submissions", require("./routes/submissions"));
+app.use("/api/seo",         require("./routes/seo"));
 app.use("/api/enroll",      require("./routes/enroll"));
 
 // ── Health ───────────────────────────────────────────────────

@@ -371,7 +371,7 @@ function BlogSection() {
 /* ================= EXPORT ================= */
 export default function Home() {
   const d = usePageData("homeData", staticD);
-  const meta = usePageMeta(d.seo || {});
+  usePageMeta(d.seo || {});
   useSchema([
     { "@context": "https://schema.org", "@type": "Organization", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com", "logo": "https://trivoxatech.com/logo.png", "description": d.hero.subtitle, "sameAs": ["https://linkedin.com/company/trivoxatech", "https://twitter.com/trivoxatech"], "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "email": "hello@trivoxatech.com" } },
     { "@context": "https://schema.org", "@type": "WebSite", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com", "potentialAction": { "@type": "SearchAction", "target": "https://trivoxatech.com/courses?q={search_term_string}", "query-input": "required name=search_term_string" } },
@@ -381,7 +381,6 @@ export default function Home() {
   return (
     <D.Provider value={d}>
       <div>
-        {meta}
         <HeroSection />
         <TrustedSection />
         <CoursesSection />

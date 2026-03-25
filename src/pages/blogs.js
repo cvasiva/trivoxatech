@@ -269,7 +269,7 @@ export default function BlogPage() {
   const d = usePageData("blogsData", staticD);
   const blogDetail = usePageData("blogDetailData", staticBlogDetail);
   const blogs = blogDetail?.posts || staticBlogDetail.posts;
-  const meta = usePageMeta(d.seo || {});
+  usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",
@@ -301,7 +301,7 @@ export default function BlogPage() {
   ]);
   return (
     <div className="bg-gray-50 min-h-screen">
-      {meta}
+      {/* meta injected via usePageMeta hook */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <HeroSection d={d} />
         <FeaturedPost blogs={blogs} />

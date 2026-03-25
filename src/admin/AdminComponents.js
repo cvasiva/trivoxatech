@@ -266,6 +266,7 @@ export function useSave(dataKey, initialData) {
   const save = async () => {
     try {
       await api.saveData(dataKey, data);
+      if (data.seo) await api.updateIndexHtml(data.seo).catch(() => {});
     } catch {
       // fallback
       localStorage.setItem(dataKey, JSON.stringify(data));

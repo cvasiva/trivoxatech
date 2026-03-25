@@ -165,7 +165,7 @@ function CTA({ d }) {
 /* ================= PAGE ================= */
 export default function AboutPage() {
   const d = usePageData("aboutData", staticD);
-  const meta = usePageMeta(d.seo || {});
+  usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",
@@ -204,7 +204,6 @@ export default function AboutPage() {
   ]);
   return (
     <div>
-      {meta}
       <Hero d={d} />
       <Stats d={d} />
       <Journey d={d} />
