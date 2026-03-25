@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa";
 import Footer from "../components/Footer";
 import useSchema from "../hooks/useSchema";
+import usePageMeta from "../hooks/usePageMeta";
 
 const serviceOptions = ["Web Development", "UI/UX Design", "Digital Marketing"];
 const budgetOptions = ["< $1,000", "$1,000 – $5,000", "$5,000 – $20,000", "$20,000+"];
@@ -443,6 +444,7 @@ function FormSection() {
 
 /* ================= MAIN ================= */
 export default function ServicesQuotePage() {
+  usePageMeta({ title: "Get a Quote", description: "Get a custom quote for web development, UI/UX design and digital marketing services from Trivoxa Technologies.", canonical: "https://trivoxatechnologis.vercel.app/servicesquote" });
   useSchema([
     {
       "@context": "https://schema.org",

@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import staticBlogDetail from "../data/blogDetailData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const blogs = staticBlogDetail.posts;
 export { blogs };
@@ -39,6 +40,12 @@ export default function BlogDetail() {
   const blogs = blogDetailData?.posts || staticBlogDetail.posts;
   const blog = blogs.find((b) => b.id === parseInt(id));
   const d = blogDetailData;
+  usePageMeta(blog ? {
+    title: blog.title,
+    description: blog.desc,
+    canonical: `https://trivoxatechnologis.vercel.app/blogs/${blog.id}`,
+    ogImage: blog.img,
+  } : { title: "Blog" });
 
   useSchema(blog ? [
     {

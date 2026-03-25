@@ -7,6 +7,7 @@ import staticD from "../data/blogsData.json";
 import staticBlogDetail from "../data/blogDetailData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const POSTS_PER_PAGE = 2;
 
@@ -268,6 +269,7 @@ export default function BlogPage() {
   const d = usePageData("blogsData", staticD);
   const blogDetail = usePageData("blogDetailData", staticBlogDetail);
   const blogs = blogDetail?.posts || staticBlogDetail.posts;
+  usePageMeta({ title: "Blog & Insights", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/blogs" });
   useSchema([
     {
       "@context": "https://schema.org",

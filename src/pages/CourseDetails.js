@@ -11,6 +11,7 @@ import staticCourseDetails from "../data/courseDetailsData.json";
 import * as staticCourseData from "../data/courseData";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const toolIconMap = {
   "React": <FaReact />, "Node.js": <FaNodeJs />, "MongoDB": <FaDatabase />,
@@ -273,6 +274,13 @@ export default function CoursePage() {
   const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
   const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
   const course = allCourses.find((c) => c.id === Number(id));
+
+  usePageMeta(course ? {
+    title: course.title,
+    description: course.longDesc || course.desc,
+    canonical: `https://trivoxatechnologis.vercel.app/coursedetails/${course.id}`,
+    ogImage: course.img,
+  } : { title: "Course Details" });
 
   useSchema(course ? [
     {
