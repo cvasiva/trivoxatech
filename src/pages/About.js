@@ -165,7 +165,7 @@ function CTA({ d }) {
 /* ================= PAGE ================= */
 export default function AboutPage() {
   const d = usePageData("aboutData", staticD);
-  usePageMeta({ title: "About Us", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/about" });
+  usePageMeta({ title: d.seo?.title || "About Us", description: d.seo?.description || d.hero.paragraph, keywords: d.seo?.keywords, canonical: d.seo?.canonical || "https://trivoxatechnologis.vercel.app/about", ogTitle: d.seo?.ogTitle, ogDescription: d.seo?.ogDescription, ogImage: d.seo?.ogImage });
   useSchema([
     {
       "@context": "https://schema.org",

@@ -1,39 +1,65 @@
 import { useEffect } from "react";
 
-export default function usePageMeta({ title, description, canonical, ogImage } = {}) {
+export default function usePageMeta({ title, description, keywords, canonical, ogTitle, ogDescription, ogImage, twitterTitle, twitterDescription } = {}) {
   useEffect(() => {
     const siteName = "Trivoxa Technologies";
     const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | IT Training & Cloud Services`;
-    const desc = description || "Master in-demand tech skills with Trivoxa Technologies. Industry-led courses in Full Stack, UI/UX, Cloud and more. 98% placement rate.";
+    const desc = description || "Master in-demand tech skills with Trivoxa Technologies. 98% placement rate.";
+    const resolvedOgTitle = ogTitle || fullTitle;
+    const resolvedOgDesc = ogDescription || desc;
 
-    // Title
+    // ── Page title ──────────────────────────────────────────
     document.title = fullTitle;
 
-    // Helper to set meta
-    const setMeta = (selector, value) => {
-      let el = document.querySelector(selector);
-      if (!el) { el = document.createElement("meta"); document.head.appendChild(el); }
-      el.setAttribute(selector.includes("property") ? "property" : "name",
-        selector.match(/["']([^"']+)["']/)?.[1] || "");
+    // ── Helper: set <meta name="..."> ───────────────────────
+    const setName = (name, value) => {
+      if (!value) return;
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute("name", name);
+        document.head.appendChild(el);
+      }
       el.setAttribute("content", value);
     };
 
-    setMeta(`meta[name="title"]`, fullTitle);
-    setMeta(`meta[name="description"]`, desc);
-    setMeta(`meta[property="og:title"]`, fullTitle);
-    setMeta(`meta[property="og:description"]`, desc);
-    setMeta(`meta[property="twitter:title"]`, fullTitle);
-    setMeta(`meta[property="twitter:description"]`, desc);
+    // ── Helper: set <meta property="..."> ──────────────────
+    const setProp = (property, value) => {
+      if (!value) return;
+      let el = document.querySelector(`meta[property="${property}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute("property", property);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", value);
+    };
 
+    // ── Standard meta ───────────────────────────────────────
+    setName("title", fullTitle);
+    setName("description", desc);
+    if (keywords) setName("keywords", keywords);
+
+    // ── Open Graph ──────────────────────────────────────────
+    setProp("og:title", resolvedOgTitle);
+    setProp("og:description", resolvedOgDesc);
+    if (ogImage) setProp("og:image", ogImage);
+    if (canonical) setProp("og:url", canonical);
+
+    // ── Twitter ─────────────────────────────────────────────
+    setName("twitter:title", twitterTitle || resolvedOgTitle);
+    setName("twitter:description", twitterDescription || resolvedOgDesc);
+    if (ogImage) setName("twitter:image", ogImage);
+
+    // ── Canonical ───────────────────────────────────────────
     if (canonical) {
       let el = document.querySelector("link[rel='canonical']");
-      if (!el) { el = document.createElement("link"); el.setAttribute("rel", "canonical"); document.head.appendChild(el); }
+      if (!el) {
+        el = document.createElement("link");
+        el.setAttribute("rel", "canonical");
+        document.head.appendChild(el);
+      }
       el.setAttribute("href", canonical);
     }
-
-    if (ogImage) {
-      setMeta(`meta[property="og:image"]`, ogImage);
-      setMeta(`meta[property="twitter:image"]`, ogImage);
-    }
-  }, [title, description, canonical, ogImage]);
+  }, [title, description, keywords, canonical, ogTitle, ogDescription, ogImage, twitterTitle, twitterDescription]);
 }

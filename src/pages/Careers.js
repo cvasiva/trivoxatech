@@ -204,7 +204,7 @@ function Newsletter({ d }) {
 /* ================= PAGE ================= */
 export default function CareersPage() {
   const d = usePageData("careersData", staticD);
-  usePageMeta({ title: "Careers", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/careers" });
+  usePageMeta({ title: d.seo?.title || "Careers", description: d.seo?.description || d.hero.paragraph, keywords: d.seo?.keywords, canonical: d.seo?.canonical || "https://trivoxatechnologis.vercel.app/careers", ogTitle: d.seo?.ogTitle, ogDescription: d.seo?.ogDescription, ogImage: d.seo?.ogImage });
   useSchema([
     {
       "@context": "https://schema.org",

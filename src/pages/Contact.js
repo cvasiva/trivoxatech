@@ -355,7 +355,7 @@ function BottomCTA({ d }) {
 /* ================= PAGE ================= */
 export default function ContactPage() {
   const d = usePageData("contactData", staticD);
-  usePageMeta({ title: "Contact Us", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/contact" });
+  usePageMeta({ title: d.seo?.title || "Contact Us", description: d.seo?.description || d.hero.paragraph, keywords: d.seo?.keywords, canonical: d.seo?.canonical || "https://trivoxatechnologis.vercel.app/contact", ogTitle: d.seo?.ogTitle, ogDescription: d.seo?.ogDescription, ogImage: d.seo?.ogImage });
   useSchema([
     {
       "@context": "https://schema.org",

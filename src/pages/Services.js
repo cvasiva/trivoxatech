@@ -186,7 +186,7 @@ function CTASection({ d }) {
 /* ================= MAIN ================= */
 export default function ServicesPage() {
   const d = usePageData("servicesData", staticD);
-  usePageMeta({ title: "Services", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/services" });
+  usePageMeta({ title: d.seo?.title || "Services", description: d.seo?.description || d.hero.paragraph, keywords: d.seo?.keywords, canonical: d.seo?.canonical || "https://trivoxatechnologis.vercel.app/services", ogTitle: d.seo?.ogTitle, ogDescription: d.seo?.ogDescription, ogImage: d.seo?.ogImage });
   useSchema([
     {
       "@context": "https://schema.org",

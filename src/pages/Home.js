@@ -372,9 +372,12 @@ function BlogSection() {
 export default function Home() {
   const d = usePageData("homeData", staticD);
   usePageMeta({
-    title: d.seo?.title || "IT Training & Cloud Services",
+    title: d.seo?.title,
     description: d.seo?.description,
+    keywords: d.seo?.keywords,
     canonical: d.seo?.canonical,
+    ogTitle: d.seo?.ogTitle,
+    ogDescription: d.seo?.ogDescription,
     ogImage: d.seo?.ogImage,
   });
   useSchema([
