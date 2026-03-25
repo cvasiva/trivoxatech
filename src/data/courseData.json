@@ -1,0 +1,1072 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Full Stack Development MERN",
+      "subtitle": "Career Track",
+      "desc": "Master MongoDB, Express, React, and Node.js.",
+      "longDesc": "Master the MERN stack and build production-ready applications from scratch. Join 5,000+ graduates in top tech firms.",
+      "duration": "24 Weeks",
+      "level": "Intermediate",
+      "rating": 4.9,
+      "reviews": 1200,
+      "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200",
+      "category": "Development",
+      "price": "$499",
+      "originalPrice": "$699",
+      "emi": "$42/month",
+      "seatsLeft": 12,
+      "highlights": [
+        "Project-Based Learning",
+        "1-on-1 Mentorship",
+        "Career Placement",
+        "Flexible Schedule"
+      ],
+      "includes": [
+        "120+ Hours of Live Classes",
+        "Lifetime Access to LMS",
+        "24/7 Slack Support",
+        "Guaranteed Interview Calls"
+      ],
+      "syllabus": [
+        "Frontend Fundamentals: HTML5, CSS3 & JS",
+        "Advanced React & State Management",
+        "Backend Development with Node.js & Express",
+        "Database Design & Deployment"
+      ],
+      "tools": [
+        "VS Code",
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Tailwind CSS"
+      ],
+      "careers": [
+        {
+          "role": "Frontend Engineer",
+          "salary": "$75k - $120k",
+          "companies": "Google, Amazon, Meta"
+        },
+        {
+          "role": "Backend Developer",
+          "salary": "$80k - $130k",
+          "companies": "Netflix, Uber, Stripe"
+        },
+        {
+          "role": "Full Stack Lead",
+          "salary": "$110k - $180k",
+          "companies": "Airbnb, Shopify, Slack"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Sarah Jenkins",
+          "role": "Software Engineer @ Microsoft",
+          "text": "I went from a marketing background to full-stack developer in 6 months. Incredible experience!"
+        },
+        {
+          "name": "David Chen",
+          "role": "Frontend Developer @ Canva",
+          "text": "The curriculum helped me build a strong portfolio and land interviews."
+        },
+        {
+          "name": "Amina Yusuf",
+          "role": "Backend Developer @ Revolut",
+          "text": "Prepared me completely for technical rounds."
+        }
+      ],
+      "faqs": [
+        "Is this course suitable for total beginners?",
+        "What if I miss a live class?",
+        "Do you provide job guarantees?",
+        "Are there payment plans available?"
+      ],
+      "related": [
+        2,
+        6,
+        7,
+        8
+      ],
+      "cohortDate": "May 15th"
+    },
+    {
+      "id": 2,
+      "title": "Advanced UI/UX Design Strategy",
+      "subtitle": "Design Track",
+      "desc": "Learn user psychology and advanced prototyping.",
+      "longDesc": "Deep dive into user-centered design, design systems, and advanced prototyping tools used by top product teams.",
+      "duration": "12 Weeks",
+      "level": "Advanced",
+      "rating": 4.8,
+      "reviews": 850,
+      "img": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200&auto=format&fit=crop",
+      "category": "Design",
+      "price": "$399",
+      "originalPrice": "$549",
+      "emi": "$34/month",
+      "seatsLeft": 8,
+      "highlights": [
+        "Portfolio Projects",
+        "Design Critiques",
+        "Industry Mentors",
+        "Figma Mastery"
+      ],
+      "includes": [
+        "80+ Hours of Live Classes",
+        "Lifetime Access to LMS",
+        "Community Access",
+        "Certificate of Completion"
+      ],
+      "syllabus": [
+        "UX Research & User Psychology",
+        "Wireframing & Information Architecture",
+        "High-Fidelity Prototyping with Figma",
+        "Design Systems & Handoff"
+      ],
+      "tools": [
+        "Figma",
+        "Adobe XD",
+        "Miro",
+        "Notion",
+        "Zeplin"
+      ],
+      "careers": [
+        {
+          "role": "UX Designer",
+          "salary": "$70k - $110k",
+          "companies": "Apple, Spotify, Airbnb"
+        },
+        {
+          "role": "Product Designer",
+          "salary": "$85k - $130k",
+          "companies": "Figma, Notion, Linear"
+        },
+        {
+          "role": "Design Lead",
+          "salary": "$100k - $160k",
+          "companies": "Google, Meta, Stripe"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Priya Sharma",
+          "role": "Product Designer @ Spotify",
+          "text": "The design critique sessions were invaluable. My portfolio went from zero to hired in 3 months."
+        },
+        {
+          "name": "James Liu",
+          "role": "UX Lead @ Atlassian",
+          "text": "Best investment I made in my design career."
+        },
+        {
+          "name": "Fatima Al-Hassan",
+          "role": "UI Designer @ Canva",
+          "text": "Learned more in 12 weeks than in 2 years of self-study."
+        }
+      ],
+      "faqs": [
+        "Do I need prior design experience?",
+        "What software will I need?",
+        "Is there a portfolio review at the end?",
+        "Can I switch to a different cohort?"
+      ],
+      "related": [
+        9,
+        10,
+        1,
+        6
+      ],
+      "cohortDate": "June 1st"
+    },
+    {
+      "id": 3,
+      "title": "Digital Marketing Masterclass",
+      "subtitle": "Marketing Track",
+      "desc": "SEO, SEM, content strategy, and analytics.",
+      "longDesc": "Become a full-stack digital marketer. Master SEO, paid ads, content strategy, email marketing, and data analytics.",
+      "duration": "10 Weeks",
+      "level": "Beginner",
+      "rating": 4.7,
+      "reviews": 2100,
+      "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      "category": "Marketing",
+      "price": "$299",
+      "originalPrice": "$399",
+      "emi": "$25/month",
+      "seatsLeft": 20,
+      "highlights": [
+        "Live Campaign Projects",
+        "Google Ads Certification",
+        "Analytics Mastery",
+        "Content Strategy"
+      ],
+      "includes": [
+        "60+ Hours of Live Classes",
+        "Lifetime Access to LMS",
+        "Google Ads Voucher",
+        "Certificate"
+      ],
+      "syllabus": [
+        "SEO Fundamentals & Technical SEO",
+        "Google Ads & Paid Media",
+        "Content Marketing & Copywriting",
+        "Analytics, Reporting & Growth"
+      ],
+      "tools": [
+        "Google Analytics",
+        "SEMrush",
+        "Mailchimp",
+        "Canva",
+        "HubSpot"
+      ],
+      "careers": [
+        {
+          "role": "SEO Specialist",
+          "salary": "$50k - $80k",
+          "companies": "HubSpot, Moz, Semrush"
+        },
+        {
+          "role": "Digital Marketing Manager",
+          "salary": "$65k - $100k",
+          "companies": "Shopify, WooCommerce, Mailchimp"
+        },
+        {
+          "role": "Growth Marketer",
+          "salary": "$80k - $130k",
+          "companies": "Airbnb, Dropbox, Slack"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Carlos Rivera",
+          "role": "SEO Manager @ HubSpot",
+          "text": "Went from zero marketing knowledge to managing a $50k/month ad budget."
+        },
+        {
+          "name": "Lily Thompson",
+          "role": "Content Strategist @ Buffer",
+          "text": "The content strategy module alone was worth the entire course fee."
+        },
+        {
+          "name": "Omar Khalid",
+          "role": "Growth Marketer @ Notion",
+          "text": "Practical, hands-on, and immediately applicable."
+        }
+      ],
+      "faqs": [
+        "Is this course suitable for non-technical people?",
+        "Will I get hands-on ad campaign experience?",
+        "What certifications will I earn?",
+        "Is there a money-back guarantee?"
+      ],
+      "related": [
+        11,
+        2,
+        9,
+        1
+      ],
+      "cohortDate": "May 20th"
+    },
+    {
+      "id": 4,
+      "title": "Cloud Engineering with AWS",
+      "subtitle": "Cloud Track",
+      "desc": "Deploy scalable cloud infrastructure.",
+      "longDesc": "Master AWS services, cloud architecture patterns, and infrastructure as code to build and deploy enterprise-grade systems.",
+      "duration": "16 Weeks",
+      "level": "Advanced",
+      "rating": 4.9,
+      "reviews": 640,
+      "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "category": "Cloud",
+      "price": "$599",
+      "originalPrice": "$799",
+      "emi": "$50/month",
+      "seatsLeft": 6,
+      "highlights": [
+        "AWS Certification Prep",
+        "Real Cloud Projects",
+        "IaC with Terraform",
+        "Security Best Practices"
+      ],
+      "includes": [
+        "140+ Hours of Live Classes",
+        "AWS Lab Access",
+        "Certification Voucher",
+        "Career Support"
+      ],
+      "syllabus": [
+        "AWS Core Services: EC2, S3, RDS, VPC",
+        "Serverless Architecture & Lambda",
+        "Infrastructure as Code with Terraform",
+        "Security, Monitoring & Cost Optimization"
+      ],
+      "tools": [
+        "AWS Console",
+        "Terraform",
+        "Docker",
+        "CloudFormation",
+        "Grafana"
+      ],
+      "careers": [
+        {
+          "role": "Cloud Engineer",
+          "salary": "$90k - $140k",
+          "companies": "AWS, Microsoft, Google"
+        },
+        {
+          "role": "Solutions Architect",
+          "salary": "$110k - $160k",
+          "companies": "Deloitte, Accenture, IBM"
+        },
+        {
+          "role": "Cloud Security Engineer",
+          "salary": "$120k - $180k",
+          "companies": "Palo Alto, CrowdStrike, Okta"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Raj Patel",
+          "role": "Cloud Architect @ Deloitte",
+          "text": "Passed my AWS Solutions Architect exam on the first attempt after this course."
+        },
+        {
+          "name": "Nina Kowalski",
+          "role": "DevOps Engineer @ Spotify",
+          "text": "The Terraform modules were incredibly practical and production-ready."
+        },
+        {
+          "name": "Marcus Johnson",
+          "role": "Cloud Engineer @ AWS",
+          "text": "Best structured cloud curriculum I've encountered."
+        }
+      ],
+      "faqs": [
+        "Do I need prior cloud experience?",
+        "Is the AWS certification exam included?",
+        "What AWS services are covered?",
+        "Are there hands-on labs?"
+      ],
+      "related": [
+        5,
+        12,
+        1,
+        7
+      ],
+      "cohortDate": "June 10th"
+    },
+    {
+      "id": 5,
+      "title": "DevOps & SRE Practices",
+      "subtitle": "Cloud Track",
+      "desc": "CI/CD, Docker, Kubernetes pipelines.",
+      "longDesc": "Learn modern DevOps practices including CI/CD pipelines, containerization, orchestration, and site reliability engineering.",
+      "duration": "18 Weeks",
+      "level": "Intermediate",
+      "rating": 4.8,
+      "reviews": 920,
+      "img": "https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=1200&auto=format&fit=crop",
+      "category": "Cloud",
+      "price": "$549",
+      "originalPrice": "$749",
+      "emi": "$46/month",
+      "seatsLeft": 10,
+      "highlights": [
+        "CI/CD Pipeline Projects",
+        "Docker & Kubernetes",
+        "Monitoring & Alerting",
+        "SRE Principles"
+      ],
+      "includes": [
+        "160+ Hours of Live Classes",
+        "Lab Environment Access",
+        "Lifetime LMS Access",
+        "Career Placement"
+      ],
+      "syllabus": [
+        "Linux, Bash & Networking Fundamentals",
+        "Docker & Container Management",
+        "Kubernetes Orchestration",
+        "CI/CD with GitHub Actions & Jenkins"
+      ],
+      "tools": [
+        "Docker",
+        "Kubernetes",
+        "Jenkins",
+        "GitHub Actions",
+        "Prometheus"
+      ],
+      "careers": [
+        {
+          "role": "DevOps Engineer",
+          "salary": "$85k - $135k",
+          "companies": "Netflix, Uber, Lyft"
+        },
+        {
+          "role": "SRE Engineer",
+          "salary": "$100k - $150k",
+          "companies": "Google, Meta, Twitter"
+        },
+        {
+          "role": "Platform Engineer",
+          "salary": "$110k - $170k",
+          "companies": "Stripe, Cloudflare, Vercel"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Alex Turner",
+          "role": "DevOps Lead @ Netflix",
+          "text": "The Kubernetes section alone transformed how our team deploys services."
+        },
+        {
+          "name": "Yuki Tanaka",
+          "role": "SRE @ Google",
+          "text": "Incredibly thorough coverage of SRE principles with real-world examples."
+        },
+        {
+          "name": "Blessing Okafor",
+          "role": "Platform Engineer @ Stripe",
+          "text": "Got my first DevOps role within 2 months of completing this course."
+        }
+      ],
+      "faqs": [
+        "Do I need Linux experience before starting?",
+        "Is Kubernetes covered in depth?",
+        "What CI/CD tools are taught?",
+        "Are there real pipeline projects?"
+      ],
+      "related": [
+        4,
+        12,
+        1,
+        7
+      ],
+      "cohortDate": "May 28th"
+    },
+    {
+      "id": 6,
+      "title": "Frontend Excellence with Next.js",
+      "subtitle": "Development Track",
+      "desc": "Build blazing fast modern web apps.",
+      "longDesc": "Master Next.js, server-side rendering, static generation, and modern frontend architecture for production-grade applications.",
+      "duration": "8 Weeks",
+      "level": "Intermediate",
+      "rating": 4.9,
+      "reviews": 1500,
+      "img": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      "category": "Development",
+      "price": "$449",
+      "originalPrice": "$599",
+      "emi": "$38/month",
+      "seatsLeft": 15,
+      "highlights": [
+        "Next.js 14 App Router",
+        "Performance Optimization",
+        "SEO Best Practices",
+        "Deployment on Vercel"
+      ],
+      "includes": [
+        "70+ Hours of Live Classes",
+        "Project Source Code",
+        "Lifetime LMS Access",
+        "Certificate"
+      ],
+      "syllabus": [
+        "Next.js Fundamentals & App Router",
+        "Server Components & Data Fetching",
+        "Authentication & API Routes",
+        "Performance, SEO & Deployment"
+      ],
+      "tools": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vercel",
+        "Prisma"
+      ],
+      "careers": [
+        {
+          "role": "Frontend Developer",
+          "salary": "$70k - $110k",
+          "companies": "Vercel, Netlify, Shopify"
+        },
+        {
+          "role": "React Engineer",
+          "salary": "$80k - $130k",
+          "companies": "Meta, Twitter, LinkedIn"
+        },
+        {
+          "role": "Full Stack Developer",
+          "salary": "$90k - $150k",
+          "companies": "Stripe, GitHub, Figma"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Emma Wilson",
+          "role": "Frontend Engineer @ Vercel",
+          "text": "The App Router section was exactly what I needed to modernize our codebase."
+        },
+        {
+          "name": "Liam O'Brien",
+          "role": "React Developer @ Shopify",
+          "text": "Went from React to Next.js expert in just 8 weeks."
+        },
+        {
+          "name": "Zara Ahmed",
+          "role": "Full Stack Dev @ GitHub",
+          "text": "Best Next.js course available. Period."
+        }
+      ],
+      "faqs": [
+        "Do I need React experience first?",
+        "Is Next.js 14 App Router covered?",
+        "Will I build real projects?",
+        "Is TypeScript required?"
+      ],
+      "related": [
+        1,
+        7,
+        8,
+        2
+      ],
+      "cohortDate": "June 5th"
+    },
+    {
+      "id": 7,
+      "title": "Python for Data Science",
+      "subtitle": "Development Track",
+      "desc": "NumPy, Pandas, Scikit-learn, and ML basics.",
+      "longDesc": "Learn Python for data analysis, visualization, and machine learning. Build real data science projects from scratch.",
+      "duration": "14 Weeks",
+      "level": "Intermediate",
+      "rating": 4.8,
+      "reviews": 1100,
+      "img": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+      "category": "Development",
+      "price": "$399",
+      "originalPrice": "$549",
+      "emi": "$34/month",
+      "seatsLeft": 18,
+      "highlights": [
+        "Real Dataset Projects",
+        "ML Model Building",
+        "Data Visualization",
+        "Kaggle Competitions"
+      ],
+      "includes": [
+        "100+ Hours of Live Classes",
+        "Jupyter Notebooks",
+        "Dataset Library",
+        "Certificate"
+      ],
+      "syllabus": [
+        "Python Fundamentals & Data Structures",
+        "Data Analysis with NumPy & Pandas",
+        "Data Visualization with Matplotlib & Seaborn",
+        "Machine Learning with Scikit-learn"
+      ],
+      "tools": [
+        "Python",
+        "Jupyter",
+        "Pandas",
+        "Scikit-learn",
+        "Tableau"
+      ],
+      "careers": [
+        {
+          "role": "Data Analyst",
+          "salary": "$65k - $100k",
+          "companies": "Tableau, Looker, Databricks"
+        },
+        {
+          "role": "Data Scientist",
+          "salary": "$90k - $140k",
+          "companies": "OpenAI, DeepMind, Palantir"
+        },
+        {
+          "role": "ML Engineer",
+          "salary": "$110k - $170k",
+          "companies": "Google, Amazon, Tesla"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Aisha Nwosu",
+          "role": "Data Scientist @ OpenAI",
+          "text": "The ML section gave me the foundation to land my dream job at OpenAI."
+        },
+        {
+          "name": "Tom Bradley",
+          "role": "Data Analyst @ Tableau",
+          "text": "Pandas and visualization modules were incredibly well structured."
+        },
+        {
+          "name": "Sofia Mendez",
+          "role": "ML Engineer @ Tesla",
+          "text": "From Excel to ML engineer in 14 weeks. Unbelievable."
+        }
+      ],
+      "faqs": [
+        "Do I need prior Python experience?",
+        "Is machine learning covered in depth?",
+        "What datasets will we work with?",
+        "Is there a capstone project?"
+      ],
+      "related": [
+        1,
+        4,
+        5,
+        6
+      ],
+      "cohortDate": "May 22nd"
+    },
+    {
+      "id": 8,
+      "title": "Mobile App Development React Native",
+      "subtitle": "Development Track",
+      "desc": "Build iOS and Android apps with React Native.",
+      "longDesc": "Build cross-platform mobile applications for iOS and Android using React Native and Expo. Ship real apps to the app stores.",
+      "duration": "16 Weeks",
+      "level": "Intermediate",
+      "rating": 4.7,
+      "reviews": 780,
+      "img": "https://images.unsplash.com/photo-1551650975-87deedd944c3",
+      "category": "Development",
+      "price": "$479",
+      "originalPrice": "$649",
+      "emi": "$40/month",
+      "seatsLeft": 14,
+      "highlights": [
+        "iOS & Android Apps",
+        "Expo & Bare Workflow",
+        "App Store Submission",
+        "Push Notifications"
+      ],
+      "includes": [
+        "110+ Hours of Live Classes",
+        "Starter Templates",
+        "App Store Guidance",
+        "Certificate"
+      ],
+      "syllabus": [
+        "React Native Fundamentals & Expo",
+        "Navigation, State & APIs",
+        "Native Device Features & Animations",
+        "Testing, Publishing & App Store"
+      ],
+      "tools": [
+        "React Native",
+        "Expo",
+        "Firebase",
+        "Redux",
+        "Xcode"
+      ],
+      "careers": [
+        {
+          "role": "Mobile Developer",
+          "salary": "$75k - $120k",
+          "companies": "Uber, DoorDash, Lyft"
+        },
+        {
+          "role": "React Native Engineer",
+          "salary": "$85k - $135k",
+          "companies": "Shopify, Discord, Coinbase"
+        },
+        {
+          "role": "App Architect",
+          "salary": "$100k - $160k",
+          "companies": "Apple, Google, Samsung"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Kevin Park",
+          "role": "Mobile Dev @ Uber",
+          "text": "Published my first app to both stores within the course duration."
+        },
+        {
+          "name": "Isabelle Dupont",
+          "role": "RN Engineer @ Shopify",
+          "text": "The navigation and state management sections were top-notch."
+        },
+        {
+          "name": "Chidi Eze",
+          "role": "App Developer @ Coinbase",
+          "text": "Best mobile course for React developers."
+        }
+      ],
+      "faqs": [
+        "Do I need React experience?",
+        "Will I publish a real app?",
+        "Is Expo or bare workflow taught?",
+        "Are both iOS and Android covered?"
+      ],
+      "related": [
+        1,
+        6,
+        7,
+        2
+      ],
+      "cohortDate": "June 8th"
+    },
+    {
+      "id": 9,
+      "title": "Graphic Design Fundamentals",
+      "subtitle": "Design Track",
+      "desc": "Adobe Creative Suite, color theory, typography.",
+      "longDesc": "Master the fundamentals of graphic design including color theory, typography, layout, and the Adobe Creative Suite.",
+      "duration": "10 Weeks",
+      "level": "Beginner",
+      "rating": 4.6,
+      "reviews": 650,
+      "img": "https://images.unsplash.com/photo-1561070791-2526d30994b5",
+      "category": "Design",
+      "price": "$349",
+      "originalPrice": "$479",
+      "emi": "$30/month",
+      "seatsLeft": 22,
+      "highlights": [
+        "Adobe Suite Mastery",
+        "Portfolio Building",
+        "Brand Identity Projects",
+        "Print & Digital Design"
+      ],
+      "includes": [
+        "75+ Hours of Live Classes",
+        "Adobe License Guidance",
+        "Project Templates",
+        "Certificate"
+      ],
+      "syllabus": [
+        "Design Principles & Color Theory",
+        "Typography & Layout",
+        "Adobe Photoshop & Illustrator",
+        "Brand Identity & Portfolio"
+      ],
+      "tools": [
+        "Photoshop",
+        "Illustrator",
+        "InDesign",
+        "Canva",
+        "Figma"
+      ],
+      "careers": [
+        {
+          "role": "Graphic Designer",
+          "salary": "$45k - $75k",
+          "companies": "Agencies, Studios, Brands"
+        },
+        {
+          "role": "Brand Designer",
+          "salary": "$60k - $95k",
+          "companies": "Nike, Adidas, Apple"
+        },
+        {
+          "role": "Creative Director",
+          "salary": "$90k - $140k",
+          "companies": "Ogilvy, BBDO, Wieden+Kennedy"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Maria Santos",
+          "role": "Brand Designer @ Nike",
+          "text": "The color theory and typography modules completely changed how I design."
+        },
+        {
+          "name": "Jake Morrison",
+          "role": "Graphic Designer @ Ogilvy",
+          "text": "Built my entire portfolio during this course. Got hired immediately after."
+        },
+        {
+          "name": "Nadia Petrov",
+          "role": "Creative Director @ BBDO",
+          "text": "Perfect foundation for anyone starting in design."
+        }
+      ],
+      "faqs": [
+        "Do I need any design experience?",
+        "What Adobe software is covered?",
+        "Will I build a portfolio?",
+        "Is this course for print or digital design?"
+      ],
+      "related": [
+        2,
+        10,
+        3,
+        11
+      ],
+      "cohortDate": "May 25th"
+    },
+    {
+      "id": 10,
+      "title": "Web Design with Figma",
+      "subtitle": "Design Track",
+      "desc": "Modern UI design, prototyping, and handoff.",
+      "longDesc": "Learn to design beautiful, functional web interfaces using Figma. Master components, auto-layout, prototyping, and developer handoff.",
+      "duration": "8 Weeks",
+      "level": "Beginner",
+      "rating": 4.8,
+      "reviews": 920,
+      "img": "https://images.unsplash.com/photo-1561070791-2526d30994b5",
+      "category": "Design",
+      "price": "$329",
+      "originalPrice": "$449",
+      "emi": "$28/month",
+      "seatsLeft": 16,
+      "highlights": [
+        "Figma Components & Variants",
+        "Auto Layout Mastery",
+        "Interactive Prototypes",
+        "Dev Handoff"
+      ],
+      "includes": [
+        "65+ Hours of Live Classes",
+        "Figma Templates",
+        "Component Library",
+        "Certificate"
+      ],
+      "syllabus": [
+        "Figma Interface & Core Tools",
+        "Components, Variants & Auto Layout",
+        "Prototyping & Micro-interactions",
+        "Design Systems & Developer Handoff"
+      ],
+      "tools": [
+        "Figma",
+        "FigJam",
+        "Zeplin",
+        "Storybook",
+        "Notion"
+      ],
+      "careers": [
+        {
+          "role": "UI Designer",
+          "salary": "$60k - $95k",
+          "companies": "Figma, Linear, Notion"
+        },
+        {
+          "role": "Web Designer",
+          "salary": "$55k - $90k",
+          "companies": "Agencies, Startups, Freelance"
+        },
+        {
+          "role": "Product Designer",
+          "salary": "$80k - $130k",
+          "companies": "Airbnb, Dropbox, Intercom"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Hannah Lee",
+          "role": "UI Designer @ Figma",
+          "text": "The auto-layout and component sections are the best I've seen anywhere."
+        },
+        {
+          "name": "Ethan Brooks",
+          "role": "Web Designer @ Linear",
+          "text": "Went from Photoshop to Figma expert in 8 weeks."
+        },
+        {
+          "name": "Amara Diallo",
+          "role": "Product Designer @ Intercom",
+          "text": "The design system module was a game changer for my workflow."
+        }
+      ],
+      "faqs": [
+        "Is Figma free to use?",
+        "Do I need design experience?",
+        "Will I build a full design system?",
+        "Is this course for web or mobile design?"
+      ],
+      "related": [
+        2,
+        9,
+        1,
+        6
+      ],
+      "cohortDate": "June 3rd"
+    },
+    {
+      "id": 11,
+      "title": "Social Media Marketing Strategy",
+      "subtitle": "Marketing Track",
+      "desc": "Instagram, TikTok, LinkedIn growth hacking.",
+      "longDesc": "Master social media marketing across all major platforms. Learn content creation, community building, paid social, and analytics.",
+      "duration": "6 Weeks",
+      "level": "Beginner",
+      "rating": 4.7,
+      "reviews": 1300,
+      "img": "https://images.unsplash.com/photo-1611532736579-6b16e2b50449",
+      "category": "Marketing",
+      "price": "$199",
+      "originalPrice": "$279",
+      "emi": "$17/month",
+      "seatsLeft": 25,
+      "highlights": [
+        "Platform-Specific Strategies",
+        "Content Calendar",
+        "Paid Social Ads",
+        "Analytics & Reporting"
+      ],
+      "includes": [
+        "45+ Hours of Live Classes",
+        "Content Templates",
+        "Ad Budget Simulator",
+        "Certificate"
+      ],
+      "syllabus": [
+        "Social Media Strategy & Branding",
+        "Content Creation & Copywriting",
+        "Instagram, TikTok & LinkedIn Tactics",
+        "Paid Social Ads & Analytics"
+      ],
+      "tools": [
+        "Meta Ads Manager",
+        "Hootsuite",
+        "Canva",
+        "Buffer",
+        "Sprout Social"
+      ],
+      "careers": [
+        {
+          "role": "Social Media Manager",
+          "salary": "$45k - $75k",
+          "companies": "Brands, Agencies, Startups"
+        },
+        {
+          "role": "Content Strategist",
+          "salary": "$55k - $90k",
+          "companies": "HubSpot, Buffer, Hootsuite"
+        },
+        {
+          "role": "Paid Social Specialist",
+          "salary": "$65k - $100k",
+          "companies": "Meta, TikTok, LinkedIn"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Chloe Martin",
+          "role": "Social Media Manager @ HubSpot",
+          "text": "Grew my client's Instagram from 2k to 50k followers using strategies from this course."
+        },
+        {
+          "name": "Daniel Kim",
+          "role": "Content Strategist @ Buffer",
+          "text": "The TikTok and LinkedIn modules were incredibly actionable."
+        },
+        {
+          "name": "Layla Hassan",
+          "role": "Paid Social Specialist @ Meta",
+          "text": "Best ROI on any course I've taken."
+        }
+      ],
+      "faqs": [
+        "Which platforms are covered?",
+        "Do I need a business account to practice?",
+        "Is paid advertising covered?",
+        "Can I use this for personal branding?"
+      ],
+      "related": [
+        3,
+        9,
+        2,
+        10
+      ],
+      "cohortDate": "May 18th"
+    },
+    {
+      "id": 12,
+      "title": "Kubernetes & Container Orchestration",
+      "subtitle": "Cloud Track",
+      "desc": "Master Kubernetes for production deployments.",
+      "longDesc": "Go deep into Kubernetes architecture, cluster management, networking, storage, and production-grade deployment strategies.",
+      "duration": "12 Weeks",
+      "level": "Advanced",
+      "rating": 4.9,
+      "reviews": 540,
+      "img": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      "category": "Cloud",
+      "price": "$579",
+      "originalPrice": "$779",
+      "emi": "$48/month",
+      "seatsLeft": 7,
+      "highlights": [
+        "Production Cluster Setup",
+        "Helm & GitOps",
+        "Service Mesh with Istio",
+        "Security Hardening"
+      ],
+      "includes": [
+        "120+ Hours of Live Classes",
+        "Cluster Lab Access",
+        "CKA Exam Prep",
+        "Certificate"
+      ],
+      "syllabus": [
+        "Kubernetes Architecture & Core Objects",
+        "Networking, Storage & ConfigMaps",
+        "Helm, GitOps & ArgoCD",
+        "Security, Monitoring & Production Readiness"
+      ],
+      "tools": [
+        "Kubernetes",
+        "Helm",
+        "ArgoCD",
+        "Istio",
+        "Prometheus"
+      ],
+      "careers": [
+        {
+          "role": "Kubernetes Engineer",
+          "salary": "$95k - $145k",
+          "companies": "Red Hat, VMware, Rancher"
+        },
+        {
+          "role": "Platform Engineer",
+          "salary": "$105k - $160k",
+          "companies": "Stripe, Cloudflare, Vercel"
+        },
+        {
+          "role": "Cloud Architect",
+          "salary": "$120k - $180k",
+          "companies": "AWS, Google Cloud, Azure"
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Victor Osei",
+          "role": "K8s Engineer @ Red Hat",
+          "text": "Passed my CKA exam on the first try. The exam prep section is gold."
+        },
+        {
+          "name": "Mei Lin",
+          "role": "Platform Engineer @ Cloudflare",
+          "text": "The GitOps and ArgoCD modules are production-ready knowledge."
+        },
+        {
+          "name": "Andrei Popescu",
+          "role": "Cloud Architect @ AWS",
+          "text": "Most comprehensive Kubernetes course I've found."
+        }
+      ],
+      "faqs": [
+        "Do I need Docker experience first?",
+        "Is the CKA exam covered?",
+        "What cloud provider is used for labs?",
+        "Is Helm and GitOps included?"
+      ],
+      "related": [
+        4,
+        5,
+        1,
+        7
+      ],
+      "cohortDate": "June 15th"
+    }
+  ]
+}

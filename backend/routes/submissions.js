@@ -1,75 +1,44 @@
-/**
- * FLOW:
- *  Admin opens /admin/submissions → GET /api/submissions
- *  → Lists all contact form + quote request submissions
- *  → Admin clicks a message → PATCH /api/submissions/:id/read
- *  → Admin deletes a message → DELETE /api/submissions/:id
- *
- *  Query params for GET:
- *    ?type=contact|quote   filter by type
- *    ?unread=true          show only unread
- */
 const router      = require("express").Router();
-const fs          = require("fs");
-const path        = require("path");
 const requireAuth = require("../middleware/auth");
-
-const FILE = path.join(__dirname, "../data/contactSubmissions.json");
-
-function load() {
-  if (!fs.existsSync(FILE)) return [];
-  try { return JSON.parse(fs.readFileSync(FILE, "utf8")); } catch { return []; }
-}
-
-function save(data) {
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
-}
+const ContactSubmission = require("../models/ContactSubmission");
 
 // ── GET /api/submissions ─────────────────────────────────────
-router.get("/", requireAuth, (req, res) => {
-  let all = load();
+router.get("/", requireAuth, async (req, res) => {
+  const filter = {};
+  if (req.query.type)          filter.type = req.query.type;
+  if (req.query.unread === "true") filter.read = false;
 
-  if (req.query.type)
-    all = all.filter((s) => s.type === req.query.type);
+  const [submissions, unread] = await Promise.all([
+    ContactSubmission.find(filter).sort({ createdAt: -1 }),
+    ContactSubmission.countDocuments({ read: false }),
+  ]);
 
-  if (req.query.unread === "true")
-    all = all.filter((s) => !s.read);
-
-  const unreadCount = load().filter((s) => !s.read).length;
-
-  res.json({ total: all.length, unread: unreadCount, submissions: all });
+  res.json({ total: submissions.length, unread, submissions });
 });
 
 // ── GET /api/submissions/stats ───────────────────────────────
-router.get("/stats", requireAuth, (_, res) => {
-  const all = load();
-  res.json({
-    total:        all.length,
-    unread:       all.filter((s) => !s.read).length,
-    contacts:     all.filter((s) => s.type === "contact").length,
-    quotes:       all.filter((s) => s.type === "quote").length,
-    todayCount:   all.filter((s) => s.createdAt?.startsWith(new Date().toISOString().slice(0, 10))).length,
-  });
+router.get("/stats", requireAuth, async (_, res) => {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const [total, unread, contacts, quotes, todayCount] = await Promise.all([
+    ContactSubmission.countDocuments(),
+    ContactSubmission.countDocuments({ read: false }),
+    ContactSubmission.countDocuments({ type: "contact" }),
+    ContactSubmission.countDocuments({ type: "quote" }),
+    ContactSubmission.countDocuments({ createdAt: { $gte: today } }),
+  ]);
+  res.json({ total, unread, contacts, quotes, todayCount });
 });
 
 // ── PATCH /api/submissions/:id/read ─────────────────────────
-router.patch("/:id/read", requireAuth, (req, res) => {
-  const all = load().map((s) =>
-    s.id === Number(req.params.id) ? { ...s, read: true, readAt: new Date().toISOString() } : s
-  );
-  save(all);
+router.patch("/:id/read", requireAuth, async (req, res) => {
+  await ContactSubmission.findByIdAndUpdate(req.params.id, { read: true, readAt: new Date() });
   res.json({ success: true });
 });
 
 // ── DELETE /api/submissions/:id ──────────────────────────────
-router.delete("/:id", requireAuth, (req, res) => {
-  const before = load();
-  const after  = before.filter((s) => s.id !== Number(req.params.id));
-
-  if (before.length === after.length)
-    return res.status(404).json({ error: "Submission not found" });
-
-  save(after);
+router.delete("/:id", requireAuth, async (req, res) => {
+  const result = await ContactSubmission.findByIdAndDelete(req.params.id);
+  if (!result) return res.status(404).json({ error: "Submission not found" });
   res.json({ success: true });
 });
 

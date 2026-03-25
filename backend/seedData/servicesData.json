@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "eyebrow": "Enterprise IT Solutions",
+    "title": "Scale Your Business with",
+    "highlight": "Precision Technology",
+    "paragraph": "Trivoxa provides bespoke software development, digital marketing, and design services tailored for modern enterprises.",
+    "primaryBtn": "Request A Quote",
+    "secondaryBtn": "View Our Portfolio",
+    "stats": [
+      { "value": "250+", "label": "Projects Delivered" },
+      { "value": "15+", "label": "Global Awards" }
+    ],
+    "img": "https://images.unsplash.com/photo-1556761175-b413da4baf72"
+  },
+  "services": {
+    "heading": "Our Professional Services",
+    "subheading": "Comprehensive solutions designed to accelerate growth and streamline operations.",
+    "items": [
+      {
+        "icon": "FaGlobe",
+        "title": "Web Development",
+        "desc": "Custom high-performance web applications built with the latest frameworks.",
+        "features": ["React & Next.js Experts", "API Integration", "Cloud Native Architecture", "Legacy Modernization"]
+      },
+      {
+        "icon": "FaPalette",
+        "title": "UI/UX Design",
+        "desc": "User-centric design strategies that combine aesthetics with functionality.",
+        "features": ["User Research", "Interactive Prototyping", "Design Systems", "Usability Audits"]
+      },
+      {
+        "icon": "FaBullhorn",
+        "title": "Digital Marketing",
+        "desc": "Data-driven marketing campaigns focused on ROI and growth.",
+        "features": ["Performance SEO", "Paid Media Strategy", "Content Marketing", "Conversion Optimization"]
+      }
+    ],
+    "quoteBtn": "Request Quote",
+    "demoBtn": "Book Free Demo"
+  },
+  "lifecycle": {
+    "eyebrow": "Execution Excellence",
+    "heading": "Our Delivery Lifecycle",
+    "subheading": "We follow a rigorous four-stage process to ensure project success.",
+    "steps": [
+      { "no": "01", "title": "Consultation", "desc": "Deep dive into your business goals." },
+      { "no": "02", "title": "Strategy & Design", "desc": "Define architecture and brand alignment." },
+      { "no": "03", "title": "Development", "desc": "Agile execution with continuous testing." },
+      { "no": "04", "title": "Deployment & Support", "desc": "Launch and 24/7 monitoring." }
+    ]
+  },
+  "team": {
+    "heading": "Driven by Experts, Trusted by Global Brands",
+    "subheading": "Industry veterans delivering impactful solutions for Fortune 500 companies.",
+    "highlights": [
+      { "icon": "FaBolt", "title": "Agile Mindset", "desc": "Rapid iteration and flexible execution to adapt to market changes." },
+      { "icon": "FaChartLine", "title": "Result Oriented", "desc": "Clear KPIs and transparent reporting for every engagement." }
+    ],
+    "btn": "Meet the Whole Team",
+    "members": [
+      { "name": "Sarah Chen", "role": "Head of UI/UX Design", "img": "https://randomuser.me/api/portraits/women/44.jpg" },
+      { "name": "Marcus Rodriguez", "role": "Solutions Architect", "img": "https://randomuser.me/api/portraits/men/32.jpg" },
+      { "name": "Aisha Gupta", "role": "Digital Strategy Lead", "img": "https://randomuser.me/api/portraits/women/65.jpg" },
+      { "name": "David Park", "role": "Senior Web Developer", "img": "https://randomuser.me/api/portraits/men/45.jpg" }
+    ]
+  },
+  "successStories": {
+    "heading": "Success Stories",
+    "viewBtn": "Explore Full Portfolio",
+    "items": [
+      { "tag": "FINTECH GLOBAL", "title": "Scaling a Mobile Banking App to 1M Users", "metric": "+340% Performance", "img": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44" },
+      { "tag": "ECOMMERCE RETAIL", "title": "UI/UX Overhaul for a Global E-commerce Platform", "metric": "+95% Conversion Lift", "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f" }
+    ]
+  },
+  "seo": {
+    "h1": "Scale Your Business with Precision Technology",
+    "pageUrl": "/services",
+    "altTags": {
+      "heroImg": "Trivoxa enterprise IT services team meeting"
+    },
+    "title": "Enterprise IT Services | Web Dev, Design & Marketing | Trivoxa",
+    "description": "Trivoxa provides bespoke web development, UI/UX design, and digital marketing services for modern enterprises. 250+ projects delivered.",
+    "keywords": "enterprise IT services, web development company, UI/UX design agency, digital marketing services",
+    "ogTitle": "Enterprise IT Services | Trivoxa Technologies",
+    "ogDescription": "Scale your business with precision technology. Bespoke software development and digital solutions.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/services"
+  },
+  "cta": {
+    "heading": "Ready to start your digital transformation?",
+    "subheading": "Join 100+ businesses that have elevated their tech stack with Trivoxa.",
+    "primaryBtn": "Book Free Demo",
+    "secondaryBtn": "Contact Sales"
+  }
+}

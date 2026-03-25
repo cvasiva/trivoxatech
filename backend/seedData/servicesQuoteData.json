@@ -1,0 +1,107 @@
+{
+  "hero": {
+    "eyebrow": "Professional IT Services",
+    "title": "Custom",
+    "highlight": "Web Development",
+    "title2": "& Engineering",
+    "paragraph": "We build scalable, high-performance web applications that convert visitors into loyal customers. From MVP to enterprise-grade systems.",
+    "primaryBtn": "Book Free Demo",
+    "secondaryBtn": "View Portfolio",
+    "projectsValue": "50+ Projects",
+    "projectsLabel": "successfully delivered this year.",
+    "img": "https://images.unsplash.com/photo-1558655146-d09347e92766",
+    "avatars": [
+      "https://randomuser.me/api/portraits/men/32.jpg",
+      "https://randomuser.me/api/portraits/women/65.jpg",
+      "https://randomuser.me/api/portraits/men/45.jpg"
+    ]
+  },
+  "problem": {
+    "heading": "Solving Modern Business Challenges",
+    "subheading": "Inefficient digital presence costs more than just money — it costs market share.",
+    "problemLabel": "The Problem",
+    "solutionLabel": "The Trivoxa Edge",
+    "problems": [
+      "Slow page loads causing 40%+ bounce rates.",
+      "Outdated tech stacks that are hard to scale.",
+      "Fragmented user experiences across devices.",
+      "Security vulnerabilities and lack of compliance."
+    ],
+    "solutions": [
+      "Edge-computed performance with <1s load times.",
+      "Future-proof architecture using Next.js.",
+      "Pixel-perfect mobile-first design.",
+      "SOC2 compliant security."
+    ]
+  },
+  "features": {
+    "heading": "Comprehensive Scope of Work",
+    "subheading": "We handle everything from the initial sketch to the final deployment.",
+    "items": [
+      { "icon": "FaLayerGroup", "title": "Full-Stack Engineering", "desc": "Robust backend systems built to scale." },
+      { "icon": "FaCode", "title": "API Integrations", "desc": "Secure third-party integrations." },
+      { "icon": "FaGlobe", "title": "E-commerce Solutions", "desc": "Scalable storefronts and platforms." },
+      { "icon": "FaMobileAlt", "title": "PWA Development", "desc": "Mobile-first progressive web apps." },
+      { "icon": "FaShieldAlt", "title": "Quality Assurance", "desc": "Bug-free, tested releases." },
+      { "icon": "FaBolt", "title": "Performance Optimization", "desc": "Sub-second load times guaranteed." }
+    ]
+  },
+  "stats": [
+    { "value": "45%", "label": "Conversion Lift" },
+    { "value": "99.9%", "label": "Uptime Guaranteed" },
+    { "value": "2M+", "label": "Lines of Code" },
+    { "value": "4.9/5", "label": "Client Satisfaction" }
+  ],
+  "pricing": {
+    "heading": "Transparent Pricing Models",
+    "subheading": "Flexible engagement models designed to fit your project.",
+    "popularLabel": "Most Popular",
+    "selectBtn": "Select Plan",
+    "items": [
+      { "title": "Fixed Scope", "price": "$4,999", "features": ["UI/UX Design Kit", "Up to 10 Pages", "CMS Integration", "3 Months Support"] },
+      { "title": "Dedicated Retainer", "price": "$2,400/mo", "highlight": true, "features": ["Dedicated Dev Team", "Unlimited Revisions", "CI/CD Pipeline", "Priority Support"] },
+      { "title": "Enterprise", "price": "Custom", "features": ["Custom Architecture", "Microservices", "Advanced Security", "SLA Guarantee"] }
+    ]
+  },
+  "testimonial": {
+    "quote": "Trivoxa didn't just build our website; they built our business foundation. Within 3 months our inbound leads increased by 160%.",
+    "name": "Sarah Jenkins",
+    "role": "CEO at CloudScale Industries",
+    "img": "https://randomuser.me/api/portraits/women/44.jpg"
+  },
+  "seo": {
+    "h1": "Custom Web Development & Engineering",
+    "pageUrl": "/services/quote",
+    "altTags": {
+      "heroImg": "Trivoxa web development and engineering services",
+      "testimonialAvatar": "Sarah Jenkins CEO at CloudScale Industries"
+    },
+    "title": "Get a Custom IT Services Quote | Trivoxa Technologies",
+    "description": "Request a tailored quote for web development, UI/UX design, or digital marketing. Transparent pricing, dedicated teams, 24hr response.",
+    "keywords": "IT services quote, web development pricing, custom software quote, digital marketing pricing",
+    "ogTitle": "Get a Custom IT Quote | Trivoxa",
+    "ogDescription": "Flexible pricing models for web development, design, and digital marketing. Get your free proposal.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/services/quote"
+  },
+  "form": {
+    "heading": "Ready to Build Your Digital Future?",
+    "subheading": "Fill out the form and we'll get back within 24 hours with a tailored proposal.",
+    "serviceOptions": ["Web Development", "UI/UX Design", "Digital Marketing"],
+    "budgetOptions": ["< $1,000", "$1,000 – $5,000", "$5,000 – $20,000", "$20,000+"],
+    "timelineOptions": ["ASAP", "1 – 3 Months", "3 – 6 Months", "6+ Months"],
+    "submitBtn": "Get My Free Quote →",
+    "highlights": [
+      { "icon": "FaChartLine", "title": "Data-Driven Strategy", "desc": "Every decision backed by analytics and market research." },
+      { "icon": "FaUsers", "title": "Collaborative Workflow", "desc": "You're involved at every stage of the process." }
+    ],
+    "steps": [
+      "We review your request within 2 hours",
+      "A solution architect contacts you",
+      "We send a tailored proposal",
+      "Project kickoff within 48 hours"
+    ],
+    "successTitle": "Quote Request Sent!",
+    "successMsg": "Our team will get back to you within 24 hours."
+  }
+}

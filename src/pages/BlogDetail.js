@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../components/Footer";
-import blogDetailData from "../data/blogDetailData.json";
+import staticBlogDetail from "../data/blogDetailData.json";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
-const blogs = blogDetailData.posts;
+const blogs = staticBlogDetail.posts;
 export { blogs };
 
 /* ================= STICKY BACK ================= */
@@ -34,6 +35,8 @@ function StickyBack() {
 export default function BlogDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const blogDetailData = usePageData("blogDetailData", staticBlogDetail);
+  const blogs = blogDetailData?.posts || staticBlogDetail.posts;
   const blog = blogs.find((b) => b.id === parseInt(id));
   const d = blogDetailData;
 

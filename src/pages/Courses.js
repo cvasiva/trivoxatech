@@ -2,12 +2,13 @@ import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSearch, FaClock, FaSignal, FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Footer from "../components/Footer";
-import { allCourses } from "../data/courseData";
-import d from "../data/coursesData.json";
+import * as staticCourseData from "../data/courseData";
+import staticD from "../data/coursesData.json";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
 /* ================= HERO ================= */
-function Hero() {
+function Hero({ d }) {
   return (
     <section className="bg-indigo-50 text-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
       <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">Home › Courses Hub</p>
@@ -21,7 +22,7 @@ function Hero() {
   );
 }
 
-function CoursesSection() {
+function CoursesSection({ d, allCourses }) {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -50,7 +51,7 @@ function CoursesSection() {
     if (selectedCategory !== "All") filtered = filtered.filter((c) => c.category === selectedCategory);
     if (selectedLevel !== "All") filtered = filtered.filter((c) => c.level === selectedLevel);
     return filtered;
-  }, [searchTerm, selectedCategory, selectedLevel]);
+  }, [searchTerm, selectedCategory, selectedLevel, allCourses]);
 
   const totalPages = Math.ceil(filteredCourses.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -175,7 +176,7 @@ function CoursesSection() {
 }
 
 /* ================= CTA ================= */
-function CTA() {
+function CTA({ d }) {
   return (
     <section className="bg-indigo-50 py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 sm:gap-8 lg:gap-12">
@@ -198,6 +199,9 @@ function CTA() {
 
 /* ================= PAGE ================= */
 export default function CoursesPage() {
+  const d = usePageData("coursesData", staticD);
+  const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
+  const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
   useSchema([
     {
       "@context": "https://schema.org",
@@ -235,9 +239,9 @@ export default function CoursesPage() {
   ]);
   return (
     <div>
-      <Hero />
-      <CoursesSection />
-      <CTA />
+      <Hero d={d} />
+      <CoursesSection d={d} allCourses={allCourses} />
+      <CTA d={d} />
       <Footer />
     </div>
   );

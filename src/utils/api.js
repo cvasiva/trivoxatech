@@ -57,6 +57,9 @@ export const api = {
   getData:  (key)        => request("GET", `/data/${key}`),
   saveData: (key, data)  => request("PUT", `/data/${key}`, data),
 
+  // Enroll / Apply form
+  submitEnroll: (form) => request("POST", "/enroll", form),
+
   // Contact form (Contact page)
   submitContact: (form) => request("POST", "/contact", form),
 

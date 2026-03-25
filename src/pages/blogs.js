@@ -3,14 +3,15 @@ import { FiSearch } from "react-icons/fi";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import { blogs } from "./BlogDetail";
-import d from "../data/blogsData.json";
+import staticD from "../data/blogsData.json";
+import staticBlogDetail from "../data/blogDetailData.json";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
 const POSTS_PER_PAGE = 2;
 
 /* ── HERO ── */
-function HeroSection() {
+function HeroSection({ d }) {
   return (
     <div className="flex flex-col sm:flex-row justify-between gap-6 items-start sm:items-center py-10 md:py-14">
       <div className="max-w-xl">
@@ -38,9 +39,10 @@ function HeroSection() {
 }
 
 /* ── FEATURED POST ── */
-function FeaturedPost() {
+function FeaturedPost({ blogs }) {
   const navigate = useNavigate();
   const featured = blogs[0];
+  if (!featured) return null;
   return (
     <div
       className="border rounded-2xl overflow-hidden grid md:grid-cols-2 shadow-sm bg-white cursor-pointer hover:shadow-md transition-shadow"
@@ -75,7 +77,7 @@ function FeaturedPost() {
 }
 
 /* ── BLOG LIST with PAGINATION ── */
-function BlogList() {
+function BlogList({ blogs }) {
   const navigate = useNavigate();
   const [sort, setSort] = useState("latest");
   const [page, setPage] = useState(1);
@@ -150,7 +152,7 @@ function BlogList() {
 }
 
 /* ── SIDEBAR ── */
-function Sidebar() {
+function Sidebar({ d }) {
   const [search, setSearch] = useState("");
   const [searchError, setSearchError] = useState("");
   const [email, setEmail] = useState("");
@@ -245,7 +247,7 @@ function Sidebar() {
 }
 
 /* ── CTA ── */
-function CTASection() {
+function CTASection({ d }) {
   return (
     <div className="mt-10 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl overflow-hidden grid md:grid-cols-2 shadow-lg">
       <div className="p-10 md:p-14 flex flex-col justify-center gap-5">
@@ -263,6 +265,9 @@ function CTASection() {
 
 /* ── PAGE ── */
 export default function BlogPage() {
+  const d = usePageData("blogsData", staticD);
+  const blogDetail = usePageData("blogDetailData", staticBlogDetail);
+  const blogs = blogDetail?.posts || staticBlogDetail.posts;
   useSchema([
     {
       "@context": "https://schema.org",
@@ -295,13 +300,13 @@ export default function BlogPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <HeroSection />
-        <FeaturedPost />
+        <HeroSection d={d} />
+        <FeaturedPost blogs={blogs} />
         <div className="mt-10 grid lg:grid-cols-3 gap-8 pb-16">
-          <div className="lg:col-span-2"><BlogList /></div>
-          <div className="lg:col-span-1"><Sidebar /></div>
+          <div className="lg:col-span-2"><BlogList blogs={blogs} /></div>
+          <div className="lg:col-span-1"><Sidebar d={d} /></div>
         </div>
-        <CTASection />
+        <CTASection d={d} />
       </div>
       <div className="mt-16"><Footer /></div>
     </div>

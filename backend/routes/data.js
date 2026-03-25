@@ -12,7 +12,7 @@ const path        = require("path");
 const requireAuth = require("../middleware/auth");
 
 const DATA_DIR = path.join(__dirname, "../data");
-const SRC_DIR  = path.join(__dirname, "../../src/data");
+const SRC_DIR  = path.join(__dirname, "../seedData");
 
 // Ensure backend/data directory exists
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -24,6 +24,7 @@ const ALLOWED_KEYS = [
   "blogDetailData",
   "careersData",
   "contactData",
+  "courseData",
   "courseDetailsData",
   "coursesData",
   "portfolioData",

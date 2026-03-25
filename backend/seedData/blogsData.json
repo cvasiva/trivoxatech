@@ -1,0 +1,119 @@
+{
+  "hero": {
+    "eyebrow": "Trivoxa Blog",
+    "title": "Trivoxa",
+    "highlight": "Insights",
+    "paragraph": "Explore our latest thoughts on technology, education, and the future of IT services — from deep-dive tutorials to industry news.",
+    "statsValue": "12k+",
+    "statsLabel": "Monthly Readers"
+  },
+  "categories": [
+    { "name": "All Topics", "count": 48 },
+    { "name": "Web Development", "count": 12 },
+    { "name": "UI/UX Design", "count": 8 },
+    { "name": "Digital Marketing", "count": 15 },
+    { "name": "Cloud Engineering", "count": 6 },
+    { "name": "Cybersecurity", "count": 7 }
+  ],
+  "tags": ["React", "AWS", "Python", "Figma", "SEO", "Kubernetes", "Node.js", "AI"],
+  "sidebar": {
+    "searchPlaceholder": "Search insights...",
+    "searchBtn": "Search",
+    "newsletterTitle": "Newsletter",
+    "newsletterDesc": "Get the latest industry updates and training tips delivered to your inbox weekly.",
+    "subscribeBtn": "Subscribe Now",
+    "subscribePrivacy": "We respect your privacy. Unsubscribe anytime.",
+    "careersTitle": "Join Our Team?",
+    "careersDesc": "We're always looking for passionate instructors and developers.",
+    "careersBtn": "View Careers →"
+  },
+  "cta": {
+    "heading": "Ready to upgrade your skills?",
+    "paragraph": "Don't just read about the future — be part of it. Join 5,000+ students already mastering the most in-demand IT skills.",
+    "primaryBtn": "Explore All Courses",
+    "secondaryBtn": "Speak with an Expert",
+    "img": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+  },
+  "seo": {
+    "h1": "Trivoxa Insights — Tech Blog",
+    "pageUrl": "/blogs",
+    "altTags": {
+      "ctaImg": "Students learning IT skills at Trivoxa"
+    },
+    "title": "Tech Blog & Insights | Trivoxa Technologies",
+    "description": "Explore the latest articles on web development, cloud engineering, AI, DevOps, and IT career tips from Trivoxa's expert team.",
+    "keywords": "tech blog, web development articles, cloud engineering, AI insights, DevOps tips",
+    "ogTitle": "Trivoxa Insights | Tech Blog",
+    "ogDescription": "Weekly updates on industry trends, career tips, and technological breakthroughs from Trivoxa.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/blogs"
+  },
+  "posts": [
+    {
+      "id": 0,
+      "tag": "Design",
+      "read": "6 min read",
+      "title": "10 UI/UX Principles That Will Increase Your Conversion Rate by 40%",
+      "desc": "Conversion rate optimization starts with the user experience. Learn the key design principles that top companies use to drive results.",
+      "author": "Marcus Thorne",
+      "date": "Oct 08, 2025",
+      "img": "https://images.unsplash.com/photo-1559028012-481c04fa702d",
+      "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    {
+      "id": 1,
+      "tag": "Cloud",
+      "read": "12 min read",
+      "title": "Mastering Cloud Engineering: AWS vs Azure in the Enterprise Landscape",
+      "desc": "An unbiased comparison of the two cloud giants for 2026 and what it means for your career and business strategy.",
+      "author": "Elena Rodriguez",
+      "date": "Sep 28, 2025",
+      "img": "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
+      "avatar": "https://randomuser.me/api/portraits/women/65.jpg"
+    },
+    {
+      "id": 2,
+      "tag": "Security",
+      "read": "5 min read",
+      "title": "Cybersecurity Essentials for Small to Medium Enterprises",
+      "desc": "Protecting your business data doesn't have to cost a fortune. Here's a practical guide for SMEs.",
+      "author": "James Wilson",
+      "date": "Sep 15, 2025",
+      "img": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "avatar": "https://randomuser.me/api/portraits/men/45.jpg"
+    },
+    {
+      "id": 3,
+      "tag": "DevOps",
+      "read": "10 min read",
+      "title": "Why DevOps Culture is More Important Than DevOps Tools",
+      "desc": "Tools change every six months, but culture lasts forever. Build the right mindset before picking the right stack.",
+      "author": "Sarah Chen",
+      "date": "Sep 02, 2025",
+      "img": "https://images.unsplash.com/photo-1550439062-609e1531270e",
+      "avatar": "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    {
+      "id": 4,
+      "tag": "AI",
+      "read": "8 min read",
+      "title": "Prompt Engineering: The Skill Every Developer Needs in 2026",
+      "desc": "As AI becomes embedded in every development workflow, knowing how to communicate with language models is becoming as essential as knowing Git.",
+      "author": "Dr. Sarah Chen",
+      "date": "Aug 20, 2025",
+      "img": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01",
+      "avatar": "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    {
+      "id": 5,
+      "tag": "Web Dev",
+      "read": "7 min read",
+      "title": "React 19 Features You Should Start Using Today",
+      "desc": "React 19 ships with Actions, the use() hook, and improved server components. Here's what changes in your day-to-day workflow.",
+      "author": "Marcus Thorne",
+      "date": "Aug 05, 2025",
+      "img": "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+      "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
+    }
+  ]
+}

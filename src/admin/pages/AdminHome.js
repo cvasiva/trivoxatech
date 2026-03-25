@@ -3,7 +3,6 @@ import { PageHeader, Section, Field, Input, Textarea, ImageField, StringList, Ob
 
 const INFO_ICONS = ["FaGraduationCap", "FaLaptopCode", "FaUsers", "FaBriefcase", "FaStar", "FaGrad"];
 const STAT_ICONS = ["FaUsers", "FaBriefcase", "FaGraduationCap", "FaStar"];
-const IMG_KEYS = ["fullstack", "uxuidesign", "digitalM"];
 
 export default function AdminHome() {
   const { data, setData, update, save, saved } = useSave("homeData", homeData);
@@ -51,6 +50,7 @@ export default function AdminHome() {
           <Field label="Badge Value"><Input value={data.hero.badge.value} onChange={(v) => update("hero.badge.value", v)} /></Field>
           <Field label="Badge Label"><Input value={data.hero.badge.label} onChange={(v) => update("hero.badge.label", v)} /></Field>
         </Grid2>
+        <ImageField label="Hero Image URL" value={data.hero.img || ""} onChange={(v) => update("hero.img", v)} hint="Main hero section background/side image" />
       </Section>
 
       {/* TRUSTED */}
@@ -76,14 +76,10 @@ export default function AdminHome() {
                 <Field label="Title"><Input value={c.title} onChange={(v) => updateItem("courses", i, "title", v)} /></Field>
                 <Field label="Subtitle"><Input value={c.subtitle} onChange={(v) => updateItem("courses", i, "subtitle", v)} /></Field>
               </Grid2>
-              <Field label="Image Key" hint="One of: fullstack, uxuidesign, digitalM">
-                <select value={c.img} onChange={(e) => updateItem("courses", i, "img", e.target.value)} className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-300">
-                  {IMG_KEYS.map((k) => <option key={k} value={k}>{k}</option>)}
-                </select>
-              </Field>
+              <ImageField label="Image URL" value={c.img} onChange={(v) => updateItem("courses", i, "img", v)} hint="Paste a full image URL" />
             </ObjectCard>
           ))}
-          <AddButton onClick={() => setData((p) => ({ ...p, courses: { ...p.courses, items: [...p.courses.items, { id: Date.now(), title: "", subtitle: "", img: "fullstack" }] } }))} label="Add Course" />
+          <AddButton onClick={() => setData((p) => ({ ...p, courses: { ...p.courses, items: [...p.courses.items, { id: Date.now(), title: "", subtitle: "", img: "" }] } }))} label="Add Course" />
         </div>
       </Section>
 
@@ -95,6 +91,10 @@ export default function AdminHome() {
         </Grid2>
         <Field label="Paragraph"><Textarea value={data.info.paragraph} onChange={(v) => update("info.paragraph", v)} /></Field>
         <Field label="Button"><Input value={data.info.btn} onChange={(v) => update("info.btn", v)} /></Field>
+        <Grid2>
+          <ImageField label="Image 1 URL" value={data.info.img1 || ""} onChange={(v) => update("info.img1", v)} hint="Left column top image" />
+          <ImageField label="Image 2 URL" value={data.info.img2 || ""} onChange={(v) => update("info.img2", v)} hint="Right column bottom image" />
+        </Grid2>
         <div className="space-y-3">
           {data.info.features.map((f, i) => (
             <ObjectCard key={i} index={i} label="Feature" onRemove={() => {

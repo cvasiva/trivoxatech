@@ -2,13 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight, FaHeart, FaGlobe, FaBolt, FaUsers, FaShieldAlt, FaFilter } from "react-icons/fa";
 import Footer from "../components/Footer";
-import d from "../data/careersData.json";
+import staticD from "../data/careersData.json";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
 const iconMap = { FaGlobe, FaBolt, FaHeart, FaUsers, FaShieldAlt };
 
 /* ================= HERO ================= */
-function CareersHero() {
+function CareersHero({ d }) {
   const navigate = useNavigate();
   return (
     <section className="bg-[#f5f6fa] w-full">
@@ -50,7 +51,7 @@ function CareersHero() {
 }
 
 /* ================= WHY ================= */
-function WhySection() {
+function WhySection({ d }) {
   return (
     <section className="bg-white w-full">
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24">
@@ -80,7 +81,7 @@ function WhySection() {
 }
 
 /* ================= JOBS ================= */
-function Jobs() {
+function Jobs({ d }) {
   return (
     <section className="bg-[#f5f6fa] w-full">
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24">
@@ -158,7 +159,7 @@ function Jobs() {
 }
 
 /* ================= TOOLS ================= */
-function Tools() {
+function Tools({ d }) {
   return (
     <section className="bg-white w-full border-t border-gray-200">
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-10 sm:py-12 md:py-14 lg:py-16">
@@ -176,7 +177,7 @@ function Tools() {
 }
 
 /* ================= NEWSLETTER ================= */
-function Newsletter() {
+function Newsletter({ d }) {
   return (
     <section className="bg-gradient-to-br from-indigo-50 to-indigo-100 w-full">
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24">
@@ -201,6 +202,7 @@ function Newsletter() {
 
 /* ================= PAGE ================= */
 export default function CareersPage() {
+  const d = usePageData("careersData", staticD);
   useSchema([
     {
       "@context": "https://schema.org",
@@ -234,11 +236,11 @@ export default function CareersPage() {
   ]);
   return (
     <div className="w-full">
-      <CareersHero />
-      <WhySection />
-      <Jobs />
-      <Tools />
-      <Newsletter />
+      <CareersHero d={d} />
+      <WhySection d={d} />
+      <Jobs d={d} />
+      <Tools d={d} />
+      <Newsletter d={d} />
       <Footer />
     </div>
   );

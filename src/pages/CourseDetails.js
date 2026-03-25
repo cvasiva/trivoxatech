@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import EnrollForm from "../components/EnrollForm";
 import {
   FaClock, FaSignal, FaStar, FaCheckCircle, FaPlay, FaCertificate,
   FaChevronDown, FaChevronUp, FaLaptopCode, FaNodeJs, FaDatabase,
   FaCss3Alt, FaReact, FaPython, FaDocker, FaAws, FaFigma, FaArrowLeft,
 } from "react-icons/fa";
 import Footer from "../components/Footer";
-import { allCourses } from "../data/courseData";
-import d from "../data/courseDetailsData.json";
+import staticCourseDetails from "../data/courseDetailsData.json";
+import * as staticCourseData from "../data/courseData";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
 const toolIconMap = {
   "React": <FaReact />, "Node.js": <FaNodeJs />, "MongoDB": <FaDatabase />,
@@ -46,7 +48,7 @@ function StickyBack({ course }) {
 }
 
 /* ================= HERO ================= */
-function CourseHero({ course }) {
+function CourseHero({ course, onEnroll, d }) {
   const h = d.hero;
   return (
     <section className="bg-[#f5f6fa] px-4 sm:px-8 lg:px-16 py-16">
@@ -62,8 +64,8 @@ function CourseHero({ course }) {
             <FaStar className="text-yellow-500" /> {course.rating} / 5.0 ({course.reviews.toLocaleString()}+ {h.reviewsLabel})
           </div>
           <div className="flex gap-4 mt-6">
-            <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg">{h.enrollBtn}</button>
-            <button className="border px-6 py-3 rounded-lg">{h.demoBtn}</button>
+            <button onClick={onEnroll} className="bg-indigo-600 text-white px-6 py-3 rounded-lg">{h.enrollBtn}</button>
+            <button onClick={onEnroll} className="border px-6 py-3 rounded-lg">{h.demoBtn}</button>
           </div>
         </div>
         <div className="relative">
@@ -84,7 +86,7 @@ function CourseHero({ course }) {
 }
 
 /* ================= WHY + PRICE ================= */
-function WhyCourse({ course }) {
+function WhyCourse({ course, onEnroll, d }) {
   const w = d.whyCourse;
   return (
     <section className="px-4 sm:px-8 lg:px-16 py-16">
@@ -106,8 +108,8 @@ function WhyCourse({ course }) {
             {course.price} <span className="text-sm line-through text-gray-400">{course.originalPrice}</span>
           </h2>
           <p className="text-sm text-gray-500">{w.emiLabel} {course.emi}</p>
-          <button className="bg-indigo-600 text-white w-full py-3 rounded-lg mt-4">{w.enrollBtn}</button>
-          <button className="border w-full py-3 rounded-lg mt-2">{w.demoBtn}</button>
+          <button onClick={onEnroll} className="bg-indigo-600 text-white w-full py-3 rounded-lg mt-4">{w.enrollBtn}</button>
+          <button onClick={onEnroll} className="border w-full py-3 rounded-lg mt-2">{w.demoBtn}</button>
           <ul className="text-sm mt-4 space-y-2">
             {course.includes.map((item) => <li key={item}>✔ {item}</li>)}
           </ul>
@@ -137,7 +139,7 @@ function Syllabus({ modules, placeholder }) {
 }
 
 /* ================= TOOLS ================= */
-function Tools({ tools }) {
+function Tools({ tools, d }) {
   return (
     <section className="px-4 sm:px-8 lg:px-16 py-14">
       <h2 className="text-xl font-bold">{d.tools.heading}</h2>
@@ -154,7 +156,7 @@ function Tools({ tools }) {
 }
 
 /* ================= CERTIFICATE ================= */
-function Certificate() {
+function Certificate({ d }) {
   const c = d.certificate;
   return (
     <section className="px-4 sm:px-8 lg:px-16 py-12">
@@ -173,7 +175,7 @@ function Certificate() {
 }
 
 /* ================= CAREER ================= */
-function Career({ careers, duration }) {
+function Career({ careers, duration, d }) {
   const c = d.career;
   return (
     <section className="bg-[#f5f6fa] px-4 sm:px-8 lg:px-16 py-14">
@@ -193,7 +195,7 @@ function Career({ careers, duration }) {
 }
 
 /* ================= TESTIMONIALS ================= */
-function Testimonials({ testimonials }) {
+function Testimonials({ testimonials, d }) {
   return (
     <section className="px-4 sm:px-8 lg:px-16 py-14">
       <h2 className="text-2xl font-bold">{d.testimonials.heading}</h2>
@@ -211,7 +213,7 @@ function Testimonials({ testimonials }) {
 }
 
 /* ================= FAQ ================= */
-function FAQ({ faqs }) {
+function FAQ({ faqs, d }) {
   return (
     <section className="bg-[#f5f6fa] px-4 sm:px-8 lg:px-16 py-14">
       <h2 className="text-2xl font-bold text-center">{d.faq.heading}</h2>
@@ -225,7 +227,7 @@ function FAQ({ faqs }) {
 }
 
 /* ================= RELATED ================= */
-function Related({ relatedIds }) {
+function Related({ relatedIds, allCourses, d }) {
   const navigate = useNavigate();
   const relatedCourses = allCourses.filter((c) => relatedIds.includes(c.id));
   return (
@@ -252,13 +254,13 @@ function Related({ relatedIds }) {
 }
 
 /* ================= CTA ================= */
-function CTA({ cohortDate }) {
+function CTA({ cohortDate, onEnroll, d }) {
   const c = d.cta;
   return (
     <section className="bg-indigo-600 text-white text-center py-16">
       <h2 className="text-2xl font-bold">{c.heading}</h2>
       <p className="text-sm mt-2">{c.subtext} {cohortDate}. {c.urgency}</p>
-      <button className="bg-white text-black px-6 py-3 rounded-lg mt-6">{c.btn}</button>
+      <button onClick={onEnroll} className="bg-white text-black px-6 py-3 rounded-lg mt-6">{c.btn}</button>
     </section>
   );
 }
@@ -267,6 +269,9 @@ function CTA({ cohortDate }) {
 export default function CoursePage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const d = usePageData("courseDetailsData", staticCourseDetails);
+  const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
+  const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
   const course = allCourses.find((c) => c.id === Number(id));
 
   useSchema(course ? [
@@ -319,12 +324,14 @@ export default function CoursePage() {
     }
   ] : []);
 
+  const [showEnroll, setShowEnroll] = useState(false);
+
   if (!course) {
     return (
       <div className="text-center py-32">
-        <h2 className="text-2xl font-bold">{d.notFound.heading}</h2>
+        <h2 className="text-2xl font-bold">{d.notFound?.heading || "Course not found"}</h2>
         <button onClick={() => navigate("/courses")} className="mt-4 text-indigo-600 underline">
-          {d.notFound.backBtn}
+          {d.notFound?.backBtn || "Back to Courses"}
         </button>
       </div>
     );
@@ -333,16 +340,19 @@ export default function CoursePage() {
   return (
     <div>
       <StickyBack />
-      <CourseHero course={course} />
-      <WhyCourse course={course} />
-      <Tools tools={course.tools} />
-      <Certificate />
-      <Career careers={course.careers} duration={course.duration} />
-      <Testimonials testimonials={course.testimonials} />
-      <FAQ faqs={course.faqs} />
-      <Related relatedIds={course.related} />
-      <CTA cohortDate={course.cohortDate} />
+      <CourseHero course={course} onEnroll={() => setShowEnroll(true)} d={d} />
+      <WhyCourse course={course} onEnroll={() => setShowEnroll(true)} d={d} />
+      <Tools tools={course.tools} d={d} />
+      <Certificate d={d} />
+      <Career careers={course.careers} duration={course.duration} d={d} />
+      <Testimonials testimonials={course.testimonials} d={d} />
+      <FAQ faqs={course.faqs} d={d} />
+      <Related relatedIds={course.related} allCourses={allCourses} d={d} />
+      <CTA cohortDate={course.cohortDate} onEnroll={() => setShowEnroll(true)} d={d} />
       <Footer />
+      {showEnroll && (
+        <EnrollForm courseName={course.title} onClose={() => setShowEnroll(false)} />
+      )}
     </div>
   );
 }

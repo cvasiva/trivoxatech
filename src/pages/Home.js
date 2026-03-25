@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FaUsers, FaBriefcase, FaGraduationCap, FaStar,
@@ -7,19 +7,23 @@ import {
 } from "react-icons/fa";
 import Footer from "../components/Footer";
 import hero from "../images/hero.jpg";
-import fullstack from "../images/fullstack.jpg";
-import digitalM from "../images/digitalM.jpg";
-import uxuidesign from "../images/uxuidesign.jpg";
 import infoclass from "../images/infoclass.jpg";
-import Erfolgreich from "../images/Erfolgreich.jpg";
-import d from "../data/homeData.json";
+import erfolgreich from "../images/Erfolgreich.jpg";
+import fullstack from "../images/fullstack.jpg";
+import uxuidesign from "../images/uxuidesign.jpg";
+import digitalM from "../images/digitalM.jpg";
+import staticD from "../data/homeData.json";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
-const imgMap = { fullstack, digitalM, uxuidesign };
 const iconMap = { FaUsers, FaBriefcase, FaGraduationCap, FaStar, FaGrad, FaLaptopCode };
+const localImgMap = { 1: fullstack, 2: uxuidesign, 3: digitalM };
+const D = createContext(staticD);
+const useD = () => useContext(D);
 
 /* ================= HERO ================= */
 function HeroSection() {
+  const d = useD();
   const navigate = useNavigate();
   return (
     <section className="relative overflow-hidden bg-gradient-to-r from-indigo-50 via-white to-purple-50 py-8 sm:py-12 md:py-16 lg:py-20 2xl:py-28">
@@ -39,16 +43,10 @@ function HeroSection() {
               {d.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mb-7">
-              <button
-                onClick={() => navigate("/courses")}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-lg shadow-lg hover:opacity-95 transition"
-              >
+              <button onClick={() => navigate("/courses")} className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-lg shadow-lg hover:opacity-95 transition">
                 {d.hero.primaryBtn}
               </button>
-              <button
-                onClick={() => navigate("/contact")}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition"
-              >
+              <button onClick={() => navigate("/contact")} className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition">
                 {d.hero.secondaryBtn}
               </button>
             </div>
@@ -84,17 +82,14 @@ function HeroSection() {
 
 /* ================= TRUSTED ================= */
 function TrustedSection() {
+  const d = useD();
   const icons = [FaCode, FaGlobe, FaShieldAlt, FaMobileAlt, FaUsers, FaBag];
   return (
     <section className="py-8 sm:py-10 bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-xs tracking-widest text-gray-500 font-semibold mb-6 uppercase">
-          {d.trusted.label}
-        </p>
+        <p className="text-xs tracking-widest text-gray-500 font-semibold mb-6 uppercase">{d.trusted.label}</p>
         <div className="flex items-center justify-center gap-8 sm:gap-12 lg:gap-16 flex-wrap">
-          {icons.map((Icon, i) => (
-            <Icon key={i} className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400" />
-          ))}
+          {icons.map((Icon, i) => <Icon key={i} className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400" />)}
         </div>
       </div>
     </section>
@@ -103,6 +98,7 @@ function TrustedSection() {
 
 /* ================= COURSES ================= */
 function CoursesSection() {
+  const d = useD();
   const navigate = useNavigate();
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -119,17 +115,13 @@ function CoursesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {d.courses.items.map((c) => (
             <div key={c.id} className="bg-white border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-              <img src={imgMap[c.img]} alt={c.title} className="w-full h-44 sm:h-48 object-cover" />
+              <img src={c.img || localImgMap[c.id]} alt={c.title} className="w-full h-44 sm:h-48 object-cover" />
               <div className="p-5">
                 <h3 className="font-semibold text-gray-900 text-base leading-snug">{c.title}</h3>
                 <p className="text-sm text-gray-500 mt-1">{c.subtitle}</p>
                 <div className="flex gap-3 mt-4">
-                  <button onClick={() => navigate(`/coursedetails/${c.id}`)} className="flex-1 bg-indigo-600 text-white text-sm py-2 rounded-lg hover:bg-indigo-700 transition">
-                    {d.courses.enrollBtn}
-                  </button>
-                  <button onClick={() => navigate(`/coursedetails/${c.id}`)} className="flex-1 border text-sm py-2 rounded-lg hover:bg-gray-50 transition">
-                    {d.courses.syllabusBtn}
-                  </button>
+                  <button onClick={() => navigate(`/coursedetails/${c.id}`)} className="flex-1 bg-indigo-600 text-white text-sm py-2 rounded-lg hover:bg-indigo-700 transition">{d.courses.enrollBtn}</button>
+                  <button onClick={() => navigate(`/coursedetails/${c.id}`)} className="flex-1 border text-sm py-2 rounded-lg hover:bg-gray-50 transition">{d.courses.syllabusBtn}</button>
                 </div>
               </div>
             </div>
@@ -142,6 +134,7 @@ function CoursesSection() {
 
 /* ================= INFO ================= */
 function InfoSection() {
+  const d = useD();
   const navigate = useNavigate();
   return (
     <section className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-12 sm:py-16 lg:py-20">
@@ -153,12 +146,12 @@ function InfoSection() {
                 <FaGlobe className="text-6xl text-[#25F4F4FF]" />
               </div>
               <div className="rounded-lg overflow-hidden shadow-md h-56 w-full">
-                <img src={infoclass} alt="class" className="w-full h-full object-cover" />
+                <img src={d.info.img1 || infoclass} alt="class" className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-start">
               <div className="rounded-lg overflow-hidden shadow-md h-56 w-full">
-                <img src={Erfolgreich} alt="project" className="w-full h-full object-cover" />
+                <img src={d.info.img2 || erfolgreich} alt="project" className="w-full h-full object-cover" />
               </div>
               <div className="bg-[#6161EA1A] rounded-lg flex items-center justify-center h-56 w-full shadow-md">
                 <FaCode className="text-6xl text-indigo-600" />
@@ -170,8 +163,8 @@ function InfoSection() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">{d.info.heading}</h2>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{d.info.paragraph}</p>
             <ul className="space-y-4">
-              {d.info.features.map(({ title, desc }, i) => {
-                const Icon = iconMap[d.info.features[i].icon] || FaGrad;
+              {d.info.features.map(({ title, desc, icon }, i) => {
+                const Icon = iconMap[icon] || FaGrad;
                 return (
                   <li key={i} className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-md flex-shrink-0">
@@ -185,10 +178,7 @@ function InfoSection() {
                 );
               })}
             </ul>
-            <button
-              onClick={() => navigate("/services")}
-              className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition text-sm"
-            >
+            <button onClick={() => navigate("/services")} className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition text-sm">
               {d.info.btn}
             </button>
           </div>
@@ -200,6 +190,7 @@ function InfoSection() {
 
 /* ================= STATS ================= */
 function StatsSection() {
+  const d = useD();
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -208,9 +199,7 @@ function StatsSection() {
             const Icon = iconMap[icon] || FaUsers;
             return (
               <div key={i} className="flex flex-col items-center">
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 mb-3 text-xl">
-                  <Icon />
-                </div>
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 mb-3 text-xl"><Icon /></div>
                 <p className="text-2xl sm:text-3xl font-bold text-gray-900">{value}</p>
                 <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide mt-1">{label}</p>
               </div>
@@ -224,6 +213,7 @@ function StatsSection() {
 
 /* ================= TESTIMONIALS ================= */
 function TestimonialsSection() {
+  const d = useD();
   return (
     <section className="bg-[#f5f6fa] border-t-2 border-[#E0E2E6FF] py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -253,6 +243,7 @@ function TestimonialsSection() {
 
 /* ================= SUCCESS STORIES ================= */
 function SuccessStoriesSection() {
+  const d = useD();
   const navigate = useNavigate();
   return (
     <section className="bg-white border-t-2 border-[#E0E2E6FF] py-12 sm:py-16 lg:py-20">
@@ -262,10 +253,7 @@ function SuccessStoriesSection() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">{d.successStories.heading}</h2>
             <p className="text-sm sm:text-base text-gray-600 mt-2 max-w-xl leading-relaxed">{d.successStories.subheading}</p>
           </div>
-          <button
-            onClick={() => navigate("/portfolio")}
-            className="border border-gray-300 px-5 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition whitespace-nowrap flex-shrink-0"
-          >
+          <button onClick={() => navigate("/portfolio")} className="border border-gray-300 px-5 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition whitespace-nowrap flex-shrink-0">
             {d.successStories.viewBtn}
           </button>
         </div>
@@ -289,6 +277,7 @@ function SuccessStoriesSection() {
 
 /* ================= CTA FORM ================= */
 function CTASection() {
+  const d = useD();
   return (
     <section className="bg-[#f3f4fb] py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -347,6 +336,7 @@ function CTASection() {
 
 /* ================= BLOG ================= */
 function BlogSection() {
+  const d = useD();
   const navigate = useNavigate();
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -356,10 +346,7 @@ function BlogSection() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">{d.blog.heading}</h2>
             <p className="text-sm sm:text-base text-gray-600 mt-2 max-w-xl leading-relaxed">{d.blog.subheading}</p>
           </div>
-          <button
-            onClick={() => navigate("/blogs")}
-            className="border border-gray-300 px-5 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition whitespace-nowrap flex-shrink-0"
-          >
+          <button onClick={() => navigate("/blogs")} className="border border-gray-300 px-5 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition whitespace-nowrap flex-shrink-0">
             {d.blog.viewBtn}
           </button>
         </div>
@@ -382,63 +369,27 @@ function BlogSection() {
 
 /* ================= EXPORT ================= */
 export default function Home() {
+  const d = usePageData("homeData", staticD);
   useSchema([
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Trivoxa Technologies",
-      "url": "https://trivoxatech.com",
-      "logo": "https://trivoxatech.com/logo.png",
-      "description": d.hero.subtitle,
-      "sameAs": ["https://linkedin.com/company/trivoxatech", "https://twitter.com/trivoxatech"],
-      "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "email": "hello@trivoxatech.com" }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Trivoxa Technologies",
-      "url": "https://trivoxatech.com",
-      "potentialAction": { "@type": "SearchAction", "target": "https://trivoxatech.com/courses?q={search_term_string}", "query-input": "required name=search_term_string" }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": d.courses.heading,
-      "itemListElement": d.courses.items.map((c, i) => ({
-        "@type": "ListItem",
-        "position": i + 1,
-        "name": c.title,
-        "url": `https://trivoxatech.com/coursedetails/${c.id}`
-      }))
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": d.testimonials.heading,
-      "itemListElement": d.testimonials.items.map((t, i) => ({
-        "@type": "ListItem",
-        "position": i + 1,
-        "item": {
-          "@type": "Review",
-          "reviewBody": t.text,
-          "author": { "@type": "Person", "name": t.name },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-        }
-      }))
-    }
+    { "@context": "https://schema.org", "@type": "Organization", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com", "logo": "https://trivoxatech.com/logo.png", "description": d.hero.subtitle, "sameAs": ["https://linkedin.com/company/trivoxatech", "https://twitter.com/trivoxatech"], "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "email": "hello@trivoxatech.com" } },
+    { "@context": "https://schema.org", "@type": "WebSite", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com", "potentialAction": { "@type": "SearchAction", "target": "https://trivoxatech.com/courses?q={search_term_string}", "query-input": "required name=search_term_string" } },
+    { "@context": "https://schema.org", "@type": "ItemList", "name": d.courses.heading, "itemListElement": d.courses.items.map((c, i) => ({ "@type": "ListItem", "position": i + 1, "name": c.title, "url": `https://trivoxatech.com/coursedetails/${c.id}` })) },
+    { "@context": "https://schema.org", "@type": "ItemList", "name": d.testimonials.heading, "itemListElement": d.testimonials.items.map((t, i) => ({ "@type": "ListItem", "position": i + 1, "item": { "@type": "Review", "reviewBody": t.text, "author": { "@type": "Person", "name": t.name }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" } } })) },
   ]);
   return (
-    <div>
-      <HeroSection />
-      <TrustedSection />
-      <CoursesSection />
-      <InfoSection />
-      <StatsSection />
-      <TestimonialsSection />
-      <SuccessStoriesSection />
-      <CTASection />
-      <BlogSection />
-      <Footer />
-    </div>
+    <D.Provider value={d}>
+      <div>
+        <HeroSection />
+        <TrustedSection />
+        <CoursesSection />
+        <InfoSection />
+        <StatsSection />
+        <TestimonialsSection />
+        <SuccessStoriesSection />
+        <CTASection />
+        <BlogSection />
+        <Footer />
+      </div>
+    </D.Provider>
   );
 }

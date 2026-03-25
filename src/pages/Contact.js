@@ -4,29 +4,52 @@ import {
   FaPaperPlane, FaEnvelope, FaHeadphones, FaPhoneAlt,
   FaCheckCircle, FaExclamationCircle,
 } from "react-icons/fa";
-import MuiPhoneNumber from "react-phone-input-2";
+import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import emailjs from "@emailjs/browser";
 import Footer from "../components/Footer";
-import d from "../data/contactData.json";
+import staticD from "../data/contactData.json";
 import useSchema from "../hooks/useSchema";
-import { api } from "../utils/api";
+import usePageData from "../hooks/usePageData";
 
-const phoneInputStyles = `
-  .react-tel-input { width: 100% !important; }
-  .react-tel-input .form-control { width: 100% !important; border: 1px solid #d1d5db !important; padding: 0.5rem 0.75rem !important; border-radius: 0.5rem !important; font-size: 0.875rem !important; padding-left: 65px !important; height: auto !important; transition: all 0.2s !important; letter-spacing: 0 !important; }
-  .react-tel-input .form-control:focus { outline: none !important; border-color: #4f46e5 !important; box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1) !important; }
-  .react-tel-input .flag-dropdown { border: 1px solid #d1d5db !important; border-radius: 0.5rem 0 0 0.5rem !important; background-color: #f9fafb !important; padding: 0.5rem 0.75rem !important; height: auto !important; transition: all 0.2s !important; }
-  .react-tel-input .flag-dropdown:hover { background-color: #f3f4f6 !important; }
-  .react-tel-input .flag-dropdown.open { border-radius: 0.5rem 0 0 0 !important; }
-  .react-tel-input .country-list { border: 1px solid #d1d5db !important; border-radius: 0.5rem !important; max-height: 256px !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; }
-  .react-tel-input .country-list .country { padding: 0.75rem !important; font-size: 0.875rem !important; cursor: pointer !important; }
-  .react-tel-input .country-list .country:hover { background-color: #eef2ff !important; }
-  .react-tel-input .country-list .country.highlight { background-color: #e0e7ff !important; }
-  .react-tel-input .flag { margin-right: 0.5rem !important; }
+const SVC = "service_928ko6h";
+const TPL = "template_jutciy9";
+const KEY = "3s_VBlPn-ycSICDIK";
+
+const phoneStyles = `
+  .phone-wrap .react-tel-input .form-control {
+    width: 100% !important; height: 44px !important; font-size: 14px !important;
+    border-radius: 8px !important; padding-left: 58px !important;
+    border: 1px solid #d1d5db !important; background: #fff !important;
+    color: #111827 !important; outline: none !important;
+  }
+  .phone-wrap .react-tel-input .form-control:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+  }
+  .phone-wrap.error .react-tel-input .form-control {
+    border-color: #f87171 !important; background: #fff1f2 !important;
+  }
+  .phone-wrap .react-tel-input .flag-dropdown {
+    border: 1px solid #d1d5db !important; border-right: none !important;
+    border-radius: 8px 0 0 8px !important; background: #f9fafb !important;
+  }
+  .phone-wrap.error .react-tel-input .flag-dropdown { border-color: #f87171 !important; }
+  .phone-wrap .react-tel-input .country-list {
+    border-radius: 10px !important; font-size: 13px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important; z-index: 999 !important;
+  }
+  .phone-wrap .react-tel-input .country-list .country:hover,
+  .phone-wrap .react-tel-input .country-list .country.highlight { background: #eef2ff !important; }
+  .phone-wrap .react-tel-input .search-box {
+    border-radius: 6px !important; font-size: 13px !important;
+    border: 1px solid #e5e7eb !important; padding: 6px 10px !important;
+    width: calc(100% - 20px) !important;
+  }
 `;
 
 /* ================= HERO ================= */
-function ContactHero() {
+function ContactHero({ d }) {
   return (
     <section className="bg-[#f5f6fa] px-4 sm:px-6 lg:px-16 py-12 sm:py-16">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
@@ -57,131 +80,195 @@ function ContactHero() {
   );
 }
 
-/* ================= FORM + RIGHT ================= */
-function ContactMain() {
-  const [formData, setFormData] = useState({ fullName: "", email: "", phone: "", interestedIn: "", message: "" });
+
+
+/* ================= CONTACT FORM ================= */
+function ContactForm({ d }) {
+  const [form, setForm] = useState({ fullName: "", email: "", phone: "", interestedIn: "", message: "" });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [sendError, setSendError] = useState("");
 
-  const validateForm = () => {
+  const validate = () => {
     const e = {};
-    if (!formData.fullName.trim()) e.fullName = "Full name is required";
-    else if (formData.fullName.trim().length < 2) e.fullName = "Name must be at least 2 characters";
-    else if (!/^[a-zA-Z\s]+$/.test(formData.fullName)) e.fullName = "Name can only contain letters and spaces";
-    if (!formData.email.trim()) e.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) e.email = "Please enter a valid email address";
-    if (formData.phone.trim()) {
-      const digits = formData.phone.replace(/\D/g, "");
-      if (digits.length < 10) e.phone = "Phone number must have at least 10 digits";
-      else if (digits.length > 15) e.phone = "Phone number cannot exceed 15 digits";
-    } else { e.phone = "Phone number is required"; }
-    if (!formData.interestedIn) e.interestedIn = "Please select an option";
-    if (!formData.message.trim()) e.message = "Message is required";
-    else if (formData.message.trim().length < 10) e.message = "Message must be at least 10 characters";
-    else if (formData.message.trim().length > 1000) e.message = "Message cannot exceed 1000 characters";
+    if (!form.fullName.trim()) e.fullName = "Name is required";
+    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Valid email required";
+    if (!form.phone || form.phone.replace(/\D/g, "").length < 10) e.phone = "Valid phone required";
+    if (!form.interestedIn) e.interestedIn = "Please select";
+    if (!form.message.trim() || form.message.trim().length < 10) e.message = "Min 10 characters";
     return e;
   };
 
-  const handleChange = (e) => {
+  const onChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
+    setForm(p => ({ ...p, [name]: value }));
+    if (errors[name]) setErrors(p => ({ ...p, [name]: "" }));
+    if (sendError) setSendError("");
   };
 
-  const handlePhoneChange = (value) => {
-    setFormData((prev) => ({ ...prev, phone: value }));
-    if (errors.phone) setErrors((prev) => ({ ...prev, phone: "" }));
+  const onPhone = (value) => {
+    setForm(p => ({ ...p, phone: value }));
+    if (errors.phone) setErrors(p => ({ ...p, phone: "" }));
   };
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const newErrors = validateForm();
-    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
-    setLoading(true);
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+    setLoading(true); setSendError("");
     try {
-      await api.submitContact({
-        name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        interest: formData.interestedIn,
-        message: formData.message,
+      emailjs.init(KEY);
+      await emailjs.send(SVC, TPL, {
+        from_name: form.fullName,
+        from_email: form.email,
+        phone: `+${form.phone}`,
+        interest: form.interestedIn,
+        message: form.message,
+        reply_to: form.email,
       });
       setSubmitted(true);
-      setFormData({ fullName: "", email: "", phone: "", interestedIn: "", message: "" });
-      setTimeout(() => setSubmitted(false), 5000);
-    } catch {
-      setErrors({ message: "Failed to send. Please try again." });
+      setForm({ fullName: "", email: "", phone: "", interestedIn: "", message: "" });
+    } catch (err) {
+      console.error("EmailJS ERR:", err);
+      setSendError(err?.text || err?.message || "Failed to send. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  const phoneDigitsOnly = formData.phone.replace(/\D/g, "");
+  /* base input class */
+  const inp = (name) =>
+    `w-full h-[44px] border rounded-lg px-4 text-sm text-gray-800 bg-white transition focus:outline-none focus:ring-2 ${errors[name]
+      ? "border-red-400 bg-red-50 focus:ring-red-100"
+      : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-100"
+    }`;
 
+  if (submitted) return (
+    <div className="flex flex-col items-center justify-center py-20 text-center">
+      <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-5">
+        <FaCheckCircle className="text-indigo-600 text-4xl" />
+      </div>
+      <h3 className="text-2xl font-bold text-gray-900">Message Sent!</h3>
+      <p className="text-gray-500 text-sm mt-2 max-w-xs">We'll get back to you within 24 hours.</p>
+      <button onClick={() => setSubmitted(false)}
+        className="mt-6 px-8 py-2.5 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 transition">
+        Send Another
+      </button>
+    </div>
+  );
+
+  return (
+    <>
+      <style>{phoneStyles}</style>
+      <form onSubmit={onSubmit} className="space-y-5">
+
+        {sendError && (
+          <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-600 flex gap-2 items-start">
+            <FaExclamationCircle className="mt-0.5 shrink-0" /><span>{sendError}</span>
+          </div>
+        )}
+
+        {/* Row 1 — Name + Email */}
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-medium text-gray-700">Full Name <span className="text-red-500">*</span></label>
+            <input name="fullName" value={form.fullName} onChange={onChange} placeholder="John Doe" className={inp("fullName")} />
+            {errors.fullName && <p className="text-red-500 text-xs flex items-center gap-1"><FaExclamationCircle className="text-[10px]" />{errors.fullName}</p>}
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-medium text-gray-700">Email Address <span className="text-red-500">*</span></label>
+            <input name="email" type="email" value={form.email} onChange={onChange} placeholder="john@example.com" className={inp("email")} />
+            {errors.email && <p className="text-red-500 text-xs flex items-center gap-1"><FaExclamationCircle className="text-[10px]" />{errors.email}</p>}
+          </div>
+        </div>
+
+        {/* Row 2 — Phone + Interested In (same height) */}
+        <div className="grid sm:grid-cols-2 gap-4 items-start">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-medium text-gray-700">Phone Number <span className="text-red-500">*</span></label>
+            <div className={`phone-wrap${errors.phone ? " error" : ""}`}>
+              <PhoneInput
+                country="in"
+                value={form.phone}
+                onChange={onPhone}
+                preferredCountries={["in", "us", "gb", "au", "ca", "ae"]}
+                enableSearch
+                searchPlaceholder="Search country..."
+                disableSearchIcon
+              />
+            </div>
+            {errors.phone && <p className="text-red-500 text-xs flex items-center gap-1"><FaExclamationCircle className="text-[10px]" />{errors.phone}</p>}
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-medium text-gray-700">Interested In <span className="text-red-500">*</span></label>
+            {/* wrapper keeps arrow perfectly centred regardless of content */}
+            <div className="relative w-full">
+              <select
+                name="interestedIn"
+                value={form.interestedIn}
+                onChange={onChange}
+                className={`w-full h-[44px] border rounded-lg pl-4 pr-10 text-sm bg-white appearance-none cursor-pointer transition focus:outline-none focus:ring-2 ${errors.interestedIn
+                  ? "border-red-400 bg-red-50 focus:ring-red-100"
+                  : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-100"
+                  } ${!form.interestedIn ? "text-gray-400" : "text-gray-800"}`}
+              >
+                {d.form.interestOptions.map((opt) => (
+                  <option key={opt.value} value={opt.value} disabled={opt.value === ""}>{opt.label}</option>
+                ))}
+              </select>
+              {/* custom arrow — absolutely centred vertically */}
+              <svg
+                className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                width="12" height="12" viewBox="0 0 12 12" fill="currentColor"
+              >
+                <path d="M6 8L1 3h10z" />
+              </svg>
+            </div>
+            {errors.interestedIn && <p className="text-red-500 text-xs flex items-center gap-1"><FaExclamationCircle className="text-[10px]" />{errors.interestedIn}</p>}
+          </div>
+        </div>
+
+        {/* Message */}
+        <div className="flex flex-col gap-1.5">
+          <label className="text-sm font-medium text-gray-700 flex justify-between">
+            <span>Message <span className="text-red-500">*</span></span>
+            <span className="font-normal text-gray-400 text-xs">{form.message.length} / 1000</span>
+          </label>
+          <textarea
+            name="message" value={form.message} onChange={onChange} rows={5}
+            placeholder="Tell us about your goals or project..."
+            className={`w-full border rounded-lg px-4 py-3 text-sm text-gray-800 bg-white resize-none transition focus:outline-none focus:ring-2 ${errors.message ? "border-red-400 bg-red-50 focus:ring-red-100" : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-100"
+              }`}
+          />
+          {errors.message && <p className="text-red-500 text-xs flex items-center gap-1"><FaExclamationCircle className="text-[10px]" />{errors.message}</p>}
+        </div>
+
+        {/* Submit */}
+        <button type="submit" disabled={loading}
+          className="w-full h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold text-sm transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-indigo-200">
+          {loading
+            ? <><span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />Sending...</>
+            : <><FaPaperPlane className="text-xs" />Send Message</>}
+        </button>
+
+        <p className="text-center text-xs text-gray-400">🔒 Your information is safe. We never share your data.</p>
+      </form>
+    </>
+  );
+}
+
+/* ================= FORM + RIGHT ================= */
+function ContactMain({ d }) {
   return (
     <section className="px-4 sm:px-6 lg:px-16 py-12 sm:py-16">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12">
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold">{d.form.heading}</h2>
           <p className="text-gray-600 mt-2 text-sm">{d.form.subheading}</p>
-          <div className="bg-white border rounded-xl p-6 sm:p-8 mt-6 space-y-4">
-            {submitted && (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex gap-3 items-start">
-                <FaCheckCircle className="text-green-600 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold text-green-800">{d.form.successTitle}</p>
-                  <p className="text-sm text-green-700">{d.form.successMsg}</p>
-                </div>
-              </div>
-            )}
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs sm:text-sm font-medium text-gray-700 block mb-2">Full Name *</label>
-                  <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="John Doe"
-                    className={`border px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm w-full focus:outline-none focus:ring-2 transition ${errors.fullName ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-indigo-500"}`} />
-                  {errors.fullName && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.fullName}</p>}
-                </div>
-                <div>
-                  <label className="text-xs sm:text-sm font-medium text-gray-700 block mb-2">Email Address *</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@company.com"
-                    className={`border px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm w-full focus:outline-none focus:ring-2 transition ${errors.email ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-indigo-500"}`} />
-                  {errors.email && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.email}</p>}
-                </div>
-              </div>
-              <div className="w-full">
-                <label className="text-xs sm:text-sm font-medium text-gray-700 block mb-2">Phone Number *</label>
-                <MuiPhoneNumber country={"in"} value={formData.phone} onChange={handlePhoneChange}
-                  preferredCountries={["us", "gb", "in", "au", "ca"]} enableAreaCodes countryCodeEditable={false}
-                  containerClass="w-full" inputClass="w-full" />
-                <div className="flex justify-between items-start mt-1">
-                  {errors.phone && <p className="text-red-500 text-xs flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.phone}</p>}
-                  {phoneDigitsOnly && <p className="text-xs text-gray-500">{phoneDigitsOnly.length} digits</p>}
-                </div>
-              </div>
-              <div>
-                <label className="text-xs sm:text-sm font-medium text-gray-700 block mb-2">Interested In *</label>
-                <select name="interestedIn" value={formData.interestedIn} onChange={handleChange}
-                  className={`border px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm w-full focus:outline-none focus:ring-2 transition appearance-none bg-white cursor-pointer ${errors.interestedIn ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-indigo-500"}`}
-                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234B5563' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 0.75rem center", paddingRight: "2.5rem" }}>
-                  {d.form.interestOptions.map((opt) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
-                </select>
-                {errors.interestedIn && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.interestedIn}</p>}
-              </div>
-              <div>
-                <label className="text-xs sm:text-sm font-medium text-gray-700 block mb-2">Message * ({formData.message.length}/1000)</label>
-                <textarea name="message" value={formData.message} onChange={handleChange}
-                  placeholder="How can we help you achieve your goals?" rows={4}
-                  className={`border px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm w-full focus:outline-none focus:ring-2 transition resize-none ${errors.message ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-indigo-500"}`} />
-                {errors.message && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.message}</p>}
-              </div>
-              <button type="submit" disabled={loading}
-                className="w-full bg-indigo-600 text-white py-2.5 sm:py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-indigo-700 transition disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm sm:text-base">
-                {loading ? "Sending..." : d.form.submitBtn} <FaPaperPlane />
-              </button>
-              <p className="text-xs text-gray-400 text-center">{d.form.privacyNote}</p>
-            </form>
+          <div className="mt-6">
+            <ContactForm d={d} />
           </div>
         </div>
 
@@ -230,7 +317,7 @@ function ContactMain() {
 }
 
 /* ================= TRUSTED ================= */
-function Trusted() {
+function Trusted({ d }) {
   return (
     <section className="text-center py-10 border-t">
       <p className="text-xs tracking-widest text-gray-500 mb-6">{d.trusted.label}</p>
@@ -242,7 +329,7 @@ function Trusted() {
 }
 
 /* ================= BOTTOM CTA ================= */
-function BottomCTA() {
+function BottomCTA({ d }) {
   const navigate = useNavigate();
   return (
     <section className="bg-gradient-to-r from-indigo-500 to-indigo-600 px-4 sm:px-6 lg:px-16 py-12 text-white">
@@ -266,6 +353,7 @@ function BottomCTA() {
 
 /* ================= PAGE ================= */
 export default function ContactPage() {
+  const d = usePageData("contactData", staticD);
   useSchema([
     {
       "@context": "https://schema.org",
@@ -308,11 +396,10 @@ export default function ContactPage() {
   ]);
   return (
     <div>
-      <style>{phoneInputStyles}</style>
-      <ContactHero />
-      <ContactMain />
-      <Trusted />
-      <BottomCTA />
+      <ContactHero d={d} />
+      <ContactMain d={d} />
+      <Trusted d={d} />
+      <BottomCTA d={d} />
       <Footer />
     </div>
   );

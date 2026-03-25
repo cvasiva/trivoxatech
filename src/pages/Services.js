@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { FaGlobe, FaPalette, FaBullhorn, FaCheckCircle, FaBolt, FaChartLine } from "react-icons/fa";
 import Footer from "../components/Footer";
-import d from "../data/servicesData.json";
+import staticD from "../data/servicesData.json";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
 const iconMap = { FaGlobe, FaPalette, FaBullhorn, FaBolt, FaChartLine };
 
 /* ================= HERO ================= */
-function HeroSection() {
+function HeroSection({ d }) {
   const navigate = useNavigate();
   return (
     <section className="bg-[#f8f9fc] py-12 sm:py-16 lg:py-20">
@@ -40,7 +41,7 @@ function HeroSection() {
 }
 
 /* ================= SERVICES ================= */
-function ServicesSection() {
+function ServicesSection({ d }) {
   const navigate = useNavigate();
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20">
@@ -79,7 +80,7 @@ function ServicesSection() {
 }
 
 /* ================= LIFECYCLE ================= */
-function LifecycleSection() {
+function LifecycleSection({ d }) {
   return (
     <section className="bg-[#f1f3ff] py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,7 +102,7 @@ function LifecycleSection() {
 }
 
 /* ================= TEAM ================= */
-function TeamSection() {
+function TeamSection({ d }) {
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -139,7 +140,7 @@ function TeamSection() {
 }
 
 /* ================= SUCCESS ================= */
-function SuccessSection() {
+function SuccessSection({ d }) {
   return (
     <section className="bg-[#f8f9fc] py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,7 +167,7 @@ function SuccessSection() {
 }
 
 /* ================= CTA ================= */
-function CTASection() {
+function CTASection({ d }) {
   return (
     <section className="bg-gradient-to-r from-indigo-500 to-purple-500 py-14 sm:py-16 lg:py-20 text-white text-center">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
@@ -183,6 +184,7 @@ function CTASection() {
 
 /* ================= MAIN ================= */
 export default function ServicesPage() {
+  const d = usePageData("servicesData", staticD);
   useSchema([
     {
       "@context": "https://schema.org",
@@ -228,12 +230,12 @@ export default function ServicesPage() {
   ]);
   return (
     <div className="min-h-screen">
-      <HeroSection />
-      <ServicesSection />
-      <LifecycleSection />
-      <TeamSection />
-      <SuccessSection />
-      <CTASection />
+      <HeroSection d={d} />
+      <ServicesSection d={d} />
+      <LifecycleSection d={d} />
+      <TeamSection d={d} />
+      <SuccessSection d={d} />
+      <CTASection d={d} />
       <Footer />
     </div>
   );

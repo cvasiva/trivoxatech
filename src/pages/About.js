@@ -2,13 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUsers, FaGlobe, FaChartLine, FaAward } from "react-icons/fa";
 import Footer from "../components/Footer";
-import d from "../data/aboutData.json";
+import staticD from "../data/aboutData.json";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
 const iconMap = { FaUsers, FaGlobe, FaChartLine, FaAward };
 
 /* ================= HERO ================= */
-function Hero() {
+function Hero({ d }) {
   const navigate = useNavigate();
   return (
     <section className="bg-[#f5f6fa] px-4 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 md:py-20 lg:py-24">
@@ -37,7 +38,7 @@ function Hero() {
 }
 
 /* ================= STATS ================= */
-function Stats() {
+function Stats({ d }) {
   return (
     <div className="px-4 sm:px-8 lg:px-16 py-8 sm:py-12 mt-[-5rem]">
       <div className="max-w-6xl mx-auto bg-white border border-gray-200 rounded-xl grid grid-cols-2 sm:grid-cols-4 text-center p-6 sm:p-8 md:p-10 gap-4 sm:gap-6 md:gap-8">
@@ -59,7 +60,7 @@ function Stats() {
 }
 
 /* ================= JOURNEY ================= */
-function Journey() {
+function Journey({ d }) {
   const [m0, m1] = d.journey.milestones;
   return (
     <section className="px-4 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 md:py-20 lg:py-24">
@@ -93,7 +94,7 @@ function Journey() {
 }
 
 /* ================= TEAM ================= */
-function Team() {
+function Team({ d }) {
   return (
     <section className="bg-[#f5f6fa] px-4 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="max-w-6xl mx-auto">
@@ -115,7 +116,7 @@ function Team() {
 }
 
 /* ================= RECOGNIZED ================= */
-function Recognized() {
+function Recognized({ d }) {
   return (
     <section className="px-4 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 md:py-20 text-center">
       <p className="text-xs sm:text-sm tracking-widest text-gray-500 mb-8 sm:mb-10 md:mb-12">
@@ -131,7 +132,7 @@ function Recognized() {
 }
 
 /* ================= CTA ================= */
-function CTA() {
+function CTA({ d }) {
   const navigate = useNavigate();
   return (
     <section className="px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-16 md:py-20">
@@ -162,6 +163,7 @@ function CTA() {
 
 /* ================= PAGE ================= */
 export default function AboutPage() {
+  const d = usePageData("aboutData", staticD);
   useSchema([
     {
       "@context": "https://schema.org",
@@ -200,12 +202,12 @@ export default function AboutPage() {
   ]);
   return (
     <div>
-      <Hero />
-      <Stats />
-      <Journey />
-      <Team />
-      <Recognized />
-      <CTA />
+      <Hero d={d} />
+      <Stats d={d} />
+      <Journey d={d} />
+      <Team d={d} />
+      <Recognized d={d} />
+      <CTA d={d} />
       <Footer />
     </div>
   );

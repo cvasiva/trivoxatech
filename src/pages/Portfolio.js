@@ -2,13 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaGlobe, FaUsers, FaBolt, FaArrowUp, FaCheckCircle, FaChartLine, FaFilter } from "react-icons/fa";
 import Footer from "../components/Footer";
-import d from "../data/portfolioData.json";
+import staticD from "../data/portfolioData.json";
 import useSchema from "../hooks/useSchema";
+import usePageData from "../hooks/usePageData";
 
 const iconMap = { FaGlobe, FaUsers, FaBolt, FaArrowUp, FaCheckCircle, FaChartLine };
 
 /* ================= HERO ================= */
-function HeroSection() {
+function HeroSection({ d }) {
   const navigate = useNavigate();
   return (
     <section className="bg-[#f6f7fb] py-12 sm:py-16 lg:py-20">
@@ -35,7 +36,7 @@ function HeroSection() {
 }
 
 /* ================= SUCCESS GALLERY ================= */
-function SuccessGallery() {
+function SuccessGallery({ d }) {
   const [activeIndustry, setActiveIndustry] = useState("All Industries");
   const [activeService, setActiveService] = useState("All Services");
 
@@ -118,7 +119,7 @@ function Card({ data }) {
 }
 
 /* ================= STATS ================= */
-function StatsSection() {
+function StatsSection({ d }) {
   return (
     <section className="bg-[#f6f7fb] py-12 sm:py-16 lg:py-20 text-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,7 +143,7 @@ function StatsSection() {
 }
 
 /* ================= CTA WITH FORM ================= */
-function CTASection() {
+function CTASection({ d }) {
   const [form, setForm] = useState({ name: "", email: "", project: "" });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -204,7 +205,7 @@ function CTASection() {
 }
 
 /* ================= BOTTOM FEATURES ================= */
-function BottomFeatures() {
+function BottomFeatures({ d }) {
   return (
     <section className="bg-[#f6f7fb] py-12 sm:py-14 lg:py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -227,6 +228,7 @@ function BottomFeatures() {
 
 /* ================= MAIN ================= */
 export default function PortfolioPage() {
+  const d = usePageData("portfolioData", staticD);
   useSchema([
     {
       "@context": "https://schema.org",
@@ -263,11 +265,11 @@ export default function PortfolioPage() {
   ]);
   return (
     <div>
-      <HeroSection />
-      <SuccessGallery />
-      <StatsSection />
-      <CTASection />
-      <BottomFeatures />
+      <HeroSection d={d} />
+      <SuccessGallery d={d} />
+      <StatsSection d={d} />
+      <CTASection d={d} />
+      <BottomFeatures d={d} />
       <Footer />
     </div>
   );
