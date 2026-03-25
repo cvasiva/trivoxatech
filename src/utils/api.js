@@ -54,9 +54,8 @@ export const api = {
   deleteAdmin:  (id)                                         => request("DELETE", `/auth/admins/${id}`),
 
   // Page data (public read / admin write)
-  getData:          (key)        => request("GET", `/data/${key}`),
-  saveData:         (key, data)  => request("PUT", `/data/${key}`, data),
-  updateIndexHtml:  (seo)        => request("PUT", "/seo/index-html", seo),
+  getData:  (key)        => request("GET", `/data/${key}`),
+  saveData: (key, data)  => request("PUT", `/data/${key}`, data),
 
   // Enroll / Apply form
   submitEnroll: (form) => request("POST", "/enroll", form),
