@@ -275,12 +275,15 @@ export default function CoursePage() {
   const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
   const course = allCourses.find((c) => c.id === Number(id));
 
-  usePageMeta(course ? {
-    title: course.title,
-    description: course.longDesc || course.desc,
-    canonical: `https://trivoxatechnologis.vercel.app/coursedetails/${course.id}`,
-    ogImage: course.img,
-  } : {});
+  usePageMeta({
+    title:         d.seo?.title       || (course ? course.title : ""),
+    description:   d.seo?.description || (course ? course.longDesc || course.desc : ""),
+    keywords:      d.seo?.keywords    || "",
+    ogTitle:       d.seo?.ogTitle     || (course ? course.title : ""),
+    ogDescription: d.seo?.ogDescription || (course ? course.longDesc || course.desc : ""),
+    ogImage:       d.seo?.ogImage     || (course ? course.img : ""),
+    canonical:     d.seo?.canonical   || (course ? `https://trivoxatech.com/coursedetails/${course.id}` : ""),
+  });
 
   useSchema(course ? [
     {

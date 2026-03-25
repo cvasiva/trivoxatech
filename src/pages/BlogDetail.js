@@ -40,12 +40,12 @@ export default function BlogDetail() {
   const blogs = blogDetailData?.posts || staticBlogDetail.posts;
   const blog = blogs.find((b) => b.id === parseInt(id));
   const d = blogDetailData;
-  usePageMeta(blog ? {
-    title: blog.title,
-    description: blog.desc,
-    canonical: `https://trivoxatechnologis.vercel.app/blogs/${blog.id}`,
-    ogImage: blog.img,
-  } : {});
+  usePageMeta({
+    title:         blog ? blog.title : "",
+    description:   blog ? blog.desc  : "",
+    canonical:     blog ? `https://trivoxatech.com/blogs/${blog.id}` : "",
+    ogImage:       blog ? blog.img   : "",
+  });
   useSchema(blog ? [
     {
       "@context": "https://schema.org",
