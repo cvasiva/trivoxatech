@@ -11,8 +11,9 @@ const fs          = require("fs");
 const path        = require("path");
 const requireAuth = require("../middleware/auth");
 
-const DATA_DIR = path.join(__dirname, "../data");
-const SRC_DIR  = path.join(__dirname, "../seedData");
+const DATA_DIR     = path.join(__dirname, "../data");
+const SRC_DIR      = path.join(__dirname, "../seedData");
+const FRONTEND_DIR = path.join(__dirname, "../../src/data");
 
 // Ensure backend/data directory exists
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -82,7 +83,13 @@ router.put("/:key", requireAuth, (req, res) => {
   if (!req.body || typeof req.body !== "object")
     return res.status(400).json({ error: "Request body must be a JSON object" });
 
-  fs.writeFileSync(getFilePath(key), JSON.stringify(req.body, null, 2));
+  const json = JSON.stringify(req.body, null, 2);
+  fs.writeFileSync(getFilePath(key), json);
+
+  // Also sync to src/data so postbuild SEO script picks up latest values
+  const frontendFile = path.join(FRONTEND_DIR, `${key}.json`);
+  if (fs.existsSync(FRONTEND_DIR)) fs.writeFileSync(frontendFile, json);
+
   res.json({ success: true, key, savedAt: new Date().toISOString() });
 });
 
