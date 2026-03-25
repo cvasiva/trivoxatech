@@ -230,7 +230,7 @@ function BottomFeatures({ d }) {
 /* ================= MAIN ================= */
 export default function PortfolioPage() {
   const d = usePageData("portfolioData", staticD);
-  usePageMeta({ title: d.seo?.title || "Portfolio", description: d.seo?.description || d.hero.paragraph, keywords: d.seo?.keywords, canonical: d.seo?.canonical || "https://trivoxatechnologis.vercel.app/portfolio", ogTitle: d.seo?.ogTitle, ogDescription: d.seo?.ogDescription, ogImage: d.seo?.ogImage });
+  usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",

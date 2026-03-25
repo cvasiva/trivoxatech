@@ -269,7 +269,7 @@ export default function BlogPage() {
   const d = usePageData("blogsData", staticD);
   const blogDetail = usePageData("blogDetailData", staticBlogDetail);
   const blogs = blogDetail?.posts || staticBlogDetail.posts;
-  usePageMeta({ title: d.seo?.title || "Blog & Insights", description: d.seo?.description || d.hero.paragraph, keywords: d.seo?.keywords, canonical: d.seo?.canonical || "https://trivoxatechnologis.vercel.app/blogs", ogTitle: d.seo?.ogTitle, ogDescription: d.seo?.ogDescription, ogImage: d.seo?.ogImage });
+  usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",

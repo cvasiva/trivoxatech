@@ -1,17 +1,32 @@
 import { useEffect } from "react";
 
-export default function usePageMeta({ title, description, keywords, canonical, ogTitle, ogDescription, ogImage, twitterTitle, twitterDescription } = {}) {
+const DEFAULT = {
+  title: "Trivoxa Technologies | IT Training & Cloud Services",
+  description: "Master in-demand tech skills with Trivoxa Technologies. Industry-led courses in Full Stack, UI/UX, Cloud and more. 98% placement rate.",
+  keywords: "IT training, web development, cloud computing, UI/UX design, digital marketing, Trivoxa",
+  ogTitle: "Trivoxa Technologies | IT Training & Cloud Services",
+  ogDescription: "Master in-demand tech skills with Trivoxa Technologies. 98% placement rate. 15,000+ students trained.",
+  ogImage: "https://trivoxatechnologis.vercel.app/logo512.png",
+  canonical: "https://trivoxatechnologis.vercel.app",
+};
+
+export default function usePageMeta(seo = {}) {
+  const title        = seo.title        || DEFAULT.title;
+  const description  = seo.description  || DEFAULT.description;
+  const keywords     = seo.keywords     || DEFAULT.keywords;
+  const ogTitle      = seo.ogTitle      || title;
+  const ogDescription= seo.ogDescription|| description;
+  const ogImage      = seo.ogImage      || DEFAULT.ogImage;
+  const canonical    = seo.canonical    || DEFAULT.canonical;
+  const twitterTitle = seo.twitterTitle || ogTitle;
+  const twitterDesc  = seo.twitterDescription || ogDescription;
+
   useEffect(() => {
-    const siteName = "Trivoxa Technologies";
-    const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | IT Training & Cloud Services`;
-    const desc = description || "Master in-demand tech skills with Trivoxa Technologies. 98% placement rate.";
-    const resolvedOgTitle = ogTitle || fullTitle;
-    const resolvedOgDesc = ogDescription || desc;
 
-    // ── Page title ──────────────────────────────────────────
-    document.title = fullTitle;
+    // ── <title> ──────────────────────────────────────────────
+    document.title = title;
 
-    // ── Helper: set <meta name="..."> ───────────────────────
+    // ── helper: <meta name="x"> ──────────────────────────────
     const setName = (name, value) => {
       if (!value) return;
       let el = document.querySelector(`meta[name="${name}"]`);
@@ -20,46 +35,49 @@ export default function usePageMeta({ title, description, keywords, canonical, o
         el.setAttribute("name", name);
         document.head.appendChild(el);
       }
-      el.setAttribute("content", value);
+      el.content = value;
     };
 
-    // ── Helper: set <meta property="..."> ──────────────────
-    const setProp = (property, value) => {
+    // ── helper: <meta property="x"> ─────────────────────────
+    const setProp = (prop, value) => {
       if (!value) return;
-      let el = document.querySelector(`meta[property="${property}"]`);
+      let el = document.querySelector(`meta[property="${prop}"]`);
       if (!el) {
         el = document.createElement("meta");
-        el.setAttribute("property", property);
+        el.setAttribute("property", prop);
         document.head.appendChild(el);
       }
-      el.setAttribute("content", value);
+      el.content = value;
     };
 
-    // ── Standard meta ───────────────────────────────────────
-    setName("title", fullTitle);
-    setName("description", desc);
-    if (keywords) setName("keywords", keywords);
+    // ── Standard ─────────────────────────────────────────────
+    setName("title",       title);
+    setName("description", description);
+    setName("keywords",    keywords);
+    setName("robots",      "index, follow");
 
-    // ── Open Graph ──────────────────────────────────────────
-    setProp("og:title", resolvedOgTitle);
-    setProp("og:description", resolvedOgDesc);
-    if (ogImage) setProp("og:image", ogImage);
-    if (canonical) setProp("og:url", canonical);
+    // ── Open Graph ───────────────────────────────────────────
+    setProp("og:title",       ogTitle);
+    setProp("og:description", ogDescription);
+    setProp("og:image",       ogImage);
+    setProp("og:url",         canonical);
+    setProp("og:type",        "website");
+    setProp("og:site_name",   "Trivoxa Technologies");
 
-    // ── Twitter ─────────────────────────────────────────────
-    setName("twitter:title", twitterTitle || resolvedOgTitle);
-    setName("twitter:description", twitterDescription || resolvedOgDesc);
-    if (ogImage) setName("twitter:image", ogImage);
+    // ── Twitter ──────────────────────────────────────────────
+    setName("twitter:card",        "summary_large_image");
+    setName("twitter:title",       twitterTitle);
+    setName("twitter:description", twitterDesc);
+    setName("twitter:image",       ogImage);
 
-    // ── Canonical ───────────────────────────────────────────
-    if (canonical) {
-      let el = document.querySelector("link[rel='canonical']");
-      if (!el) {
-        el = document.createElement("link");
-        el.setAttribute("rel", "canonical");
-        document.head.appendChild(el);
-      }
-      el.setAttribute("href", canonical);
+    // ── Canonical ────────────────────────────────────────────
+    let link = document.querySelector("link[rel='canonical']");
+    if (!link) {
+      link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      document.head.appendChild(link);
     }
-  }, [title, description, keywords, canonical, ogTitle, ogDescription, ogImage, twitterTitle, twitterDescription]);
+    link.href = canonical;
+
+  }, [title, description, keywords, ogTitle, ogDescription, ogImage, canonical, twitterTitle, twitterDesc]);
 }

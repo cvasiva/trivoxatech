@@ -203,7 +203,7 @@ export default function CoursesPage() {
   const d = usePageData("coursesData", staticD);
   const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
   const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
-  usePageMeta({ title: d.seo?.title || "Courses", description: d.seo?.description || d.hero.paragraph, keywords: d.seo?.keywords, canonical: d.seo?.canonical || "https://trivoxatechnologis.vercel.app/courses", ogTitle: d.seo?.ogTitle, ogDescription: d.seo?.ogDescription, ogImage: d.seo?.ogImage });
+  usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",
