@@ -355,7 +355,7 @@ function BottomCTA({ d }) {
 /* ================= PAGE ================= */
 export default function ContactPage() {
   const d = usePageData("contactData", staticD);
-  usePageMeta(d.seo || {});
+  const meta = usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",
@@ -398,6 +398,7 @@ export default function ContactPage() {
   ]);
   return (
     <div>
+      {meta}
       <ContactHero d={d} />
       <ContactMain d={d} />
       <Trusted d={d} />

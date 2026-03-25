@@ -444,7 +444,7 @@ function FormSection() {
 
 /* ================= MAIN ================= */
 export default function ServicesQuotePage() {
-  usePageMeta({ title: "Get a Quote", description: "Get a custom quote for web development, UI/UX design and digital marketing services from Trivoxa Technologies.", canonical: "https://trivoxatechnologis.vercel.app/servicesquote" });
+  const meta = usePageMeta({ title: "Get a Quote", description: "Get a custom quote for web development, UI/UX design and digital marketing services from Trivoxa Technologies.", canonical: "https://trivoxatechnologis.vercel.app/servicesquote" });
   useSchema([
     {
       "@context": "https://schema.org",
@@ -486,6 +486,7 @@ export default function ServicesQuotePage() {
   ]);
   return (
     <div className="min-h-screen">
+      {meta}
       <StickyBack />
       <HeroSection />
       <ProblemSection />

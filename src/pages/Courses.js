@@ -203,7 +203,7 @@ export default function CoursesPage() {
   const d = usePageData("coursesData", staticD);
   const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
   const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
-  usePageMeta(d.seo || {});
+  const meta = usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",
@@ -241,6 +241,7 @@ export default function CoursesPage() {
   ]);
   return (
     <div>
+      {meta}
       <Hero d={d} />
       <CoursesSection d={d} allCourses={allCourses} />
       <CTA d={d} />

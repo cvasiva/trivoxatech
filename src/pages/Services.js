@@ -186,7 +186,7 @@ function CTASection({ d }) {
 /* ================= MAIN ================= */
 export default function ServicesPage() {
   const d = usePageData("servicesData", staticD);
-  usePageMeta(d.seo || {});
+  const meta = usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",
@@ -232,6 +232,7 @@ export default function ServicesPage() {
   ]);
   return (
     <div className="min-h-screen">
+      {meta}
       <HeroSection d={d} />
       <ServicesSection d={d} />
       <LifecycleSection d={d} />

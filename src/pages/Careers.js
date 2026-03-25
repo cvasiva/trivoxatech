@@ -204,7 +204,7 @@ function Newsletter({ d }) {
 /* ================= PAGE ================= */
 export default function CareersPage() {
   const d = usePageData("careersData", staticD);
-  usePageMeta(d.seo || {});
+  const meta = usePageMeta(d.seo || {});
   useSchema([
     {
       "@context": "https://schema.org",
@@ -238,6 +238,7 @@ export default function CareersPage() {
   ]);
   return (
     <div className="w-full">
+      {meta}
       <CareersHero d={d} />
       <WhySection d={d} />
       <Jobs d={d} />
