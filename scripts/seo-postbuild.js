@@ -1,13 +1,9 @@
+const fs = require("fs");
+const path = require("path");
+
+const BUILD_DIR = path.join(__dirname, "../build");
+
 const SEO = {
-  "/": {
-    title: "Best Training Institute in Bangalore - Trivoxa Technologies",
-    description: "Master in-demand tech skills with Trivoxa. Industry-led courses in Full Stack, UI/UX, Cloud, and more. 98% placement rate.",
-    keywords: "IT training, web development courses, cloud computing, UI/UX design, tech education",
-    ogTitle: "Training Institute in Bangalore - Trivoxa Technologies",
-    ogDescription: "Empower your career with industry-recognized certifications or scale your business with bespoke IT development services.",
-    ogImage: "https://trivoxatechnologis.vercel.app/logo512.png",
-    canonical: "https://trivoxatech.com/",
-  },
   "/about": {
     title: "About Trivoxa Technologies | Our Mission & Team",
     description: "Learn about Trivoxa's mission to democratize IT education. Meet our team of industry veterans and discover our journey since 2018.",
@@ -100,68 +96,47 @@ function injectMeta(html, seo) {
 
   html = html.replace(/(<title[^>]*>)[^<]*(<\/title>)/, `$1${esc(title)}$2`);
 
-  const replacePairs = [
-    [/(<meta\s[^>]*name="title"[^>]*content=")[^"]*(")/i,           esc(title)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="title")/i,           esc(title)],
-    [/(<meta\s[^>]*name="description"[^>]*content=")[^"]*(")/i,     esc(description)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="description")/i,     esc(description)],
-    [/(<meta\s[^>]*name="keywords"[^>]*content=")[^"]*(")/i,        esc(keywords)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="keywords")/i,        esc(keywords)],
-    [/(<meta\s[^>]*property="og:title"[^>]*content=")[^"]*(")/i,    esc(ogTitle)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*property="og:title")/i,    esc(ogTitle)],
-    [/(<meta\s[^>]*property="og:description"[^>]*content=")[^"]*(")/i, esc(ogDescription)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*property="og:description")/i, esc(ogDescription)],
-    [/(<meta\s[^>]*property="og:image"[^>]*content=")[^"]*(")/i,    esc(ogImage)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*property="og:image")/i,    esc(ogImage)],
-    [/(<meta\s[^>]*property="og:url"[^>]*content=")[^"]*(")/i,      esc(canonical)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*property="og:url")/i,      esc(canonical)],
-    [/(<meta\s[^>]*name="twitter:title"[^>]*content=")[^"]*(")/i,   esc(ogTitle)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="twitter:title")/i,   esc(ogTitle)],
+  const pairs = [
+    [/(<meta\s[^>]*name="title"[^>]*content=")[^"]*(")/i,               esc(title)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="title")/i,               esc(title)],
+    [/(<meta\s[^>]*name="description"[^>]*content=")[^"]*(")/i,         esc(description)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="description")/i,         esc(description)],
+    [/(<meta\s[^>]*name="keywords"[^>]*content=")[^"]*(")/i,            esc(keywords)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="keywords")/i,            esc(keywords)],
+    [/(<meta\s[^>]*property="og:title"[^>]*content=")[^"]*(")/i,        esc(ogTitle)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*property="og:title")/i,        esc(ogTitle)],
+    [/(<meta\s[^>]*property="og:description"[^>]*content=")[^"]*(")/i,  esc(ogDescription)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*property="og:description")/i,  esc(ogDescription)],
+    [/(<meta\s[^>]*property="og:image"[^>]*content=")[^"]*(")/i,        esc(ogImage)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*property="og:image")/i,        esc(ogImage)],
+    [/(<meta\s[^>]*property="og:url"[^>]*content=")[^"]*(")/i,          esc(canonical)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*property="og:url")/i,          esc(canonical)],
+    [/(<meta\s[^>]*name="twitter:title"[^>]*content=")[^"]*(")/i,       esc(ogTitle)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="twitter:title")/i,       esc(ogTitle)],
     [/(<meta\s[^>]*name="twitter:description"[^>]*content=")[^"]*(")/i, esc(ogDescription)],
     [/(<meta\s[^>]*content=")[^"]*("[^>]*name="twitter:description")/i, esc(ogDescription)],
-    [/(<meta\s[^>]*name="twitter:image"[^>]*content=")[^"]*(")/i,   esc(ogImage)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="twitter:image")/i,   esc(ogImage)],
-    [/(<meta\s[^>]*name="twitter:url"[^>]*content=")[^"]*(")/i,     esc(canonical)],
-    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="twitter:url")/i,     esc(canonical)],
-    [/(<link\s[^>]*rel="canonical"[^>]*href=")[^"]*(")/i,           esc(canonical)],
-    [/(<link\s[^>]*href=")[^"]*("[^>]*rel="canonical")/i,           esc(canonical)],
+    [/(<meta\s[^>]*name="twitter:image"[^>]*content=")[^"]*(")/i,       esc(ogImage)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="twitter:image")/i,       esc(ogImage)],
+    [/(<meta\s[^>]*name="twitter:url"[^>]*content=")[^"]*(")/i,         esc(canonical)],
+    [/(<meta\s[^>]*content=")[^"]*("[^>]*name="twitter:url")/i,         esc(canonical)],
+    [/(<link\s[^>]*rel="canonical"[^>]*href=")[^"]*(")/i,               esc(canonical)],
+    [/(<link\s[^>]*href=")[^"]*("[^>]*rel="canonical")/i,               esc(canonical)],
   ];
 
-  for (const [re, val] of replacePairs) {
+  for (const [re, val] of pairs) {
     html = html.replace(re, `$1${val}$2`);
   }
-
   return html;
 }
 
-export default function middleware(request) {
-  const url = new URL(request.url);
-  const pathname = url.pathname;
+const baseHtml = fs.readFileSync(path.join(BUILD_DIR, "index.html"), "utf8");
 
-  // Skip static assets
-  if (/\.(js|css|png|jpg|jpeg|svg|ico|json|woff|woff2|ttf|map|txt)$/.test(pathname)) {
-    return;
-  }
-
-  // Match route
-  let seo = SEO[pathname];
-  if (!seo) {
-    const prefix = Object.keys(SEO).find((k) => k !== "/" && pathname.startsWith(k));
-    seo = prefix ? SEO[prefix] : SEO["/"];
-  }
-
-  // Fetch the original index.html and inject meta
-  return fetch(new URL("/index.html", request.url)).then((res) =>
-    res.text().then((html) => {
-      const injected = injectMeta(html, seo);
-      return new Response(injected, {
-        status: 200,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
-    })
-  );
+for (const [route, seo] of Object.entries(SEO)) {
+  const dir = path.join(BUILD_DIR, route);
+  fs.mkdirSync(dir, { recursive: true });
+  const html = injectMeta(baseHtml, seo);
+  fs.writeFileSync(path.join(dir, "index.html"), html, "utf8");
+  console.log(`✅  ${route}/index.html → "${seo.title}"`);
 }
 
-export const config = {
-  matcher: "/((?!_next/static|_next/image|favicon.ico|static|logo192.png|logo512.png|manifest.json|robots.txt).*)",
-};
+console.log("✅  SEO postbuild complete.");
