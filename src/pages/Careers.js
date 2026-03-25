@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import staticD from "../data/careersData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const iconMap = { FaGlobe, FaBolt, FaHeart, FaUsers, FaShieldAlt };
 
@@ -203,6 +204,7 @@ function Newsletter({ d }) {
 /* ================= PAGE ================= */
 export default function CareersPage() {
   const d = usePageData("careersData", staticD);
+  usePageMeta({ title: "Careers", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/careers" });
   useSchema([
     {
       "@context": "https://schema.org",

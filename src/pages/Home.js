@@ -15,6 +15,7 @@ import digitalM from "../images/digitalM.jpg";
 import staticD from "../data/homeData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const iconMap = { FaUsers, FaBriefcase, FaGraduationCap, FaStar, FaGrad, FaLaptopCode };
 const localImgMap = { 1: fullstack, 2: uxuidesign, 3: digitalM };
@@ -370,6 +371,12 @@ function BlogSection() {
 /* ================= EXPORT ================= */
 export default function Home() {
   const d = usePageData("homeData", staticD);
+  usePageMeta({
+    title: d.seo?.title || "IT Training & Cloud Services",
+    description: d.seo?.description,
+    canonical: d.seo?.canonical,
+    ogImage: d.seo?.ogImage,
+  });
   useSchema([
     { "@context": "https://schema.org", "@type": "Organization", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com", "logo": "https://trivoxatech.com/logo.png", "description": d.hero.subtitle, "sameAs": ["https://linkedin.com/company/trivoxatech", "https://twitter.com/trivoxatech"], "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "email": "hello@trivoxatech.com" } },
     { "@context": "https://schema.org", "@type": "WebSite", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com", "potentialAction": { "@type": "SearchAction", "target": "https://trivoxatech.com/courses?q={search_term_string}", "query-input": "required name=search_term_string" } },

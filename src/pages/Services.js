@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import staticD from "../data/servicesData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const iconMap = { FaGlobe, FaPalette, FaBullhorn, FaBolt, FaChartLine };
 
@@ -185,6 +186,7 @@ function CTASection({ d }) {
 /* ================= MAIN ================= */
 export default function ServicesPage() {
   const d = usePageData("servicesData", staticD);
+  usePageMeta({ title: "Services", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/services" });
   useSchema([
     {
       "@context": "https://schema.org",

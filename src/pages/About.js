@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import staticD from "../data/aboutData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const iconMap = { FaUsers, FaGlobe, FaChartLine, FaAward };
 
@@ -164,6 +165,7 @@ function CTA({ d }) {
 /* ================= PAGE ================= */
 export default function AboutPage() {
   const d = usePageData("aboutData", staticD);
+  usePageMeta({ title: "About Us", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/about" });
   useSchema([
     {
       "@context": "https://schema.org",

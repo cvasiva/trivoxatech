@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import staticD from "../data/contactData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const SVC = "service_928ko6h";
 const TPL = "template_jutciy9";
@@ -354,6 +355,7 @@ function BottomCTA({ d }) {
 /* ================= PAGE ================= */
 export default function ContactPage() {
   const d = usePageData("contactData", staticD);
+  usePageMeta({ title: "Contact Us", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/contact" });
   useSchema([
     {
       "@context": "https://schema.org",

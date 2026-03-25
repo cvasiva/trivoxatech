@@ -6,6 +6,7 @@ import * as staticCourseData from "../data/courseData";
 import staticD from "../data/coursesData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 /* ================= HERO ================= */
 function Hero({ d }) {
@@ -202,6 +203,7 @@ export default function CoursesPage() {
   const d = usePageData("coursesData", staticD);
   const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
   const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
+  usePageMeta({ title: "Courses", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/courses" });
   useSchema([
     {
       "@context": "https://schema.org",

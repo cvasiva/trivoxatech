@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import staticD from "../data/portfolioData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
+import usePageMeta from "../hooks/usePageMeta";
 
 const iconMap = { FaGlobe, FaUsers, FaBolt, FaArrowUp, FaCheckCircle, FaChartLine };
 
@@ -229,6 +230,7 @@ function BottomFeatures({ d }) {
 /* ================= MAIN ================= */
 export default function PortfolioPage() {
   const d = usePageData("portfolioData", staticD);
+  usePageMeta({ title: "Portfolio", description: d.hero.paragraph, canonical: "https://trivoxatechnologis.vercel.app/portfolio" });
   useSchema([
     {
       "@context": "https://schema.org",
