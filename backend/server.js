@@ -8,10 +8,10 @@ const app = express();
 // ── Middleware ──────────────────────────────────────────────
 app.use(cors({
   origin: [
-    process.env.CLIENT_URL || "http://localhost:3000",
+    "http://localhost:3000",
     "https://trivoxatechnologis.vercel.app",
-    "http://localhost:3000"
-  ],
+    process.env.CLIENT_URL,
+  ].filter(Boolean),
   credentials: true
 }));
 app.use(express.json());
