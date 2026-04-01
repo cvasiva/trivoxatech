@@ -3,6 +3,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import PageLoader from './components/PageLoader';
+import GoogleSignInModal from './components/GoogleSignInModal';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -83,6 +84,7 @@ function SiteLayout({ children }) {
     <>
       {!isAdmin && <Navbar />}
       {!isAdmin && <PageLoader />}
+      {!isAdmin && <GoogleSignInModal />}
       {children}
     </>
   );
