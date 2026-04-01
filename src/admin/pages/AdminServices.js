@@ -2,7 +2,7 @@ import servicesData from "../../data/servicesData.json";
 import { PageHeader, Section, Field, Input, Textarea, ImageField, StringList, ObjectCard, AddButton, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminServices() {
-  const { data, setData, update, save, saved } = useSave("servicesData", servicesData);
+  const { data, setData, update, save, saved, saveError } = useSave("servicesData", servicesData);
 
   const updateService = (i, key, val) => {
     const items = [...data.services.items];
@@ -30,7 +30,7 @@ export default function AdminServices() {
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Services Page" subtitle="Edit hero, service cards, lifecycle, team and success stories" onSave={save} saved={saved} />
+      <PageHeader title="Services Page" subtitle="Edit hero, service cards, lifecycle, team and success stories" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "heroImg", label: "Hero Image", hint: "e.g. Trivoxa enterprise IT services team" },

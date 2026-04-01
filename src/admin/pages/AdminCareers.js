@@ -2,7 +2,7 @@ import careersData from "../../data/careersData.json";
 import { PageHeader, Section, Field, Input, Textarea, ImageField, StringList, ObjectCard, AddButton, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminCareers() {
-  const { data, setData, update, save, saved } = useSave("careersData", careersData);
+  const { data, setData, update, save, saved, saveError } = useSave("careersData", careersData);
 
   const updateWhyItem = (i, key, val) => {
     const items = [...data.why.items];
@@ -18,7 +18,7 @@ export default function AdminCareers() {
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Careers Page" subtitle="Edit hero, benefits, job listings, tools and newsletter" onSave={save} saved={saved} />
+      <PageHeader title="Careers Page" subtitle="Edit hero, benefits, job listings, tools and newsletter" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "heroImg", label: "Hero Image", hint: "e.g. Trivoxa team collaborating in a remote-first environment" },

@@ -2,11 +2,11 @@ import aboutData from "../../data/aboutData.json";
 import { PageHeader, Section, Field, Input, Textarea, ImageField, ObjectCard, AddButton, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminAbout() {
-  const { data, setData, update, save, saved } = useSave("aboutData", aboutData);
+  const { data, setData, update, save, saved, saveError } = useSave("aboutData", aboutData);
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="About Page" subtitle="Edit mission, stats, journey, team and recognized brands" onSave={save} saved={saved} />
+      <PageHeader title="About Page" subtitle="Edit mission, stats, journey, team and recognized brands" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "heroImg", label: "Hero Image", hint: "e.g. Trivoxa team collaboration photo" },

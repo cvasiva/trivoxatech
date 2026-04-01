@@ -2,7 +2,7 @@ import servicesQuoteData from "../../data/servicesQuoteData.json";
 import { PageHeader, Section, Field, Input, Textarea, ImageField, StringList, ObjectCard, AddButton, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminServicesQuote() {
-  const { data, setData, update, save, saved } = useSave("servicesQuoteData", servicesQuoteData);
+  const { data, setData, update, save, saved, saveError } = useSave("servicesQuoteData", servicesQuoteData);
 
   const updateFeature = (i, key, val) => {
     const items = [...data.features.items];
@@ -18,7 +18,7 @@ export default function AdminServicesQuote() {
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Services Quote Page" subtitle="Edit hero, problem/solution, features, pricing, testimonial and form" onSave={save} saved={saved} />
+      <PageHeader title="Services Quote Page" subtitle="Edit hero, problem/solution, features, pricing, testimonial and form" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "heroImg", label: "Hero Image", hint: "e.g. Trivoxa web development and engineering services" },

@@ -2,7 +2,7 @@ import blogsData from "../../data/blogsData.json";
 import { PageHeader, Section, Field, Input, Textarea, ImageField, StringList, ObjectCard, AddButton, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminBlogs() {
-  const { data, setData, update, save, saved } = useSave("blogsData", blogsData);
+  const { data, setData, update, save, saved, saveError } = useSave("blogsData", blogsData);
 
   const updatePost = (i, key, val) => {
     const posts = [...data.posts];
@@ -18,7 +18,7 @@ export default function AdminBlogs() {
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Blogs Page" subtitle="Edit hero, categories, tags, sidebar text, CTA and post listings" onSave={save} saved={saved} />
+      <PageHeader title="Blogs Page" subtitle="Edit hero, categories, tags, sidebar text, CTA and post listings" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "ctaImg", label: "CTA Banner Image", hint: "e.g. Students learning IT skills at Trivoxa" },

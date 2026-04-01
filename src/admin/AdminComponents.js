@@ -230,12 +230,13 @@ export function SeoSection({ data, update, altTagFields = [] }) {
 }
 
 /* ── PAGE HEADER ── */
-export function PageHeader({ title, subtitle, onSave, saved }) {
+export function PageHeader({ title, subtitle, onSave, saved, saveError }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
       <div>
         <h1 className="text-xl font-bold text-gray-900">{title}</h1>
         <p className="text-sm text-gray-500 mt-0.5">{subtitle}</p>
+        {saveError && <p className="text-xs text-red-500 mt-1">⚠ Save failed: {saveError} (saved locally as fallback)</p>}
       </div>
       <SaveButton onSave={onSave} saved={saved} />
     </div>
@@ -249,26 +250,31 @@ export function Grid2({ children }) {
 
 /* ── USE SAVE HOOK ── */
 export function useSave(dataKey, initialData) {
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(null);
   const [saved, setSaved] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [saveError, setSaveError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     api.getData(dataKey)
-      .then((d) => setData(d))
+      .then((d) => { if (d) setData(d); else setData(initialData); })
       .catch(() => {
-        // fallback to localStorage if backend unavailable
-        try { const s = JSON.parse(localStorage.getItem(dataKey)); if (s) setData(s); } catch {}
+        try { const s = JSON.parse(localStorage.getItem(dataKey)); if (s) { setData(s); return; } } catch {}
+        setData(initialData);
       })
       .finally(() => setLoading(false));
-  }, [dataKey]);
+  }, [dataKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const save = async () => {
+    setSaveError(null);
     try {
-      await api.saveData(dataKey, data);
+      const saved = await api.saveData(dataKey, data);
+      if (saved) setData(data); // confirm local state matches what was persisted
       if (data.seo) await api.updateIndexHtml(data.seo).catch(() => {});
-    } catch {
-      // fallback
+      localStorage.removeItem(dataKey); // clear any stale localStorage fallback
+    } catch (err) {
+      setSaveError(err.message || "Save failed");
       localStorage.setItem(dataKey, JSON.stringify(data));
     }
     setSaved(true);
@@ -286,5 +292,5 @@ export function useSave(dataKey, initialData) {
     });
   };
 
-  return { data, setData, update, save, saved, loading };
+  return { data: data ?? initialData, setData, update, save, saved, loading, saveError };
 }

@@ -5,7 +5,7 @@ const INFO_ICONS = ["FaGraduationCap", "FaLaptopCode", "FaUsers", "FaBriefcase",
 const STAT_ICONS = ["FaUsers", "FaBriefcase", "FaGraduationCap", "FaStar"];
 
 export default function AdminHome() {
-  const { data, setData, update, save, saved } = useSave("homeData", homeData);
+  const { data, setData, update, save, saved, saveError } = useSave("homeData", homeData);
 
   const updateItem = (section, index, key, val) => {
     const items = [...data[section].items];
@@ -20,7 +20,7 @@ export default function AdminHome() {
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Home Page" subtitle="Edit all sections: hero, trusted, courses, info, stats, testimonials, success stories, CTA, blog" onSave={save} saved={saved} />
+      <PageHeader title="Home Page" subtitle="Edit all sections: hero, trusted, courses, info, stats, testimonials, success stories, CTA, blog" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "heroImg", label: "Hero Image", hint: "e.g. Trivoxa IT training hero banner" },

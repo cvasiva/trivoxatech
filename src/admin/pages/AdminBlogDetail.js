@@ -2,7 +2,7 @@ import blogDetailData from "../../data/blogDetailData.json";
 import { PageHeader, Section, Field, Input, Textarea, ImageField, ObjectCard, AddButton, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminBlogDetail() {
-  const { data, setData, update, save, saved } = useSave("blogDetailData", blogDetailData);
+  const { data, setData, update, save, saved, saveError } = useSave("blogDetailData", blogDetailData);
 
   const updatePost = (i, key, val) => {
     const posts = [...data.posts];
@@ -12,7 +12,7 @@ export default function AdminBlogDetail() {
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Blog Detail Page" subtitle="Edit individual blog posts — title, content, author, images" onSave={save} saved={saved} />
+      <PageHeader title="Blog Detail Page" subtitle="Edit individual blog posts — title, content, author, images" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[]} />
 

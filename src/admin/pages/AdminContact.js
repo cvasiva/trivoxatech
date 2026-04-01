@@ -2,7 +2,7 @@ import contactData from "../../data/contactData.json";
 import { PageHeader, Section, Field, Input, Textarea, ImageField, StringList, ObjectCard, AddButton, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminContact() {
-  const { data, setData, update, save, saved } = useSave("contactData", contactData);
+  const { data, setData, update, save, saved, saveError } = useSave("contactData", contactData);
 
   const updateOffice = (i, key, val) => {
     const items = [...data.offices.items];
@@ -24,7 +24,7 @@ export default function AdminContact() {
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Contact Page" subtitle="Edit hero, form options, offices, hours, trusted brands and bottom CTA" onSave={save} saved={saved} />
+      <PageHeader title="Contact Page" subtitle="Edit hero, form options, offices, hours, trusted brands and bottom CTA" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "heroImg", label: "Hero Image", hint: "e.g. Trivoxa contact page experts ready to assist" },

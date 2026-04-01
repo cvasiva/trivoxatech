@@ -18,10 +18,37 @@ app.use(express.json());
 app.use(requestLogger);
 
 // ── MongoDB Connection ───────────────────────────────────────
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅  MongoDB connected"))
-  .catch((err) => console.error("❌  MongoDB connection failed:", err.message));
+const MONGO_OPTS = {
+  serverSelectionTimeoutMS: 30000,  // wait up to 30s to find a server
+  connectTimeoutMS:         30000,  // wait up to 30s for initial connection
+  socketTimeoutMS:          45000,  // kill idle sockets after 45s
+  maxPoolSize:              10,
+};
+
+function connectDB() {
+  mongoose
+    .connect(process.env.MONGO_URI, MONGO_OPTS)
+    .then(() => console.log("✅  MongoDB connected"))
+    .catch((err) => {
+      console.error("❌  MongoDB connection failed:", err.message);
+      console.log("🔄  Retrying in 5 seconds...");
+      setTimeout(connectDB, 5000);
+    });
+}
+
+mongoose.connection.on("disconnected", () => {
+  console.warn("⚠️  MongoDB disconnected — reconnecting...");
+  setTimeout(connectDB, 5000);
+});
+
+connectDB();
+
+// ── DB ready guard ─────────────────────────────────────────
+app.use("/api/auth", (req, res, next) => {
+  if (mongoose.connection.readyState !== 1)
+    return res.status(503).json({ error: "Database unavailable. Please try again shortly." });
+  next();
+});
 
 // ── Routes ──────────────────────────────────────────────────
 app.use("/api/auth",        require("./routes/auth"));

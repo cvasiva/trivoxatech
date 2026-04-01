@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   FaHome, FaInfoCircle, FaBook, FaNewspaper, FaBriefcase,
@@ -6,7 +6,7 @@ import {
   FaBars, FaTimes, FaSignOutAlt, FaChevronRight, FaInbox, FaBell, FaUsersCog,
 } from "react-icons/fa";
 import logo from "../images/trivoxalogo.png";
-import { clearToken } from "../utils/api";
+import { clearToken, getTokenExpiry } from "../utils/api";
 
 const navItems = [
   { to: "/admin", label: "Home", icon: <FaHome />, end: true },
@@ -27,7 +27,33 @@ const navItems = [
 
 export default function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sessionWarning, setSessionWarning] = useState(null); // minutes left
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirect immediately on 401 from any API call
+    const onExpired = () => {
+      clearToken();
+      navigate("/admin/login");
+    };
+    window.addEventListener("trivoxa:auth:expired", onExpired);
+
+    // Check token expiry every minute and warn at ≤15 min
+    const check = () => {
+      const expiry = getTokenExpiry();
+      if (!expiry) return;
+      const minsLeft = Math.floor((expiry - Date.now()) / 60000);
+      if (minsLeft <= 0) { onExpired(); return; }
+      setSessionWarning(minsLeft <= 15 ? minsLeft : null);
+    };
+    check();
+    const interval = setInterval(check, 60000);
+
+    return () => {
+      window.removeEventListener("trivoxa:auth:expired", onExpired);
+      clearInterval(interval);
+    };
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
@@ -114,6 +140,13 @@ export default function AdminLayout() {
             <p className="text-sm font-semibold text-gray-800">Content Management</p>
             <p className="text-xs text-gray-400">Edit page content — changes reflect on the live site</p>
           </div>
+          {sessionWarning && (
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <span className="text-xs text-yellow-700 font-medium">
+                Session expires in {sessionWarning} min{sessionWarning !== 1 ? "s" : ""}
+              </span>
+            </div>
+          )}
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             <span className="text-xs text-gray-500 hidden sm:inline">Live</span>

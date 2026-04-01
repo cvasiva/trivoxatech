@@ -2,7 +2,7 @@ import portfolioData from "../../data/portfolioData.json";
 import { PageHeader, Section, Field, Input, Textarea, ImageField, StringList, ObjectCard, AddButton, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminPortfolio() {
-  const { data, setData, update, save, saved } = useSave("portfolioData", portfolioData);
+  const { data, setData, update, save, saved, saveError } = useSave("portfolioData", portfolioData);
 
   const updateProject = (i, key, val) => {
     const projects = [...data.gallery.projects];
@@ -32,7 +32,7 @@ export default function AdminPortfolio() {
 
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Portfolio Page" subtitle="Edit hero, project gallery, stats, CTA and bottom features" onSave={save} saved={saved} />
+      <PageHeader title="Portfolio Page" subtitle="Edit hero, project gallery, stats, CTA and bottom features" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "heroImg", label: "Hero Image", hint: "e.g. Trivoxa portfolio of high-impact IT projects" },

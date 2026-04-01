@@ -95,10 +95,10 @@ function CourseCatalog() {
 
 /* ── Page ── */
 export default function AdminCourses() {
-  const { data, update, save, saved } = useSave("coursesData", coursesData);
+  const { data, update, save, saved, saveError } = useSave("coursesData", coursesData);
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Courses Page" subtitle="Edit page content and full course catalog" onSave={save} saved={saved} />
+      <PageHeader title="Courses Page" subtitle="Edit page content and full course catalog" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[]} />
 

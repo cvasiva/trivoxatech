@@ -2,10 +2,10 @@ import courseDetailsData from "../../data/courseDetailsData.json";
 import { PageHeader, Section, Field, Input, ImageField, StringList, Grid2, SeoSection, useSave } from "../AdminComponents";
 
 export default function AdminCourseDetails() {
-  const { data, update, save, saved } = useSave("courseDetailsData", courseDetailsData);
+  const { data, update, save, saved, saveError } = useSave("courseDetailsData", courseDetailsData);
   return (
     <div className="w-full space-y-4">
-      <PageHeader title="Course Details Page" subtitle="Edit enrollment labels, syllabus, certificate, career, FAQ and CTA text" onSave={save} saved={saved} />
+      <PageHeader title="Course Details Page" subtitle="Edit enrollment labels, syllabus, certificate, career, FAQ and CTA text" onSave={save} saved={saved} saveError={saveError} />
 
       <SeoSection data={data} update={update} altTagFields={[
         { key: "certificateImg", label: "Certificate Image", hint: "e.g. Trivoxa professional course completion certificate" },

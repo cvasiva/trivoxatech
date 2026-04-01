@@ -25,6 +25,21 @@ function getToken() {
   return localStorage.getItem("trivoxa_admin_token");
 }
 
+// ── Token expiry helpers ─────────────────────────────────────
+export function getTokenExpiry() {
+  const token = getToken();
+  if (!token) return null;
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.exp ? new Date(payload.exp * 1000) : null;
+  } catch { return null; }
+}
+
+export function isTokenExpired() {
+  const expiry = getTokenExpiry();
+  return expiry ? expiry <= new Date() : true;
+}
+
 // ── Core fetch wrapper ───────────────────────────────────────
 async function request(method, endpoint, body) {
   const headers = { "Content-Type": "application/json" };
@@ -36,6 +51,13 @@ async function request(method, endpoint, body) {
     headers,
     body: body !== undefined ? JSON.stringify(body) : undefined,
   });
+
+  if (res.status === 401) {
+    clearToken();
+    window.dispatchEvent(new CustomEvent("trivoxa:auth:expired"));
+    const json = await res.json().catch(() => ({}));
+    throw new Error(json.error || "Session expired");
+  }
 
   const json = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(json.error || res.statusText);
