@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { FaTrash, FaSpinner, FaEnvelope, FaFileExcel, FaClock, FaSearch, FaTimes } from "react-icons/fa";
 import { api } from "../../utils/api";
-import { PageHeader } from "../AdminComponents";
 
 const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
 
@@ -38,6 +37,7 @@ export default function AdminNewsletter() {
   const [downloading, setDownloading] = useState(false);
   const [filters,     setFilters]     = useState(INIT_FILTERS);
   const [showFilters, setShowFilters] = useState(false);
+  const [checkedIds,  setCheckedIds]  = useState(new Set());
 
   const load = () => {
     api.getNewsletterSubscribers()
@@ -51,6 +51,14 @@ export default function AdminNewsletter() {
   const remove = async (id) => {
     await api.deleteSubscriber(id).catch(() => {});
     setSubscribers((p) => p.filter((s) => s.id !== id));
+    setCheckedIds((p) => { const n = new Set(p); n.delete(id); return n; });
+  };
+
+  const bulkDelete = async () => {
+    if (!window.confirm(`Delete ${checkedIds.size} selected subscriber${checkedIds.size !== 1 ? "s" : ""}?`)) return;
+    await Promise.all([...checkedIds].map((id) => api.deleteSubscriber(id).catch(() => {})));
+    setSubscribers((p) => p.filter((s) => !checkedIds.has(s.id)));
+    setCheckedIds(new Set());
   };
 
   const downloadExcel = async () => { setDownloading(true); await api.downloadExcel().catch(() => {}); setDownloading(false); };
@@ -86,18 +94,28 @@ export default function AdminNewsletter() {
     return list;
   }, [subscribers, filters]);
 
+  const toggleCheck = (id) => setCheckedIds((p) => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n; });
+  const allChecked  = filtered.length > 0 && filtered.every((s) => checkedIds.has(s.id));
+  const someChecked = !allChecked && filtered.some((s) => checkedIds.has(s.id));
+  const toggleAll   = () => setCheckedIds(allChecked ? new Set() : new Set(filtered.map((s) => s.id)));
+
   const sel = (key) => `w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 bg-white ${filters[key] !== INIT_FILTERS[key] ? "border-indigo-400 text-indigo-700" : "border-gray-300 text-gray-700"}`;
 
   return (
     <div className="w-full space-y-4">
 
       {/* HEADER */}
-      <div className="flex items-start justify-between gap-4 flex-wrap">
-        <PageHeader title="Newsletter Subscribers" subtitle={`${subscribers.length} total subscribers`} onSave={load} saved={false} />
-        <button onClick={downloadExcel} disabled={downloading}
-          className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed shrink-0">
-          <FaFileExcel /> {downloading ? "Downloading..." : "Download Excel"}
-        </button>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h1 className="text-xl font-bold text-gray-900">Newsletter Subscribers</h1>
+          <p className="text-sm text-gray-500">{subscribers.length} total subscribers</p>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={downloadExcel} disabled={downloading}
+            className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap">
+            <FaFileExcel /> {downloading ? "Downloading..." : "Download Excel"}
+          </button>
+        </div>
       </div>
 
       {/* SOURCE PILLS */}
@@ -199,11 +217,28 @@ export default function AdminNewsletter() {
         </div>
       ) : (
         <div className="bg-white border border-gray-200 rounded-xl overflow-x-auto">
+          {checkedIds.size > 0 && (
+            <div className="flex items-center justify-between gap-3 px-5 py-2.5 bg-indigo-50 border-b border-indigo-100">
+              <span className="text-sm text-indigo-700 font-medium">{checkedIds.size} selected</span>
+              <div className="flex gap-2">
+                <button onClick={() => setCheckedIds(new Set())} className="text-xs text-gray-500 hover:text-gray-700 px-3 py-1.5 rounded-lg border border-gray-200 bg-white transition">Deselect all</button>
+                <button onClick={bulkDelete} className="flex items-center gap-1.5 text-xs text-white bg-red-500 hover:bg-red-600 px-3 py-1.5 rounded-lg transition">
+                  <FaTrash className="text-[10px]" /> Delete selected
+                </button>
+              </div>
+            </div>
+          )}
           <table className="w-full text-sm min-w-[600px]">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
+                <th className="px-5 py-3 w-10">
+                  <input type="checkbox" checked={allChecked} ref={(el) => { if (el) el.indeterminate = someChecked; }}
+                    onChange={toggleAll} className="w-4 h-4 rounded border-gray-300 text-indigo-600 cursor-pointer" />
+                </th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">#</th>
+                <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Name</th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Email</th>
+                <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Phone</th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Source</th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Subscribed On</th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Expires On</th>
@@ -215,9 +250,16 @@ export default function AdminNewsletter() {
                 const dt = s.createdAt || s.subscribedAt;
                 const exp = expiryInfo(dt);
                 return (
-                  <tr key={s.id} className={`hover:bg-gray-50 transition ${exp.isExpired ? "bg-red-50/40" : exp.isWarning ? "bg-orange-50/30" : ""}`}>
+                  <tr key={s.id} className={`hover:bg-gray-50 transition
+                    ${checkedIds.has(s.id) ? "bg-indigo-50" : exp.isExpired ? "bg-red-50/40" : exp.isWarning ? "bg-orange-50/30" : ""}`}>
+                    <td className="px-5 py-3">
+                      <input type="checkbox" checked={checkedIds.has(s.id)} onChange={() => toggleCheck(s.id)}
+                        className="w-4 h-4 rounded border-gray-300 text-indigo-600 cursor-pointer" />
+                    </td>
                     <td className="px-5 py-3 text-gray-400 text-xs">{i + 1}</td>
-                    <td className="px-5 py-3 text-gray-800 font-medium">{s.email}</td>
+                    <td className="px-5 py-3 text-gray-800 font-medium">{s.name || "—"}</td>
+                    <td className="px-5 py-3 text-gray-800">{s.email}</td>
+                    <td className="px-5 py-3 text-gray-500 text-xs whitespace-nowrap">{s.phone || "—"}</td>
                     <td className="px-5 py-3">
                       <span className="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full capitalize">{s.source || "website"}</span>
                     </td>

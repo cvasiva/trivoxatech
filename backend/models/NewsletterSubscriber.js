@@ -2,6 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const newsletterSchema = new Schema({
   email:  { type: String, required: true, unique: true, lowercase: true, trim: true },
+  name:   { type: String, default: "", trim: true },
+  phone:  { type: String, default: "", trim: true },
   source: { type: String, default: "website" },
 }, { timestamps: true });
 

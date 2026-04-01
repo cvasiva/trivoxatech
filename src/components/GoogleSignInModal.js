@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaCheckCircle, FaExclamationCircle, FaTimes } from "react-icons/fa";
 import { api } from "../utils/api";
 
 const STORAGE_KEY = "trivoxa_popup_dismissed";
@@ -7,89 +8,140 @@ export default function LeadPopup() {
   const [show,    setShow]    = useState(false);
   const [name,    setName]    = useState("");
   const [email,   setEmail]   = useState("");
+  const [phone,   setPhone]   = useState("");
   const [loading, setLoading] = useState(false);
   const [done,    setDone]    = useState(false);
-  const [error,   setError]   = useState("");
+  const [errors,  setErrors]  = useState({});
 
   useEffect(() => {
-    if (sessionStorage.getItem(STORAGE_KEY)) return;
+    if (localStorage.getItem(STORAGE_KEY)) return;
     const t = setTimeout(() => setShow(true), 5000);
     return () => clearTimeout(t);
   }, []);
 
   const dismiss = () => {
-    sessionStorage.setItem(STORAGE_KEY, "1");
+    localStorage.setItem(STORAGE_KEY, "1");
     setShow(false);
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    if (!name.trim()) return setError("Please enter your name.");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError("Please enter a valid email.");
+  const validate = () => {
+    const e = {};
+    if (!name.trim() || name.trim().length < 2)                          e.name  = "Full name is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))               e.email = "Enter a valid email address";
+    if (!/^[6-9]\d{9}$/.test(phone.replace(/\s|-/g, "")))               e.phone = "Enter a valid 10-digit mobile number";
+    return e;
+  };
+
+  const onSubmit = async (ev) => {
+    ev.preventDefault();
+    const e = validate();
+    if (Object.keys(e).length) return setErrors(e);
     setLoading(true);
     try {
-      await api.subscribeNewsletter(email.trim().toLowerCase(), "popup");
+      await api.subscribeNewsletter(email.trim().toLowerCase(), "popup", name.trim(), phone.trim());
       setDone(true);
-      setTimeout(dismiss, 2500);
+      setTimeout(dismiss, 3000);
     } catch (err) {
-      setError(err?.message || "Something went wrong. Try again.");
+      setErrors({ submit: err?.message || "Something went wrong. Try again." });
     } finally {
       setLoading(false);
     }
   };
 
+  const inp = (key) =>
+    `w-full border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 transition ${
+      errors[key]
+        ? "border-red-400 bg-red-50 focus:ring-red-200"
+        : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-200"
+    }`;
+
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-sm px-4 pb-4 sm:pb-0">
-      <div className="w-full max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm px-4 pb-4 sm:pb-0">
+      <div className="w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-100" style={{ backgroundColor: "#faf5ff" }}>
 
-        {/* Top banner */}
-        <div className="bg-indigo-600 px-5 py-4 relative">
-          <button onClick={dismiss} className="absolute top-3 right-4 text-indigo-200 hover:text-white text-xl leading-none">×</button>
-          <p className="text-white font-bold text-base">🎓 Get Free Course Updates</p>
-          <p className="text-indigo-200 text-xs mt-0.5">Join 500+ students already enrolled</p>
+        {/* Header — matches website indigo */}
+        <div className="bg-indigo-600 px-6 py-5 relative">
+          <button onClick={dismiss}
+            className="absolute top-4 right-4 text-indigo-200 hover:text-white transition">
+            <FaTimes className="text-sm" />
+          </button>
+          <p className="text-xs font-semibold text-indigo-200 uppercase tracking-widest mb-1">Free Enrollment</p>
+          <h2 className="text-white font-bold text-lg leading-snug">Get Exclusive Course Updates</h2>
+          <p className="text-indigo-200 text-xs mt-1">Join 500+ students already learning with Trivoxa.</p>
         </div>
 
-        <div className="px-5 py-5">
+        {/* Form */}
+        <div className="px-6 py-5">
           {done ? (
-            <div className="py-4 text-center">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
+            <div className="py-6 text-center">
+              <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <FaCheckCircle className="text-green-500 text-2xl" />
               </div>
-              <p className="font-semibold text-gray-800">You're in, {name.split(" ")[0]}!</p>
-              <p className="text-xs text-gray-500 mt-1">We'll keep you updated with the latest courses.</p>
+              <p className="font-bold text-gray-900 text-base">You're in, {name.split(" ")[0]}!</p>
+              <p className="text-gray-500 text-sm mt-1">We'll keep you updated with the latest courses and offers.</p>
             </div>
           ) : (
             <form onSubmit={onSubmit} className="space-y-3">
-              <input
-                type="text"
-                placeholder="Your name"
-                value={name}
-                onChange={(e) => { setName(e.target.value); setError(""); }}
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
-              />
-              <input
-                type="email"
-                placeholder="Your email address"
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); setError(""); }}
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
-              />
-              {error && <p className="text-red-500 text-xs">{error}</p>}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg text-sm font-semibold transition disabled:opacity-60"
-              >
+
+              {/* Name */}
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Full Name <span className="text-red-500">*</span></label>
+                <input type="text" placeholder="John Doe" value={name}
+                  onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: "" })); }}
+                  className={inp("name")} />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                    <FaExclamationCircle className="text-[10px]" />{errors.name}
+                  </p>
+                )}
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Email Address <span className="text-red-500">*</span></label>
+                <input type="email" placeholder="john@example.com" value={email}
+                  onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: "" })); }}
+                  className={inp("email")} />
+                {errors.email && (
+                  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                    <FaExclamationCircle className="text-[10px]" />{errors.email}
+                  </p>
+                )}
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Mobile Number <span className="text-red-500">*</span></label>
+                <input type="tel" placeholder="98765 43210" value={phone}
+                  maxLength={10}
+                  onChange={(e) => { setPhone(e.target.value.replace(/\D/g, "").slice(0, 10)); setErrors((p) => ({ ...p, phone: "" })); }}
+                  className={inp("phone")} />
+                {errors.phone && (
+                  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                    <FaExclamationCircle className="text-[10px]" />{errors.phone}
+                  </p>
+                )}
+              </div>
+
+              {errors.submit && (
+                <p className="text-red-500 text-xs text-center flex items-center justify-center gap-1">
+                  <FaExclamationCircle className="text-[10px]" />{errors.submit}
+                </p>
+              )}
+
+              <button type="submit" disabled={loading}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg text-sm font-semibold transition disabled:opacity-60 mt-1">
                 {loading ? "Submitting..." : "Get Free Updates →"}
               </button>
-              <button type="button" onClick={dismiss} className="w-full text-xs text-gray-400 hover:text-gray-600 transition py-1">
+
+              <button type="button" onClick={dismiss}
+                className="w-full text-xs text-gray-400 hover:text-gray-600 transition py-1">
                 No thanks
               </button>
+
+              <p className="text-center text-xs text-gray-400">🔒 No spam. We respect your privacy.</p>
             </form>
           )}
         </div>

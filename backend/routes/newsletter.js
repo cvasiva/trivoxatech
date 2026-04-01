@@ -8,7 +8,7 @@ function isValidEmail(email) {
 
 // ── POST /api/newsletter ─────────────────────────────────────
 router.post("/", async (req, res) => {
-  const { email, source = "website" } = req.body;
+  const { email, name = "", phone = "", source = "website" } = req.body;
 
   if (!email?.trim() || !isValidEmail(email))
     return res.status(400).json({ error: "A valid email address is required" });
@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
   const existing = await NewsletterSubscriber.findOne({ email: normalized });
   if (existing) return res.json({ success: true, message: "You're already subscribed!" });
 
-  await NewsletterSubscriber.create({ email: normalized, source });
+  await NewsletterSubscriber.create({ email: normalized, name: name.trim(), phone: phone.trim(), source });
   res.json({ success: true, message: "Successfully subscribed to our newsletter!" });
 });
 

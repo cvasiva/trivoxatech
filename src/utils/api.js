@@ -90,7 +90,7 @@ export const api = {
   submitQuote: (form) => request("POST", "/quote", form),
 
   // Newsletter (Blog sidebar + Careers page)
-  subscribeNewsletter:      (email, source) => request("POST",   "/newsletter", { email, source }),
+  subscribeNewsletter: (email, source, name = "", phone = "") => request("POST", "/newsletter", { email, source, name, phone }),
   getNewsletterSubscribers: ()              => request("GET",    "/newsletter"),
   deleteSubscriber:         (id)            => request("DELETE", `/newsletter/${id}`),
 
