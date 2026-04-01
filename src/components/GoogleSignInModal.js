@@ -3,14 +3,17 @@ import { api } from "../utils/api";
 
 const STORAGE_KEY = "trivoxa_popup_dismissed";
 
-export default function GoogleSignInModal() {
+export default function LeadPopup() {
   const [show,    setShow]    = useState(false);
+  const [name,    setName]    = useState("");
+  const [email,   setEmail]   = useState("");
   const [loading, setLoading] = useState(false);
   const [done,    setDone]    = useState(false);
+  const [error,   setError]   = useState("");
 
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY)) return;
-    const t = setTimeout(() => setShow(true), 4000);
+    const t = setTimeout(() => setShow(true), 5000);
     return () => clearTimeout(t);
   }, []);
 
@@ -19,107 +22,77 @@ export default function GoogleSignInModal() {
     setShow(false);
   };
 
-  const handleGoogleLogin = () => {
-    /* Load Google Identity Services on demand */
-    if (!window.google) {
-      const script = document.createElement("script");
-      script.src = "https://accounts.google.com/gsi/client";
-      script.onload = () => initGoogle();
-      document.body.appendChild(script);
-    } else {
-      initGoogle();
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    if (!name.trim()) return setError("Please enter your name.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError("Please enter a valid email.");
+    setLoading(true);
+    try {
+      await api.subscribeNewsletter(email.trim().toLowerCase(), "popup");
+      setDone(true);
+      setTimeout(dismiss, 2500);
+    } catch (err) {
+      setError(err?.message || "Something went wrong. Try again.");
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const initGoogle = () => {
-    window.google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-      callback: async (response) => {
-        try {
-          setLoading(true);
-          /* Decode the JWT to get email + name */
-          const payload = JSON.parse(atob(response.credential.split(".")[1]));
-          const { email, name, picture } = payload;
-
-          /* Save email to newsletter/leads via existing API */
-          await api.subscribeNewsletter(email, "google_popup");
-
-          setDone(true);
-          setTimeout(dismiss, 2000);
-
-          console.log("[Popup] Google login captured:", { email, name, picture });
-        } catch (err) {
-          console.error("[Popup] Failed to save:", err.message);
-          dismiss();
-        } finally {
-          setLoading(false);
-        }
-      },
-    });
-    window.google.accounts.id.prompt();
   };
 
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm px-4">
-      <div className="w-full max-w-[360px] bg-white rounded-2xl shadow-2xl border border-gray-200 p-5 animate-fade-in">
+    <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-sm px-4 pb-4 sm:pb-0">
+      <div className="w-full max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden">
 
-        {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <img
-              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-              alt="google"
-              className="w-5 h-5"
-            />
-            <span className="text-sm text-gray-600">Sign in to trivoxatech.com</span>
-          </div>
-          <button onClick={dismiss} className="text-gray-400 hover:text-gray-700 text-xl leading-none">×</button>
+        {/* Top banner */}
+        <div className="bg-indigo-600 px-5 py-4 relative">
+          <button onClick={dismiss} className="absolute top-3 right-4 text-indigo-200 hover:text-white text-xl leading-none">×</button>
+          <p className="text-white font-bold text-base">🎓 Get Free Course Updates</p>
+          <p className="text-indigo-200 text-xs mt-0.5">Join 500+ students already enrolled</p>
         </div>
 
-        {done ? (
-          <div className="py-6 text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+        <div className="px-5 py-5">
+          {done ? (
+            <div className="py-4 text-center">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p className="font-semibold text-gray-800">You're in, {name.split(" ")[0]}!</p>
+              <p className="text-xs text-gray-500 mt-1">We'll keep you updated with the latest courses.</p>
             </div>
-            <p className="text-sm font-semibold text-gray-800">Welcome to Trivoxa!</p>
-            <p className="text-xs text-gray-500 mt-1">You're all set.</p>
-          </div>
-        ) : (
-          <>
-            {/* Body */}
-            <p className="text-sm text-gray-700 mb-5 text-center leading-relaxed">
-              Sign in with Google to get <span className="font-semibold text-indigo-600">exclusive course updates</span> and offers from Trivoxa Technologies.
-            </p>
-
-            {/* Google Button */}
-            <button
-              onClick={handleGoogleLogin}
-              disabled={loading}
-              className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-full py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition mb-3 disabled:opacity-60"
-            >
-              <img
-                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-                alt="google"
-                className="w-5 h-5"
+          ) : (
+            <form onSubmit={onSubmit} className="space-y-3">
+              <input
+                type="text"
+                placeholder="Your name"
+                value={name}
+                onChange={(e) => { setName(e.target.value); setError(""); }}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
               />
-              {loading ? "Signing in..." : "Continue with Google"}
-            </button>
-
-            <button onClick={dismiss} className="w-full text-xs text-gray-400 hover:text-gray-600 transition py-1">
-              No thanks
-            </button>
-
-            {/* Footer */}
-            <p className="text-[11px] text-gray-400 leading-4 mt-3 text-center">
-              By continuing, Google will share your name, email and profile picture with Trivoxa Technologies. See our{" "}
-              <span className="text-indigo-500 cursor-pointer hover:underline">privacy policy</span>.
-            </p>
-          </>
-        )}
+              <input
+                type="email"
+                placeholder="Your email address"
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              />
+              {error && <p className="text-red-500 text-xs">{error}</p>}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg text-sm font-semibold transition disabled:opacity-60"
+              >
+                {loading ? "Submitting..." : "Get Free Updates →"}
+              </button>
+              <button type="button" onClick={dismiss} className="w-full text-xs text-gray-400 hover:text-gray-600 transition py-1">
+                No thanks
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );
