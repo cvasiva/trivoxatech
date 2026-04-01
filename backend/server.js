@@ -59,6 +59,8 @@ app.use("/api/newsletter",  require("./routes/newsletter"));
 app.use("/api/submissions", require("./routes/submissions"));
 app.use("/api/seo",         require("./routes/seo"));
 app.use("/api/enroll",      require("./routes/enroll"));
+app.use("/api/visitors",    require("./routes/visitors"));
+app.use("/api/export",      require("./routes/export"));
 
 // ── Health ───────────────────────────────────────────────────
 app.get("/api/health", (_, res) => res.json({ status: "ok", ts: new Date().toISOString() }));

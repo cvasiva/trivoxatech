@@ -5,4 +5,7 @@ const newsletterSchema = new Schema({
   source: { type: String, default: "website" },
 }, { timestamps: true });
 
+// Auto-delete after 30 days
+newsletterSchema.index({ createdAt: 1 }, { expireAfterSeconds: 30 * 24 * 60 * 60 });
+
 module.exports = model("NewsletterSubscriber", newsletterSchema);

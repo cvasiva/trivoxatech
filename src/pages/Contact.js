@@ -6,16 +6,12 @@ import {
 } from "react-icons/fa";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import emailjs from "@emailjs/browser";
+import { api } from "../utils/api";
 import Footer from "../components/Footer";
 import staticD from "../data/contactData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
 import usePageMeta from "../hooks/usePageMeta";
-
-const SVC = "service_928ko6h";
-const TPL = "template_jutciy9";
-const KEY = "3s_VBlPn-ycSICDIK";
 
 const phoneStyles = `
   .phone-wrap .react-tel-input .form-control {
@@ -119,20 +115,17 @@ function ContactForm({ d }) {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setLoading(true); setSendError("");
     try {
-      emailjs.init(KEY);
-      await emailjs.send(SVC, TPL, {
-        from_name: form.fullName,
-        from_email: form.email,
-        phone: `+${form.phone}`,
+      await api.submitContact({
+        name:     form.fullName,
+        email:    form.email,
+        phone:    `+${form.phone}`,
         interest: form.interestedIn,
-        message: form.message,
-        reply_to: form.email,
+        message:  form.message,
       });
       setSubmitted(true);
       setForm({ fullName: "", email: "", phone: "", interestedIn: "", message: "" });
     } catch (err) {
-      console.error("EmailJS ERR:", err);
-      setSendError(err?.text || err?.message || "Failed to send. Please try again.");
+      setSendError(err?.message || "Failed to send. Please try again.");
     } finally {
       setLoading(false);
     }

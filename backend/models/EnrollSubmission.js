@@ -12,4 +12,7 @@ const enrollSchema = new Schema({
   readAt:   { type: Date, default: null },
 }, { timestamps: true });
 
+// Auto-delete after 30 days
+enrollSchema.index({ createdAt: 1 }, { expireAfterSeconds: 30 * 24 * 60 * 60 });
+
 module.exports = model("EnrollSubmission", enrollSchema);

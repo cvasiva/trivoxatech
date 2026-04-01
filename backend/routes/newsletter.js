@@ -24,12 +24,14 @@ router.post("/", async (req, res) => {
 // ── GET /api/newsletter ──────────────────────────────────────
 router.get("/", requireAuth, async (_, res) => {
   const list = await NewsletterSubscriber.find().sort({ createdAt: -1 });
-  res.json(list);
+  res.json(list.map((d) => ({ ...d.toObject(), id: String(d._id) })));
 });
 
 // ── DELETE /api/newsletter/:id ───────────────────────────────
 router.delete("/:id", requireAuth, async (req, res) => {
-  await NewsletterSubscriber.findByIdAndDelete(req.params.id);
+  const { id } = req.params;
+  if (!id || id === "undefined") return res.status(400).json({ error: "Invalid id" });
+  await NewsletterSubscriber.findByIdAndDelete(id);
   res.json({ success: true });
 });
 

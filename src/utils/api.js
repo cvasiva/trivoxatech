@@ -102,4 +102,30 @@ export const api = {
   getSubmissionStats: ()  => request("GET",    "/submissions/stats"),
   markRead:           (id) => request("PATCH",  `/submissions/${id}/read`),
   deleteSubmission:   (id) => request("DELETE", `/submissions/${id}`),
+
+  // Visitor tracking (public)
+  trackVisit: (page, sessionId) => request("POST", "/visitors", { page, sessionId }),
+
+  // Analytics (admin)
+  getVisitorStats: () => request("GET", "/visitors/stats"),
+
+  // Export (admin)
+  getExportCounts: () => request("GET", "/export/counts"),
+  purgeExpired: () => request("DELETE", "/export/purge-expired"),
+  downloadExcel: () => {
+    const token = localStorage.getItem("trivoxa_admin_token");
+    const url = `${BASE}/export/all`;
+    return fetch(url, { headers: { Authorization: `Bearer ${token}` } })
+      .then((res) => {
+        if (!res.ok) throw new Error("Export failed");
+        return res.blob();
+      })
+      .then((blob) => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `trivoxa-data-${new Date().toISOString().slice(0, 10)}.xlsx`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+  },
 };

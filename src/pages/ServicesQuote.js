@@ -13,7 +13,9 @@ import {
   FaChartLine,
   FaUsers,
   FaArrowLeft,
+  FaExclamationCircle,
 } from "react-icons/fa";
+import { api } from "../utils/api";
 import Footer from "../components/Footer";
 import useSchema from "../hooks/useSchema";
 import usePageMeta from "../hooks/usePageMeta";
@@ -254,6 +256,8 @@ function FormSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
 
   const validate = () => {
     const e = {};
@@ -268,13 +272,30 @@ function FormSection() {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: "" });
+    if (apiError) setApiError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const e2 = validate();
     if (Object.keys(e2).length) { setErrors(e2); return; }
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      await api.submitQuote({
+        name:     form.name,
+        email:    form.email,
+        phone:    form.phone,
+        service:  form.service,
+        budget:   form.budget,
+        timeline: form.timeline,
+        message:  form.message,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setApiError(err?.message || "Submission failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -432,9 +453,15 @@ function FormSection() {
             {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
           </div>
 
-          <button type="submit" className="w-full bg-indigo-600 text-white py-3 rounded-lg text-sm font-medium hover:bg-indigo-700 transition">
-            Get My Free Quote →
+          <button type="submit" disabled={loading} className="w-full bg-indigo-600 text-white py-3 rounded-lg text-sm font-medium hover:bg-indigo-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+            {loading ? "Submitting..." : "Get My Free Quote →"}
           </button>
+
+          {apiError && (
+            <p className="text-red-500 text-sm flex items-center gap-2">
+              <FaExclamationCircle /> {apiError}
+            </p>
+          )}
         </form>
 
       </div>
