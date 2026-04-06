@@ -8,14 +8,63 @@
     "statsLabel": "Monthly Readers"
   },
   "categories": [
-    { "name": "All Topics", "count": 48 },
-    { "name": "Web Development", "count": 12 },
-    { "name": "UI/UX Design", "count": 8 },
-    { "name": "Digital Marketing", "count": 15 },
-    { "name": "Cloud Engineering", "count": 6 },
-    { "name": "Cybersecurity", "count": 7 }
+    {
+      "name": "All Topics",
+      "count": 90
+    },
+    {
+      "name": "UI/UX Design",
+      "count": 10
+    },
+    {
+      "name": "ReactJS Development",
+      "count": 10
+    },
+    {
+      "name": "Angular Development",
+      "count": 10
+    },
+    {
+      "name": "Data Science",
+      "count": 10
+    },
+    {
+      "name": "Cloud Computing",
+      "count": 10
+    },
+    {
+      "name": "Java Full Stack",
+      "count": 10
+    },
+    {
+      "name": "Full Stack",
+      "count": 10
+    },
+    {
+      "name": "Digital Marketing",
+      "count": 10
+    },
+    {
+      "name": "Python Programming",
+      "count": 10
+    },
+    {
+      "name": "Database",
+      "count": 10
+    }
   ],
-  "tags": ["React", "AWS", "Python", "Figma", "SEO", "Kubernetes", "Node.js", "AI"],
+  "tags": [
+    "UI Development",
+    "ReactJS Development",
+    "Angular Development",
+    "Data Science",
+    "Cloud Computing",
+    "Java Full Stack",
+    "Full Stack",
+    "Digital Marketing",
+    "Python Programming",
+    "Database"
+  ],
   "sidebar": {
     "searchPlaceholder": "Search insights...",
     "searchBtn": "Search",
@@ -41,8 +90,8 @@
       "ctaImg": "Students learning IT skills at Trivoxa"
     },
     "title": "Tech Blog & Insights | Trivoxa Technologies",
-    "description": "Explore the latest articles on web development, cloud engineering, AI, DevOps, and IT career tips from Trivoxa's expert team.",
-    "keywords": "tech blog, web development articles, cloud engineering, AI insights, DevOps tips",
+    "description": "Explore the latest articles on UI development, ReactJS, Angular, Data Science, Cloud Computing, Java Full Stack, Digital Marketing, Python, and Database from Trivoxa's expert team.",
+    "keywords": "UI development, ReactJS, Angular, Data Science, Cloud Computing, Java Full Stack, Digital Marketing, Python, Database",
     "ogTitle": "Trivoxa Insights | Tech Blog",
     "ogDescription": "Weekly updates on industry trends, career tips, and technological breakthroughs from Trivoxa.",
     "ogImage": "",
@@ -51,6 +100,7 @@
   "posts": [
     {
       "id": 0,
+      "subtitle": "UI/UX Design",
       "tag": "Design",
       "read": "6 min read",
       "title": "10 UI/UX Principles That Will Increase Your Conversion Rate by 40%",
@@ -62,6 +112,7 @@
     },
     {
       "id": 1,
+      "subtitle": "Cloud Computing",
       "tag": "Cloud",
       "read": "12 min read",
       "title": "Mastering Cloud Engineering: AWS vs Azure in the Enterprise Landscape",
@@ -73,6 +124,7 @@
     },
     {
       "id": 2,
+      "subtitle": "Data Science",
       "tag": "Security",
       "read": "5 min read",
       "title": "Cybersecurity Essentials for Small to Medium Enterprises",
@@ -84,6 +136,7 @@
     },
     {
       "id": 3,
+      "subtitle": "Full Stack",
       "tag": "DevOps",
       "read": "10 min read",
       "title": "Why DevOps Culture is More Important Than DevOps Tools",
@@ -95,6 +148,7 @@
     },
     {
       "id": 4,
+      "subtitle": "Python Programming",
       "tag": "AI",
       "read": "8 min read",
       "title": "Prompt Engineering: The Skill Every Developer Needs in 2026",
@@ -106,6 +160,7 @@
     },
     {
       "id": 5,
+      "subtitle": "ReactJS Development",
       "tag": "Web Dev",
       "read": "7 min read",
       "title": "React 19 Features You Should Start Using Today",
@@ -114,6 +169,102 @@
       "date": "Aug 05, 2025",
       "img": "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
       "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    {
+      "id": 6,
+      "subtitle": "Angular Development",
+      "tag": "Angular",
+      "read": "7 min read",
+      "title": "Getting Started with Angular 17: Standalone Components & Signals",
+      "desc": "Angular 17 introduces standalone components and signals that simplify development. Learn how to migrate and leverage these powerful features.",
+      "author": "Aravind Kumar",
+      "date": "Sep 15, 2025",
+      "img": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg"
+    },
+    {
+      "id": 7,
+      "subtitle": "Angular Development",
+      "tag": "Angular",
+      "read": "6 min read",
+      "title": "Angular vs React in 2025: Which Framework Should You Learn?",
+      "desc": "A detailed comparison of Angular and React covering performance, learning curve, ecosystem, and job market demand in 2025.",
+      "author": "Aravind Kumar",
+      "date": "Sep 08, 2025",
+      "img": "https://images.unsplash.com/photo-1504639725590-34d0984388bd",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg"
+    },
+    {
+      "id": 10,
+      "subtitle": "Java Full Stack",
+      "tag": "Java",
+      "read": "8 min read",
+      "title": "Java Full Stack Development: Spring Boot + React Complete Guide",
+      "desc": "Build a complete full stack application using Spring Boot for the backend and React for the frontend with REST APIs and JWT authentication.",
+      "author": "Aravind Kumar",
+      "date": "Aug 05, 2025",
+      "img": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg"
+    },
+    {
+      "id": 11,
+      "subtitle": "Java Full Stack",
+      "tag": "Java",
+      "read": "6 min read",
+      "title": "Microservices with Spring Boot: Building Scalable Java Applications",
+      "desc": "Learn how to design and implement microservices architecture using Spring Boot, Docker, and Kubernetes for enterprise-grade Java applications.",
+      "author": "Aravind Kumar",
+      "date": "Jul 28, 2025",
+      "img": "https://images.unsplash.com/photo-1605379399642-870262d3d051",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg"
+    },
+    {
+      "id": 14,
+      "subtitle": "Digital Marketing",
+      "tag": "Marketing",
+      "read": "6 min read",
+      "title": "SEO in 2025: How Google's AI Overviews Are Changing Search Strategy",
+      "desc": "Google's AI-powered search results are reshaping SEO. Learn how to adapt your content strategy to stay visible and drive organic traffic.",
+      "author": "Rajesh Kumar",
+      "date": "Jul 05, 2025",
+      "img": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07",
+      "avatar": "https://randomuser.me/api/portraits/men/75.jpg"
+    },
+    {
+      "id": 15,
+      "subtitle": "Digital Marketing",
+      "tag": "Marketing",
+      "read": "5 min read",
+      "title": "Performance Marketing Masterclass: Google Ads & Meta Ads in 2025",
+      "desc": "Learn how to run high-converting paid ad campaigns on Google and Meta with smart bidding strategies, audience targeting, and analytics.",
+      "author": "Rajesh Kumar",
+      "date": "Jun 28, 2025",
+      "img": "https://images.unsplash.com/photo-1611532736579-6b16e2b50449",
+      "avatar": "https://randomuser.me/api/portraits/men/75.jpg"
+    },
+    {
+      "id": 18,
+      "subtitle": "Database",
+      "tag": "Database",
+      "read": "8 min read",
+      "title": "SQL vs NoSQL in 2025: Choosing the Right Database for Your Application",
+      "desc": "Understand the core differences between relational and non-relational databases and learn when to use MySQL, PostgreSQL, MongoDB, or Redis.",
+      "author": "Aravind Kumar",
+      "date": "Jun 05, 2025",
+      "img": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg"
+    },
+    {
+      "id": 19,
+      "subtitle": "Database",
+      "tag": "Database",
+      "read": "6 min read",
+      "title": "Database Indexing Explained: How to Speed Up Your Queries by 10x",
+      "desc": "Slow queries killing your app performance? Learn how database indexing works and how to apply the right indexing strategy for faster results.",
+      "author": "Aravind Kumar",
+      "date": "May 28, 2025",
+      "img": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg"
     }
   ]
 }

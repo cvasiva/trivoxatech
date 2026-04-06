@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSearch, FaClock, FaSignal, FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Footer from "../components/Footer";
-import * as staticCourseData from "../data/courseData";
+import staticCourseData from "../data/courseData.json";
 import staticD from "../data/coursesData.json";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
@@ -201,8 +201,8 @@ function CTA({ d }) {
 /* ================= PAGE ================= */
 export default function CoursesPage() {
   const d = usePageData("coursesData", staticD);
-  const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
-  const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
+  const courseDataLive = usePageData("courseData", staticCourseData);
+  const allCourses = courseDataLive?.courses || staticCourseData.courses;
   usePageMeta(d.seo || {});
   useSchema([
     {

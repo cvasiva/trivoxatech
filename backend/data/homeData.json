@@ -54,17 +54,17 @@
       {
         "icon": "FaGraduationCap",
         "title": "Training Academy",
-        "desc": "Expert-led sessions with hands-on labs and real-world project experience."
+        "desc": "Industry-led courses with hands-on projects and expert mentorship"
       },
       {
         "icon": "FaLaptopCode",
         "title": "B2B IT Solutions",
-        "desc": "From custom web apps to cloud architecture, we build high-performance software."
+        "desc": "Product engineering and staff augmentation for enterprises"
       },
       {
         "icon": "FaUsers",
         "title": "Talent Outsourcing",
-        "desc": "Access our pool of elite, pre-vetted tech talent for your specific projects."
+        "desc": "Hire pre-vetted teams and specialists for your projects"
       }
     ]
   },
@@ -136,7 +136,7 @@
   "cta": {
     "heading": "Ready to Transform Your",
     "headingHighlight": "Career or Business?",
-    "paragraph": "Join our next free demo session to get a personalized roadmap, course overview, and meet our senior instructors. No commitments, just clarity.",
+    "paragraph": "Join our next free demo session to get a personalized roadmap, course overview, and meet our senior instructors.",
     "bullets": [
       "Live Q&A with industry veterans",
       "Personalized career counseling",

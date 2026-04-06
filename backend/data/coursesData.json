@@ -34,6 +34,14 @@
     "ogImage": "",
     "canonical": "https://trivoxatech.com/courses"
   },
+  "certificate": {
+    "heading": "React JS Course\nTraining Certification",
+    "paragraph": "Trivoxa Technologies React JS Course Training Certificate Holders work at 2000+ companies worldwide. Gain industry-standard recognition for your technical skills.",
+    "primaryBtn": "Get In Touch",
+    "secondaryBtn": "Get Sample Certificate",
+    "footnote": "Our certificates are recognized by industry partners and top-tier tech companies.",
+    "img": "/certificate.png"
+  },
   "enterpriseCta": {
     "heading": "Need Enterprise Training?",
     "paragraph": "Custom corporate training programs for teams of 10 or more. Tailored curriculum, dedicated instructors, and flexible scheduling.",
