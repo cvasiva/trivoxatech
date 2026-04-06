@@ -44,10 +44,10 @@ function HeroSection() {
               {d.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mb-7">
-              <button onClick={() => navigate("/courses")} className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-lg shadow-lg hover:opacity-95 transition">
+              <button onClick={() => navigate("/courses")} id="enroll" className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-lg shadow-lg hover:opacity-95 transition">
                 {d.hero.primaryBtn}
               </button>
-              <button onClick={() => navigate("/contact")} className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition">
+              <button onClick={() => navigate("/contact")} id="book-free-demo" className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition">
                 {d.hero.secondaryBtn}
               </button>
             </div>
