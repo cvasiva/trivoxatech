@@ -42,25 +42,29 @@ export default function BlogDetail() {
   const blogs = blogDetailData?.posts || staticBlogDetail.posts;
   const blog = blogs.find((b) => b.id === parseInt(id));
   const d = blogDetailData;
+  const postSeo = blog?.seo || {};
   usePageMeta({
-    title:         blog ? blog.title : "",
-    description:   blog ? blog.desc  : "",
-    canonical:     blog ? `https://trivoxatech.com/blogs/${blog.id}` : "",
-    ogImage:       blog ? blog.img   : "",
+    title:          postSeo.title       || (blog ? blog.title : ""),
+    description:    postSeo.description || (blog ? blog.desc  : ""),
+    keywords:       postSeo.keywords    || (blog ? blog.tag   : ""),
+    canonical:      postSeo.canonical   || (blog ? `https://trivoxatech.com/blogs/${blog.id}` : ""),
+    ogTitle:        postSeo.ogTitle     || (blog ? blog.title : ""),
+    ogDescription:  postSeo.ogDescription || (blog ? blog.desc : ""),
+    ogImage:        postSeo.ogImage     || (blog ? blog.img   : ""),
   });
   useSchema(blog ? [
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": blog.title,
-      "description": blog.desc,
-      "image": blog.img,
+      "description": postSeo.description || blog.desc,
+      "image": postSeo.ogImage || blog.img,
       "datePublished": blog.date,
       "author": { "@type": "Person", "name": blog.author, "image": blog.avatar },
       "publisher": { "@type": "Organization", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com" },
-      "url": `https://trivoxatech.com/blogs/${blog.id}`,
+      "url": postSeo.canonical || `https://trivoxatech.com/blogs/${blog.id}`,
       "articleBody": blog.content,
-      "keywords": blog.tag,
+      "keywords": postSeo.keywords || blog.tag,
       "timeRequired": blog.read
     },
     {
@@ -69,7 +73,7 @@ export default function BlogDetail() {
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trivoxatech.com" },
         { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://trivoxatech.com/blogs" },
-        { "@type": "ListItem", "position": 3, "name": blog.title, "item": `https://trivoxatech.com/blogs/${blog.id}` }
+        { "@type": "ListItem", "position": 3, "name": blog.title, "item": postSeo.canonical || `https://trivoxatech.com/blogs/${blog.id}` }
       ]
     }
   ] : []);
