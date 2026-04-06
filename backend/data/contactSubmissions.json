@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1774447592118,
+    "name": "Test User",
+    "email": "test@test.com",
+    "phone": "9876543210",
+    "interest": "courses",
+    "message": "This is a test message from curl",
+    "createdAt": "2026-03-25T14:06:32.118Z",
+    "read": false
+  },
+  {
+    "id": 1774447444034,
+    "name": "siva",
+    "email": "cvasiva549@gmail.com",
+    "phone": "917867887787",
+    "interest": "professional-training",
+    "message": "asdaddddddddddddddddddddddddddddddddd",
+    "createdAt": "2026-03-25T14:04:04.034Z",
+    "read": false
+  },
+  {
+    "id": 1774447204722,
+    "name": "siva",
+    "email": "cvasiva549@gmail.com",
+    "phone": "916300676786",
+    "interest": "mobile-development",
+    "message": "hsfskdkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+    "createdAt": "2026-03-25T14:00:04.722Z",
+    "read": false
+  },
+  {
+    "id": 1774447095897,
+    "name": "Ritesh Industries Private Limited",
+    "email": "cvasiva564@yopmail.com",
+    "phone": "916300275894",
+    "interest": "mobile-development",
+    "message": "awdwefegrhyasguyagwdufwtedwt",
+    "createdAt": "2026-03-25T13:58:15.897Z",
+    "read": false
+  },
+  {
+    "id": 1774446698084,
+    "name": "siva",
+    "email": "cvasiva564@yopmail.com",
+    "phone": "916300787789",
+    "interest": "mobile-development",
+    "message": "I need aefdwefefegfef",
+    "createdAt": "2026-03-25T13:51:38.084Z",
+    "read": false
+  }
+]

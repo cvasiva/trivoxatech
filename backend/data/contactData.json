@@ -1,0 +1,96 @@
+{
+  "hero": {
+    "eyebrow": "Get in Touch",
+    "title": "Let's Scale Your",
+    "highlight": "Tech Future",
+    "title2": "Together",
+    "paragraph": "Whether you're looking to upskill your team or seeking bespoke IT solutions, our experts are ready to guide you through the digital landscape.",
+    "expertsText": "50+ Experts",
+    "expertsSubtext": "online to assist you",
+    "img": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop"
+  },
+  "form": {
+    "heading": "Send us a Message",
+    "subheading": "Fill out the form below and our team will get back to you within 24 business hours.",
+    "successTitle": "Message sent successfully!",
+    "successMsg": "We'll get back to you soon.",
+    "submitBtn": "Send Message",
+    "privacyNote": "BY SUBMITTING, YOU AGREE TO OUR PRIVACY POLICY",
+    "interestOptions": [
+      { "value": "", "label": "Select an option..." },
+      { "value": "professional-training", "label": "Professional IT Training" },
+      { "value": "corporate-services", "label": "Corporate Services" },
+      { "value": "web-development", "label": "Web Development" },
+      { "value": "mobile-development", "label": "Mobile Development" },
+      { "value": "cloud-services", "label": "Cloud Services" },
+      { "value": "devops", "label": "DevOps & Infrastructure" },
+      { "value": "ui-ux-design", "label": "UI/UX Design" },
+      { "value": "data-science", "label": "Data Science & AI" },
+      { "value": "digital-marketing", "label": "Digital Marketing" },
+      { "value": "consulting", "label": "Consulting Services" },
+      { "value": "other", "label": "Other" }
+    ]
+  },
+  "directAccess": {
+    "label": "DIRECT ACCESS",
+    "sales": {
+      "title": "Sales Department",
+      "desc": "For B2B services and corporate inquiries.",
+      "email": "sales@trivoxa.com"
+    },
+    "support": {
+      "title": "Student Support",
+      "desc": "Help with course enrollment or current classes.",
+      "phone": "+1 (555) 000-TECH"
+    }
+  },
+  "offices": {
+    "label": "GLOBAL PRESENCE",
+    "items": [
+      {
+        "city": "Silicon Valley",
+        "address": "123 Tech Avenue, Ste 400, San Jose, CA 94043",
+        "phone": "+1 (555) 100-2000",
+        "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400"
+      },
+      {
+        "city": "London Hub",
+        "address": "45 Innovation Way, Tech City, London EC1V 9BD",
+        "phone": "+44 (20) 7000-1234",
+        "img": "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?q=80&w=400"
+      }
+    ]
+  },
+  "hours": {
+    "title": "Standard Business Hours (PST)",
+    "schedule": [
+      { "day": "Monday – Friday", "time": "9:00 AM - 7:00 PM" },
+      { "day": "Saturday", "time": "10:00 AM - 4:00 PM" },
+      { "day": "Sunday", "time": "CLOSED" }
+    ]
+  },
+  "trusted": {
+    "label": "TRUSTED BY GLOBAL INDUSTRY LEADERS",
+    "brands": ["Microsoft", "Google", "Amazon", "Adobe", "Slack"]
+  },
+  "seo": {
+    "h1": "Let's Scale Your Tech Future Together",
+    "pageUrl": "/contact",
+    "altTags": {
+      "heroImg": "Trivoxa contact page - experts ready to assist"
+    },
+    "title": "Contact Trivoxa Technologies | Get in Touch",
+    "description": "Contact Trivoxa for IT training, enterprise services, or career counseling. Offices in Silicon Valley and London. 24hr response guaranteed.",
+    "keywords": "contact Trivoxa, IT training inquiry, enterprise IT contact, tech support",
+    "ogTitle": "Contact Trivoxa Technologies",
+    "ogDescription": "Let's scale your tech future together. Our experts are ready to guide you.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/contact"
+  },
+  "bottomCta": {
+    "heading": "Ready to jumpstart your career in technology?",
+    "subheading": "Our expert counselors are ready to help you choose the right path for your future.",
+    "primaryBtn": "Browse All Courses →",
+    "secondaryBtn": "Download Syllabus"
+  }
+}

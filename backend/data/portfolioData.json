@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "eyebrow": "Case Studies",
+    "title": "Turning Complex Challenges into",
+    "highlight": "Measurable Success.",
+    "paragraph": "We don't just build software; we build solutions that drive growth. Explore our portfolio of high-impact projects across industries.",
+    "primaryBtn": "Start Your Project",
+    "secondaryBtn": "Our Services",
+    "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+  },
+  "gallery": {
+    "heading": "Success Gallery",
+    "viewArchivedBtn": "View All Archived Projects →",
+    "industries": ["All Industries", "FinTech", "Healthcare", "E-commerce", "Manufacturing", "EdTech"],
+    "services": ["All Services", "Web Development", "UI/UX Design", "Cloud Engineering", "Digital Marketing"],
+    "emptyMsg": "No projects found for the selected filters.",
+    "projects": [
+      { "tag": "FinTech", "company": "NEOBANK GLOBAL", "title": "Revolutionizing Digital Banking for Neobank X", "desc": "Built a high-performance dashboard that reduced onboarding time by 60%.", "metrics": [{ "value": "+60%", "label": "ONBOARDING SPEED" }, { "value": "2M+", "label": "ACTIVE USERS" }], "category": "Web Development", "img": "https://images.unsplash.com/photo-1556740738-b6a63e27c4df" },
+      { "tag": "E-commerce", "company": "STYLEHUB", "title": "E-commerce Scale-up: 300% Revenue Growth", "desc": "A comprehensive SEO and Paid Media strategy that dominated the fashion market.", "metrics": [{ "value": "3.5x", "label": "REVENUE ROI" }, { "value": "+210%", "label": "ORGANIC TRAFFIC" }], "category": "Digital Marketing", "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c" },
+      { "tag": "Healthcare", "company": "HEALTHSYNC", "title": "Next-Gen Telemedicine Portal", "desc": "User-centric design system for doctors and patients across 15 countries.", "metrics": [{ "value": "92%", "label": "PATIENT RETENTION" }, { "value": "4.9/5", "label": "UX RATING" }], "category": "UI/UX Design", "img": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5" },
+      { "tag": "Manufacturing", "company": "STEELCORE INDUSTRIES", "title": "Cloud Migration for Manufacturing Giant", "desc": "Seamless migration to AWS optimizing costs by 40%.", "metrics": [{ "value": "-40%", "label": "SERVER COST" }, { "value": "99.99%", "label": "UPTIME" }], "category": "Cloud Engineering", "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb" },
+      { "tag": "FinTech", "company": "DATAFLOW AI", "title": "SaaS Analytics Dashboard Refactor", "desc": "Re-engineered complex data visualization tool using React.", "metrics": [{ "value": "5x Faster", "label": "QUERY SPEED" }, { "value": "+45%", "label": "ENGAGEMENT" }], "category": "Web Development", "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71" },
+      { "tag": "EdTech", "company": "LEARNLOOP", "title": "AI-Powered EdTech Mobile App", "desc": "Mobile-first learning experience for adaptive pathways.", "metrics": [{ "value": "500k", "label": "DAILY USERS" }, { "value": "+30%", "label": "COMPLETION" }], "category": "UI/UX Design", "img": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" }
+    ]
+  },
+  "stats": {
+    "heading": "Driven by Data, Proven by Results",
+    "subheading": "Our cumulative impact across a decade of engineering excellence.",
+    "items": [
+      { "icon": "FaGlobe", "value": "150+", "label": "Global Projects" },
+      { "icon": "FaUsers", "value": "98%", "label": "Client Retention" },
+      { "icon": "FaBolt", "value": "40%", "label": "Avg. Efficiency Gain" },
+      { "icon": "FaArrowUp", "value": "$500M+", "label": "Revenue Impact" }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to be our next",
+    "highlight": "Success Story?",
+    "subheading": "Whether you're looking to scale your team or overhaul your digital presence.",
+    "primaryBtn": "Get a Custom Quote",
+    "secondaryBtn": "View All Services",
+    "successTitle": "Request Received!",
+    "successMsg": "We'll be in touch within 24 hours."
+  },
+  "seo": {
+    "h1": "Turning Complex Challenges into Measurable Success",
+    "pageUrl": "/portfolio",
+    "altTags": {
+      "heroImg": "Trivoxa portfolio of high-impact IT projects"
+    },
+    "title": "Portfolio & Case Studies | Trivoxa Technologies",
+    "description": "Explore Trivoxa's portfolio of 150+ high-impact projects across FinTech, Healthcare, E-commerce, and EdTech industries.",
+    "keywords": "IT portfolio, case studies, web development projects, digital transformation examples",
+    "ogTitle": "Portfolio & Case Studies | Trivoxa",
+    "ogDescription": "Turning complex challenges into measurable success. 150+ global projects delivered.",
+    "ogImage": "",
+    "canonical": "https://trivoxatech.com/portfolio"
+  },
+  "features": [
+    { "icon": "FaCheckCircle", "title": "Quality First Delivery", "desc": "Every line reviewed before launch." },
+    { "icon": "FaChartLine", "title": "Scale with Confidence", "desc": "Built to handle millions of users." },
+    { "icon": "FaUsers", "title": "Transparent Collaboration", "desc": "Real-time updates & access." }
+  ]
+}
