@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply text-gray-900 bg-white;
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  /* Consistent page container used across all pages */
+  .page-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section vertical spacing */
+  .section-pad {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+
+  /* Admin layout fix — prevent content overflow under sidebar */
+  .admin-main {
+    @apply flex-1 min-w-0 overflow-x-hidden;
+  }
+}

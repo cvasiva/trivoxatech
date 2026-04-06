@@ -5,7 +5,7 @@ import logo from '../images/trivoxalogo.png';
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 2xl:px-16 py-8 sm:py-10 md:py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
           <div>
             <div className="mb-4 sm:mb-5 md:mb-6">

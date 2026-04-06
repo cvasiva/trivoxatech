@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl 2xl:max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 2xl:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 lg:h-24">
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center">

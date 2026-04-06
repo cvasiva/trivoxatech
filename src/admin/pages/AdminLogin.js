@@ -367,19 +367,26 @@ export default function AdminLogin() {
   const [tab, setTab] = useState("signin");
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="bg-white border border-gray-200 rounded-2xl shadow-sm w-full max-w-sm p-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center px-4 py-8">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-100 rounded-full opacity-40 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-100 rounded-full opacity-40 blur-3xl" />
+      </div>
+
+      <div className="relative bg-white border border-gray-200 rounded-2xl shadow-lg w-full max-w-md p-6 sm:p-8">
 
         {/* Logo */}
         <div className="flex flex-col items-center mb-6">
-          <img src={logo} alt="Trivoxa" className="h-10 w-auto mb-2" />
-          <p className="text-xs text-indigo-600 font-semibold uppercase tracking-widest">
-            Admin Panel
+          <img src={logo} alt="Trivoxa" className="h-12 w-auto mb-3" />
+          <h1 className="text-lg font-bold text-gray-900">Trivoxa Admin</h1>
+          <p className="text-xs text-indigo-600 font-semibold uppercase tracking-widest mt-0.5">
+            Content Management Panel
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex bg-gray-100 rounded-lg p-1 mb-6">
+        <div className="flex bg-gray-100 rounded-xl p-1 mb-6">
           {[
             { key: "signin",   label: "Sign In"        },
             { key: "register", label: "Create Account" },
@@ -388,9 +395,9 @@ export default function AdminLogin() {
               key={t.key}
               onClick={() => setTab(t.key)}
               className={
-                "flex-1 py-2 text-xs font-semibold rounded-md transition " +
+                "flex-1 py-2 text-xs font-semibold rounded-lg transition " +
                 (tab === t.key
-                  ? "bg-white text-gray-900 shadow-sm"
+                  ? "bg-white text-indigo-700 shadow-sm"
                   : "text-gray-500 hover:text-gray-700")
               }
             >
