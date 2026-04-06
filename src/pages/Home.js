@@ -373,9 +373,7 @@ export default function Home() {
   const d = usePageData("homeData", staticD);
   usePageMeta(d.seo || {});
   useSchema([
-    { "@context": "https://schema.org", "@type": "Organization", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com", "logo": "https://trivoxatech.com/logo.png", "description": d.hero.subtitle, "sameAs": ["https://linkedin.com/company/trivoxatech", "https://twitter.com/trivoxatech"], "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "email": "hello@trivoxatech.com" } },
-    { "@context": "https://schema.org", "@type": "WebSite", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com", "potentialAction": { "@type": "SearchAction", "target": "https://trivoxatech.com/courses?q={search_term_string}", "query-input": "required name=search_term_string" } },
-    { "@context": "https://schema.org", "@type": "ItemList", "name": d.courses.heading, "itemListElement": d.courses.items.map((c, i) => ({ "@type": "ListItem", "position": i + 1, "name": c.title, "url": `https://trivoxatech.com/coursedetails/${c.id}` })) },
+    { "@context": "https://schema.org", "@type": "ItemList", "name": d.courses.heading, "itemListElement": d.courses.items.map((c, i) => ({ "@type": "ListItem", "position": i + 1, "name": c.title, "url": `https://trivoxatechnologies.in/coursedetails/${c.id}` })) },
     { "@context": "https://schema.org", "@type": "ItemList", "name": d.testimonials.heading, "itemListElement": d.testimonials.items.map((t, i) => ({ "@type": "ListItem", "position": i + 1, "item": { "@type": "Review", "reviewBody": t.text, "author": { "@type": "Person", "name": t.name }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" } } })) },
   ]);
   return (
