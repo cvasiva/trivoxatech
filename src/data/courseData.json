@@ -12,9 +12,9 @@
       "reviews": 1200,
       "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200",
       "category": "Development",
-      "price": "$499",
-      "originalPrice": "$699",
-      "emi": "$42/month",
+      "price": "₹41,999",
+      "originalPrice": "₹58,999",
+      "emi": "₹3,499/month",
       "seatsLeft": 12,
       "highlights": [
         "Project-Based Learning",
@@ -44,17 +44,17 @@
       "careers": [
         {
           "role": "Frontend Engineer",
-          "salary": "$75k - $120k",
+          "salary": "₹6L - ₹12L",
           "companies": "Google, Amazon, Meta"
         },
         {
           "role": "Backend Developer",
-          "salary": "$80k - $130k",
+          "salary": "₹7L - ₹13L",
           "companies": "Netflix, Uber, Stripe"
         },
         {
           "role": "Full Stack Lead",
-          "salary": "$110k - $180k",
+          "salary": "₹10L - ₹18L",
           "companies": "Airbnb, Shopify, Slack"
         }
       ],
@@ -101,9 +101,9 @@
       "reviews": 850,
       "img": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200&auto=format&fit=crop",
       "category": "Design",
-      "price": "$399",
-      "originalPrice": "$549",
-      "emi": "$34/month",
+      "price": "₹33,999",
+      "originalPrice": "₹45,999",
+      "emi": "₹2,849/month",
       "seatsLeft": 8,
       "highlights": [
         "Portfolio Projects",
@@ -133,17 +133,17 @@
       "careers": [
         {
           "role": "UX Designer",
-          "salary": "$70k - $110k",
+          "salary": "₹6L - ₹11L",
           "companies": "Apple, Spotify, Airbnb"
         },
         {
           "role": "Product Designer",
-          "salary": "$85k - $130k",
+          "salary": "₹7L - ₹13L",
           "companies": "Figma, Notion, Linear"
         },
         {
           "role": "Design Lead",
-          "salary": "$100k - $160k",
+          "salary": "₹9L - ₹16L",
           "companies": "Google, Meta, Stripe"
         }
       ],
@@ -190,9 +190,9 @@
       "reviews": 2100,
       "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
       "category": "Marketing",
-      "price": "$299",
-      "originalPrice": "$399",
-      "emi": "$25/month",
+      "price": "₹24,999",
+      "originalPrice": "₹33,999",
+      "emi": "₹2,099/month",
       "seatsLeft": 20,
       "highlights": [
         "Live Campaign Projects",
@@ -222,17 +222,17 @@
       "careers": [
         {
           "role": "SEO Specialist",
-          "salary": "$50k - $80k",
+          "salary": "₹4L - ₹8L",
           "companies": "HubSpot, Moz, Semrush"
         },
         {
           "role": "Digital Marketing Manager",
-          "salary": "$65k - $100k",
+          "salary": "₹5.5L - ₹10L",
           "companies": "Shopify, WooCommerce, Mailchimp"
         },
         {
           "role": "Growth Marketer",
-          "salary": "$80k - $130k",
+          "salary": "₹7L - ₹13L",
           "companies": "Airbnb, Dropbox, Slack"
         }
       ],
@@ -279,9 +279,9 @@
       "reviews": 640,
       "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
       "category": "Cloud",
-      "price": "$599",
-      "originalPrice": "$799",
-      "emi": "$50/month",
+      "price": "₹49,999",
+      "originalPrice": "₹66,999",
+      "emi": "₹4,199/month",
       "seatsLeft": 6,
       "highlights": [
         "AWS Certification Prep",
@@ -311,17 +311,17 @@
       "careers": [
         {
           "role": "Cloud Engineer",
-          "salary": "$90k - $140k",
+          "salary": "₹8L - ₹14L",
           "companies": "AWS, Microsoft, Google"
         },
         {
           "role": "Solutions Architect",
-          "salary": "$110k - $160k",
+          "salary": "₹10L - ₹16L",
           "companies": "Deloitte, Accenture, IBM"
         },
         {
           "role": "Cloud Security Engineer",
-          "salary": "$120k - $180k",
+          "salary": "₹11L - ₹18L",
           "companies": "Palo Alto, CrowdStrike, Okta"
         }
       ],
@@ -368,9 +368,9 @@
       "reviews": 920,
       "img": "https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=1200&auto=format&fit=crop",
       "category": "Cloud",
-      "price": "$549",
-      "originalPrice": "$749",
-      "emi": "$46/month",
+      "price": "₹45,999",
+      "originalPrice": "₹62,999",
+      "emi": "₹3,849/month",
       "seatsLeft": 10,
       "highlights": [
         "CI/CD Pipeline Projects",
@@ -400,17 +400,17 @@
       "careers": [
         {
           "role": "DevOps Engineer",
-          "salary": "$85k - $135k",
+          "salary": "₹7.5L - ₹13.5L",
           "companies": "Netflix, Uber, Lyft"
         },
         {
           "role": "SRE Engineer",
-          "salary": "$100k - $150k",
+          "salary": "₹9L - ₹15L",
           "companies": "Google, Meta, Twitter"
         },
         {
           "role": "Platform Engineer",
-          "salary": "$110k - $170k",
+          "salary": "₹10L - ₹17L",
           "companies": "Stripe, Cloudflare, Vercel"
         }
       ],
@@ -457,9 +457,9 @@
       "reviews": 1500,
       "img": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
       "category": "Development",
-      "price": "$449",
-      "originalPrice": "$599",
-      "emi": "$38/month",
+      "price": "₹37,999",
+      "originalPrice": "₹49,999",
+      "emi": "₹3,199/month",
       "seatsLeft": 15,
       "highlights": [
         "Next.js 14 App Router",
@@ -489,17 +489,17 @@
       "careers": [
         {
           "role": "Frontend Developer",
-          "salary": "$70k - $110k",
+          "salary": "₹6L - ₹11L",
           "companies": "Vercel, Netlify, Shopify"
         },
         {
           "role": "React Engineer",
-          "salary": "$80k - $130k",
+          "salary": "₹7L - ₹13L",
           "companies": "Meta, Twitter, LinkedIn"
         },
         {
           "role": "Full Stack Developer",
-          "salary": "$90k - $150k",
+          "salary": "₹8L - ₹15L",
           "companies": "Stripe, GitHub, Figma"
         }
       ],
@@ -546,9 +546,9 @@
       "reviews": 1100,
       "img": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
       "category": "Development",
-      "price": "$399",
-      "originalPrice": "$549",
-      "emi": "$34/month",
+      "price": "₹33,999",
+      "originalPrice": "₹45,999",
+      "emi": "₹2,849/month",
       "seatsLeft": 18,
       "highlights": [
         "Real Dataset Projects",
@@ -578,17 +578,17 @@
       "careers": [
         {
           "role": "Data Analyst",
-          "salary": "$65k - $100k",
+          "salary": "₹5.5L - ₹10L",
           "companies": "Tableau, Looker, Databricks"
         },
         {
           "role": "Data Scientist",
-          "salary": "$90k - $140k",
+          "salary": "₹8L - ₹14L",
           "companies": "OpenAI, DeepMind, Palantir"
         },
         {
           "role": "ML Engineer",
-          "salary": "$110k - $170k",
+          "salary": "₹10L - ₹17L",
           "companies": "Google, Amazon, Tesla"
         }
       ],
@@ -635,9 +635,9 @@
       "reviews": 780,
       "img": "https://images.unsplash.com/photo-1551650975-87deedd944c3",
       "category": "Development",
-      "price": "$479",
-      "originalPrice": "$649",
-      "emi": "$40/month",
+      "price": "₹39,999",
+      "originalPrice": "₹54,999",
+      "emi": "₹3,349/month",
       "seatsLeft": 14,
       "highlights": [
         "iOS & Android Apps",
@@ -667,17 +667,17 @@
       "careers": [
         {
           "role": "Mobile Developer",
-          "salary": "$75k - $120k",
+          "salary": "₹6.5L - ₹12L",
           "companies": "Uber, DoorDash, Lyft"
         },
         {
           "role": "React Native Engineer",
-          "salary": "$85k - $135k",
+          "salary": "₹7.5L - ₹13.5L",
           "companies": "Shopify, Discord, Coinbase"
         },
         {
           "role": "App Architect",
-          "salary": "$100k - $160k",
+          "salary": "₹9L - ₹16L",
           "companies": "Apple, Google, Samsung"
         }
       ],
@@ -724,9 +724,9 @@
       "reviews": 650,
       "img": "https://images.unsplash.com/photo-1561070791-2526d30994b5",
       "category": "Design",
-      "price": "$349",
-      "originalPrice": "$479",
-      "emi": "$30/month",
+      "price": "₹29,999",
+      "originalPrice": "₹39,999",
+      "emi": "₹2,499/month",
       "seatsLeft": 22,
       "highlights": [
         "Adobe Suite Mastery",
@@ -756,17 +756,17 @@
       "careers": [
         {
           "role": "Graphic Designer",
-          "salary": "$45k - $75k",
+          "salary": "₹3.5L - ₹7.5L",
           "companies": "Agencies, Studios, Brands"
         },
         {
           "role": "Brand Designer",
-          "salary": "$60k - $95k",
+          "salary": "₹5L - ₹9.5L",
           "companies": "Nike, Adidas, Apple"
         },
         {
           "role": "Creative Director",
-          "salary": "$90k - $140k",
+          "salary": "₹8L - ₹14L",
           "companies": "Ogilvy, BBDO, Wieden+Kennedy"
         }
       ],
@@ -813,9 +813,9 @@
       "reviews": 920,
       "img": "https://images.unsplash.com/photo-1561070791-2526d30994b5",
       "category": "Design",
-      "price": "$329",
-      "originalPrice": "$449",
-      "emi": "$28/month",
+      "price": "₹27,999",
+      "originalPrice": "₹37,999",
+      "emi": "₹2,349/month",
       "seatsLeft": 16,
       "highlights": [
         "Figma Components & Variants",
@@ -845,17 +845,17 @@
       "careers": [
         {
           "role": "UI Designer",
-          "salary": "$60k - $95k",
+          "salary": "₹5L - ₹9.5L",
           "companies": "Figma, Linear, Notion"
         },
         {
           "role": "Web Designer",
-          "salary": "$55k - $90k",
+          "salary": "₹4.5L - ₹9L",
           "companies": "Agencies, Startups, Freelance"
         },
         {
           "role": "Product Designer",
-          "salary": "$80k - $130k",
+          "salary": "₹7L - ₹13L",
           "companies": "Airbnb, Dropbox, Intercom"
         }
       ],
@@ -902,9 +902,9 @@
       "reviews": 1300,
       "img": "https://images.unsplash.com/photo-1611532736579-6b16e2b50449",
       "category": "Marketing",
-      "price": "$199",
-      "originalPrice": "$279",
-      "emi": "$17/month",
+      "price": "₹16,999",
+      "originalPrice": "₹23,499",
+      "emi": "₹1,419/month",
       "seatsLeft": 25,
       "highlights": [
         "Platform-Specific Strategies",
@@ -934,17 +934,17 @@
       "careers": [
         {
           "role": "Social Media Manager",
-          "salary": "$45k - $75k",
+          "salary": "₹3.5L - ₹7.5L",
           "companies": "Brands, Agencies, Startups"
         },
         {
           "role": "Content Strategist",
-          "salary": "$55k - $90k",
+          "salary": "₹4.5L - ₹9L",
           "companies": "HubSpot, Buffer, Hootsuite"
         },
         {
           "role": "Paid Social Specialist",
-          "salary": "$65k - $100k",
+          "salary": "₹5.5L - ₹10L",
           "companies": "Meta, TikTok, LinkedIn"
         }
       ],
@@ -991,9 +991,9 @@
       "reviews": 540,
       "img": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
       "category": "Cloud",
-      "price": "$579",
-      "originalPrice": "$779",
-      "emi": "$48/month",
+      "price": "₹48,999",
+      "originalPrice": "₹65,999",
+      "emi": "₹3,999/month",
       "seatsLeft": 7,
       "highlights": [
         "Production Cluster Setup",
@@ -1023,17 +1023,17 @@
       "careers": [
         {
           "role": "Kubernetes Engineer",
-          "salary": "$95k - $145k",
+          "salary": "₹8.5L - ₹14.5L",
           "companies": "Red Hat, VMware, Rancher"
         },
         {
           "role": "Platform Engineer",
-          "salary": "$105k - $160k",
+          "salary": "₹9.5L - ₹16L",
           "companies": "Stripe, Cloudflare, Vercel"
         },
         {
           "role": "Cloud Architect",
-          "salary": "$120k - $180k",
+          "salary": "₹11L - ₹18L",
           "companies": "AWS, Google Cloud, Azure"
         }
       ],

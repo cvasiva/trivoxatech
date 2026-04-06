@@ -408,7 +408,7 @@ export default function CoursePage() {
       "offers": {
         "@type": "Offer",
         "price": course.price ? course.price.replace(/[^0-9.]/g, "") : "0",
-        "priceCurrency": "USD",
+        "priceCurrency": "INR",
         "availability": "https://schema.org/InStock",
         "url": `https://trivoxatech.com/coursedetails/${course.id}`
       },
