@@ -18,7 +18,9 @@ app.use(helmet.xssFilter());
 // ── CORS ─────────────────────────────────────────────────────
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://trivoxatechnologis.vercel.app",
+  "https://trivoxatechnologies.vercel.app",
+  "https://trivoxatechnologies.in",
+  "https://www.trivoxatechnologies.in",
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
