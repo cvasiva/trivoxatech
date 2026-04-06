@@ -36,10 +36,10 @@
     "heading": "Our Mentors & Minds",
     "subheading": "Meet the industry veterans who guide our curriculum.",
     "members": [
-      { "name": "Dr. Sarah Jenkins", "role": "Founder & CEO", "bio": "Former VP of Engineering with 20+ years in Silicon Valley. Passionate about equitable tech education.", "img": "https://randomuser.me/api/portraits/men/10.jpg" },
-      { "name": "Marcus Thorne", "role": "CTO", "bio": "Architecture lead for three Unicorn startups. Specializes in scalable Cloud & DevOps infrastructures.", "img": "https://randomuser.me/api/portraits/men/11.jpg" },
-      { "name": "Aisha Rahman", "role": "Head of Curriculum", "bio": "Expert educator focused on project-based learning. Designs our industry-aligned course syllabi.", "img": "https://randomuser.me/api/portraits/men/12.jpg" },
-      { "name": "David Chen", "role": "Lead Instructor", "bio": "Award-winning UI/UX director. Teaches students how to balance aesthetics with user-centricity.", "img": "https://randomuser.me/api/portraits/men/13.jpg" }
+      { "name": "Rajesh Kumar", "role": "Founder & Lead Instructor | Sr.Performance and Digital Marketing Expert", "bio": "Drives growth through 360° digital marketing, SEO, paid ads, and analytics, leveraging data-driven strategies to build strong digital presence, optimize performance, and scale brands effectively.", "img": "/images/rajesh.jpg" },
+      { "name": "Rohit Kumar", "role": "Founder & CEO | Sr. MERN Stack Developer", "bio": "Builds scalable full-stack applications using modern MERN technologies. Guides students in developing industry-ready, high-performance solutions.", "img": "/images/rohit.jpg" },
+      { "name": "Aravind Kumar", "role": "Head of Curriculum | Sr. UX Designer", "bio": "Started as a product photographer and evolved into UX/UI design, contributing to brands like Swiggy, PolicyBazaar, and Oracle. Combines design, research, and business insight to create intuitive, user-centered digital experiences.", "img": "/images/aravind.jpg" },
+      { "name": "Sivanandha", "role": "Manager | Front-End Developer", "bio": "Specializes in React.js, Next.js, and React Native for modern UI development. Creates responsive, user-friendly web and mobile experiences.", "img": "/images/siva.jpg" }
     ]
   },
   "recognized": {

@@ -115,7 +115,7 @@ function CoursesSection({ d, allCourses }) {
         {paginatedCourses.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-16">
             {paginatedCourses.map((course) => (
-              <div key={course.id} className="bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+              <div key={course.id} onClick={() => navigate(`/coursedetails/${course.id}`)} className="bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 cursor-pointer">
                 <div className="relative h-40 sm:h-44 lg:h-48 overflow-hidden bg-gray-200">
                   <img src={course.img} alt={course.title} className="w-full h-full object-cover hover:scale-105 transition duration-300" />
                   <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-white text-xs px-2 sm:px-3 py-1 rounded-full shadow-md font-medium">{course.level}</span>
@@ -134,10 +134,10 @@ function CoursesSection({ d, allCourses }) {
                     </span>
                   </div>
                   <div className="flex gap-2 sm:gap-3 pt-3 sm:pt-4">
-                    <button onClick={() => navigate(`/coursedetails/${course.id}`)} className="flex-1 bg-indigo-600 text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium hover:bg-indigo-700 transition">
+                    <button onClick={(e) => { e.stopPropagation(); navigate(`/coursedetails/${course.id}`); }} className="flex-1 bg-indigo-600 text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium hover:bg-indigo-700 transition">
                       {d.card.enrollBtn}
                     </button>
-                    <button className="flex-1 border border-gray-300 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium hover:bg-gray-50 transition">
+                    <button onClick={(e) => { e.stopPropagation(); navigate(`/coursedetails/${course.id}`); }} className="flex-1 border border-gray-300 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium hover:bg-gray-50 transition">
                       {d.card.detailsBtn}
                     </button>
                   </div>
@@ -176,7 +176,7 @@ function CoursesSection({ d, allCourses }) {
   );
 }
 
-/* ================= CTA ================= */
+
 function CTA({ d }) {
   return (
     <section className="bg-indigo-50 py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">

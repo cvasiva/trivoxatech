@@ -133,7 +133,7 @@ function ContactForm({ d }) {
 
   /* base input class */
   const inp = (name) =>
-    `w-full h-[44px] border rounded-lg px-4 text-sm text-gray-800 bg-white transition focus:outline-none focus:ring-2 ${errors[name]
+    `w-full h-[44px] border rounded-lg px-4 text-sm text-gray-900 bg-white transition focus:outline-none focus:ring-2 ${errors[name]
       ? "border-red-400 bg-red-50 focus:ring-red-100"
       : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-100"
     }`;
@@ -206,7 +206,7 @@ function ContactForm({ d }) {
                 className={`w-full h-[44px] border rounded-lg pl-4 pr-10 text-sm bg-white appearance-none cursor-pointer transition focus:outline-none focus:ring-2 ${errors.interestedIn
                   ? "border-red-400 bg-red-50 focus:ring-red-100"
                   : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-100"
-                  } ${!form.interestedIn ? "text-gray-400" : "text-gray-800"}`}
+                  } ${!form.interestedIn ? "text-gray-400" : "text-gray-900"}`}
               >
                 {d.form.interestOptions.map((opt) => (
                   <option key={opt.value} value={opt.value} disabled={opt.value === ""}>{opt.label}</option>
@@ -233,7 +233,7 @@ function ContactForm({ d }) {
           <textarea
             name="message" value={form.message} onChange={onChange} rows={5}
             placeholder="Tell us about your goals or project..."
-            className={`w-full border rounded-lg px-4 py-3 text-sm text-gray-800 bg-white resize-none transition focus:outline-none focus:ring-2 ${errors.message ? "border-red-400 bg-red-50 focus:ring-red-100" : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-100"
+            className={`w-full border rounded-lg px-4 py-3 text-sm text-gray-900 bg-white resize-none transition focus:outline-none focus:ring-2 ${errors.message ? "border-red-400 bg-red-50 focus:ring-red-100" : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-100"
               }`}
           />
           {errors.message && <p className="text-red-500 text-xs flex items-center gap-1"><FaExclamationCircle className="text-[10px]" />{errors.message}</p>}
@@ -256,7 +256,7 @@ function ContactForm({ d }) {
 /* ================= FORM + RIGHT ================= */
 function ContactMain({ d }) {
   return (
-    <section className="px-4 sm:px-6 lg:px-16 py-12 sm:py-16">
+    <section id="contact-form" className="px-4 sm:px-6 lg:px-16 py-16 sm:py-20">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12">
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold">{d.form.heading}</h2>

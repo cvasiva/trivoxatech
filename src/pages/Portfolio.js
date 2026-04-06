@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaGlobe, FaUsers, FaBolt, FaArrowUp, FaCheckCircle, FaChartLine, FaFilter } from "react-icons/fa";
 import Footer from "../components/Footer";
 import staticD from "../data/portfolioData.json";
@@ -38,8 +38,23 @@ function HeroSection({ d }) {
 
 /* ================= SUCCESS GALLERY ================= */
 function SuccessGallery({ d }) {
+  const location = useLocation();
+
+  const getCategoryParam = () => new URLSearchParams(location.search).get('category') || 'All Services';
+
   const [activeIndustry, setActiveIndustry] = useState("All Industries");
-  const [activeService, setActiveService] = useState("All Services");
+  const [activeService, setActiveService] = useState(getCategoryParam);
+
+  useEffect(() => {
+    const cat = new URLSearchParams(location.search).get('category');
+    setActiveService(cat || 'All Services');
+    if (cat) {
+      setTimeout(() => {
+        const el = document.getElementById('portfolio-gallery');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }, [location.search]);
 
   const filtered = d.gallery.projects.filter((p) => {
     const industryMatch = activeIndustry === "All Industries" || p.tag === activeIndustry;
@@ -48,7 +63,7 @@ function SuccessGallery({ d }) {
   });
 
   return (
-    <section className="bg-white py-12 sm:py-16 lg:py-20">
+    <section id="portfolio-gallery" className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-between items-start sm:items-center gap-4">
           <div>

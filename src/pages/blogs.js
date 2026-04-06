@@ -9,7 +9,7 @@ import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
 import usePageMeta from "../hooks/usePageMeta";
 
-const POSTS_PER_PAGE = 2;
+const POSTS_PER_PAGE = 4;
 
 /* ── HERO ── */
 function HeroSection({ d }) {
@@ -77,13 +77,41 @@ function FeaturedPost({ blogs }) {
   );
 }
 
+/* ── CATEGORY FILTER ── */
+const CATEGORIES = [
+  "All Topics", "UI Development", "ReactJS Development", "Angular Development",
+  "Data Science", "Cloud Computing", "Java Full Stack", "Full Stack",
+  "Digital Marketing", "Python Programming", "Database"
+];
+
+function CategoryFilter({ active, onChange }) {
+  return (
+    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+      {CATEGORIES.map((cat) => (
+        <button key={cat} onClick={() => onChange(cat)}
+          className={`whitespace-nowrap px-4 py-1.5 rounded-full text-sm font-medium transition border ${
+            active === cat
+              ? "bg-indigo-600 text-white border-indigo-600"
+              : "bg-white text-gray-600 border-gray-200 hover:border-indigo-400 hover:text-indigo-600"
+          }`}>
+          {cat}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 /* ── BLOG LIST with PAGINATION ── */
 function BlogList({ blogs }) {
   const navigate = useNavigate();
   const [sort, setSort] = useState("latest");
   const [page, setPage] = useState(1);
+  const [activeCategory, setActiveCategory] = useState("All Topics");
 
-  const sorted = [...blogs].sort((a, b) => {
+  const handleCategory = (cat) => { setActiveCategory(cat); setPage(1); };
+
+  const filtered = activeCategory === "All Topics" ? blogs : blogs.filter((b) => b.tag === activeCategory);
+  const sorted = [...filtered].sort((a, b) => {
     if (sort === "oldest") return a.id - b.id;
     if (sort === "trending") return b.read.localeCompare(a.read);
     return b.id - a.id;
@@ -92,11 +120,15 @@ function BlogList({ blogs }) {
   const totalPages = Math.ceil(sorted.length / POSTS_PER_PAGE);
   const paginated = sorted.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
   const handleSort = (s) => { setSort(s); setPage(1); };
+  const totalFiltered = filtered.length;
 
   return (
     <div className="space-y-5">
+      <CategoryFilter active={activeCategory} onChange={handleCategory} />
       <div className="flex items-center justify-between pb-2 border-b">
-        <h2 className="text-xl font-bold text-gray-900">Latest Articles</h2>
+        <h2 className="text-xl font-bold text-gray-900">
+          {activeCategory === "All Topics" ? "Latest Articles" : activeCategory}
+        </h2>
         <div className="flex gap-5 text-sm">
           {["latest", "trending", "oldest"].map((s) => (
             <span key={s} onClick={() => handleSort(s)}
@@ -108,24 +140,27 @@ function BlogList({ blogs }) {
       </div>
 
       {paginated.map((blog) => (
-        <div key={blog.id} onClick={() => navigate(`/blogs/${blog.id}`)}
-          className="flex flex-col sm:flex-row gap-5 bg-white border rounded-2xl p-5 md:p-6 hover:shadow-md transition-shadow cursor-pointer">
-          <img src={blog.img} alt={blog.title} className="w-full sm:w-44 h-40 sm:h-32 rounded-xl object-cover shrink-0" />
-          <div className="flex flex-col justify-between w-full gap-3">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="bg-indigo-100 text-indigo-600 px-2.5 py-0.5 rounded-full text-xs font-semibold">{blog.tag}</span>
-                <span className="text-gray-400 text-xs">⏱ {blog.read}</span>
+        <div key={blog.id}>
+          <p className="text-xs font-bold text-indigo-700 uppercase tracking-widest mb-2 mt-4">{blog.subtitle}</p>
+          <div onClick={() => navigate(`/blogs/${blog.id}`)}
+            className="flex flex-col sm:flex-row gap-5 bg-white border rounded-2xl p-5 md:p-6 hover:shadow-md transition-shadow cursor-pointer">
+            <img src={blog.img} alt={blog.title} className="w-full sm:w-44 h-40 sm:h-32 rounded-xl object-cover shrink-0" />
+            <div className="flex flex-col justify-between w-full gap-3">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="bg-indigo-100 text-indigo-600 px-2.5 py-0.5 rounded-full text-xs font-semibold">{blog.tag}</span>
+                  <span className="text-gray-400 text-xs">⏱ {blog.read}</span>
+                </div>
+                <h3 className="font-bold text-gray-900 text-base md:text-lg leading-snug">{blog.title}</h3>
+                <p className="text-gray-500 text-sm mt-1.5 line-clamp-2 leading-relaxed">{blog.desc}</p>
               </div>
-              <h3 className="font-bold text-gray-900 text-base md:text-lg leading-snug">{blog.title}</h3>
-              <p className="text-gray-500 text-sm mt-1.5 line-clamp-2 leading-relaxed">{blog.desc}</p>
-            </div>
-            <div className="flex items-center justify-between pt-3 border-t">
-              <div className="flex items-center gap-2">
-                <img src={blog.avatar} alt={blog.author} className="w-7 h-7 rounded-full object-cover" />
-                <p className="text-xs font-medium text-gray-700">{blog.author}</p>
+              <div className="flex items-center justify-between pt-3 border-t">
+                <div className="flex items-center gap-2">
+                  <img src={blog.avatar} alt={blog.author} className="w-7 h-7 rounded-full object-cover" />
+                  <p className="text-xs font-medium text-gray-700">{blog.author}</p>
+                </div>
+                <p className="text-xs text-gray-400">{blog.date}</p>
               </div>
-              <p className="text-xs text-gray-400">{blog.date}</p>
             </div>
           </div>
         </div>
@@ -147,7 +182,7 @@ function BlogList({ blogs }) {
           Next →
         </button>
       </div>
-      <p className="text-center text-xs text-gray-400">Page {page} of {totalPages} — {blogs.length} articles total</p>
+      <p className="text-center text-xs text-gray-400">Page {page} of {totalPages} — {totalFiltered} articles total</p>
     </div>
   );
 }

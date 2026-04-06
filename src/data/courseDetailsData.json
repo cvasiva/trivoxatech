@@ -21,10 +21,12 @@
     "heading": "Tools & Technologies You'll Master"
   },
   "certificate": {
-    "heading": "Earn Your Professional Certificate",
-    "paragraph": "Upon successful completion, receive a verified digital certificate.",
-    "points": ["Shareable on LinkedIn", "Verifiable QR code", "Endorsed by Tech Partners"],
-    "img": "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=400"
+    "heading": "Earn Your Professional\nCertificate",
+    "paragraph": "Trivoxa Technologies Course Certificate Holders work at 2000+ companies worldwide. Gain industry-standard recognition for your technical skills.",
+    "primaryBtn": "Get In Touch",
+    "secondaryBtn": "Get Sample Certificate",
+    "footnote": "Our certificates are recognized by industry partners and top-tier tech companies.",
+    "img": "https://marketplace.canva.com/EAG40ahgGPA/1/0/1600w/canva-white-green-abstract-geometric-certificate-of-completion-FVBfhZhcV4E.jpg"
   },
   "career": {
     "heading": "Your Future Career Path",

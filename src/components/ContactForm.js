@@ -84,7 +84,7 @@ const ContactForm = () => {
           <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
           <input type="text" name="name" value={formData.name} onChange={handleChange}
             placeholder="Your name"
-            className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 transition ${errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
+            className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 transition text-gray-900 ${errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
           {errors.name && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.name}</p>}
         </div>
 
@@ -92,7 +92,7 @@ const ContactForm = () => {
           <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
           <input type="email" name="email" value={formData.email} onChange={handleChange}
             placeholder="your@email.com"
-            className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 transition ${errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
+            className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 transition text-gray-900 ${errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
           {errors.email && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.email}</p>}
         </div>
 
@@ -100,17 +100,17 @@ const ContactForm = () => {
           <label className="block text-sm font-medium text-gray-700 mb-1">Phone (Optional)</label>
           <input type="tel" name="phone" value={formData.phone} onChange={handleChange}
             placeholder="+91 9876543210"
-            className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 transition ${errors.phone ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
+            className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 transition text-gray-900 ${errors.phone ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
           {errors.phone && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.phone}</p>}
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Message * ({formData.message.length}/1000)
+            Message * <span className="text-gray-900 font-normal">({formData.message.length}/1000)</span>
           </label>
           <textarea name="message" value={formData.message} onChange={handleChange}
             placeholder="Your message" rows="5"
-            className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 transition resize-none ${errors.message ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
+            className={`w-full border rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 transition resize-none ${errors.message ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
           {errors.message && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.message}</p>}
         </div>
 

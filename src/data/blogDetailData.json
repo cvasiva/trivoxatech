@@ -19,6 +19,7 @@
   "posts": [
     {
       "id": 0,
+      "subtitle":"Ui Development",
       "tag": "Design",
       "read": "6 min read",
       "title": "10 UI/UX Principles That Will Increase Your Conversion Rate by 40%",
@@ -31,6 +32,7 @@
     },
     {
       "id": 1,
+      "subtitle": "Cloud Computing",
       "tag": "Cloud",
       "read": "12 min read",
       "title": "Mastering Cloud Engineering: AWS vs Azure in the Enterprise Landscape",
@@ -43,6 +45,7 @@
     },
     {
       "id": 2,
+      "subtitle": "Data Science",
       "tag": "Security",
       "read": "5 min read",
       "title": "Cybersecurity Essentials for Small to Medium Enterprises",
@@ -55,6 +58,7 @@
     },
     {
       "id": 3,
+      "subtitle": "Full Stack",
       "tag": "DevOps",
       "read": "10 min read",
       "title": "Why DevOps Culture is More Important Than DevOps Tools",
@@ -67,6 +71,7 @@
     },
     {
       "id": 4,
+      "subtitle": "Python Programming",
       "tag": "AI",
       "read": "8 min read",
       "title": "Prompt Engineering: The Skill Every Developer Needs in 2026",
@@ -79,6 +84,7 @@
     },
     {
       "id": 5,
+      "subtitle": "ReactJS Development",
       "tag": "Web Dev",
       "read": "7 min read",
       "title": "React 19 Features You Should Start Using Today",
@@ -88,6 +94,111 @@
       "img": "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
       "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
       "content": "React 19 is the most significant release since hooks landed in React 16.8. Here's a practical breakdown of what's new and how it affects your projects.\n\n**Actions**\nThe biggest addition. Actions are async functions that handle form submissions and mutations. They integrate directly with the new useActionState hook, replacing the common pattern of manual loading/error state management.\n\nBefore React 19, you'd manage form state manually with useState and useEffect. With Actions, the framework handles pending states, optimistic updates, and error boundaries automatically.\n\n**The use() Hook**\nuse() is a new primitive that can read the value of a Promise or Context inside render. Unlike useEffect, it works in the render phase and integrates with Suspense. This enables cleaner data fetching patterns without third-party libraries.\n\n**Improved Server Components**\nReact Server Components are now stable. They allow components to run exclusively on the server, reducing bundle size and enabling direct database access without an API layer. The mental model shift is significant but the performance gains are real.\n\n**useOptimistic**\nA new hook for optimistic UI updates. When a user submits a form, you can immediately show the expected result while the server request is in flight, then reconcile when the response arrives.\n\n**ref as a Prop**\nNo more forwardRef boilerplate. In React 19, ref is a regular prop, simplifying component APIs significantly.\n\n**Migration Path**\nReact 19 is largely backward compatible. Start by upgrading and running the codemod. Adopt Actions gradually in new features. Server Components require a compatible framework (Next.js 15+).\n\nThe React team has clearly been listening to developer pain points. These additions reduce boilerplate and make common patterns more ergonomic."
+    }
+    ,
+    {
+      "id": 6,
+      "subtitle": "Angular Development",
+      "tag": "Angular",
+      "read": "7 min read",
+      "title": "Getting Started with Angular 17: Standalone Components & Signals",
+      "desc": "Angular 17 introduces standalone components and signals that simplify development. Learn how to migrate and leverage these powerful features.",
+      "author": "Aravind Kumar",
+      "date": "Sep 15, 2025",
+      "img": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg",
+      "content": "Angular 17 is a landmark release that fundamentally changes how Angular applications are structured and how reactivity works. Two features stand out: standalone components and signals.\n\n**What Are Standalone Components?**\nTraditionally, every Angular component had to be declared inside an NgModule. Standalone components eliminate this requirement. You can now create a component with standalone: true and import its dependencies directly — no module needed.\n\nThis dramatically reduces boilerplate and makes components more portable and easier to test in isolation.\n\n**Migrating to Standalone**\nAngular provides a schematic to automate migration: ng generate @angular/core:standalone. It converts your existing components, directives, and pipes to standalone and removes unnecessary NgModules. Run it incrementally — module by module — to reduce risk.\n\n**Angular Signals**\nSignals are Angular's new reactive primitive, inspired by SolidJS and Vue's reactivity model. A signal is a wrapper around a value that notifies consumers when it changes.\n\nUnlike RxJS Observables, signals are synchronous and don't require subscription management. They integrate directly with Angular's change detection, enabling fine-grained updates without zone.js overhead.\n\n**signal() vs computed() vs effect()**\nUse signal() for mutable state, computed() for derived values that update automatically, and effect() for side effects that run when signals change. This trio covers most reactive programming needs without the complexity of RxJS for simple state.\n\n**Performance Gains**\nWith signals, Angular can skip zone.js entirely for change detection in signal-based components. This reduces bundle size and improves runtime performance, especially in large applications with frequent updates.\n\n**When to Use RxJS Still**\nSignals don't replace RxJS for async operations, HTTP requests, or complex event streams. Use toSignal() and toObservable() to bridge between the two systems. RxJS remains the right tool for async data flows; signals handle synchronous state.\n\nAngular 17 makes the framework more approachable for newcomers while giving experienced developers powerful new tools for building performant applications."
+    },
+    {
+      "id": 7,
+      "subtitle": "Angular Development",
+      "tag": "Angular",
+      "read": "6 min read",
+      "title": "Angular vs React in 2025: Which Framework Should You Learn?",
+      "desc": "A detailed comparison of Angular and React covering performance, learning curve, ecosystem, and job market demand in 2025.",
+      "author": "Aravind Kumar",
+      "date": "Sep 08, 2025",
+      "img": "https://images.unsplash.com/photo-1504639725590-34d0984388bd",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg",
+      "content": "The Angular vs React debate has been ongoing for nearly a decade. In 2025, both frameworks are mature, widely adopted, and actively maintained. The right choice depends on your context — not on which is objectively better.\n\n**Architecture Philosophy**\nAngular is an opinionated, full-featured framework. It includes routing, HTTP client, forms, dependency injection, and state management conventions out of the box. React is a UI library — it handles rendering and leaves architecture decisions to you.\n\nThis means Angular has a steeper initial learning curve but provides more consistency across large teams. React is faster to start with but requires more decisions about tooling and architecture.\n\n**Performance**\nBoth frameworks deliver excellent performance for typical web applications. React's virtual DOM and Angular's incremental DOM (with Ivy) are both highly optimized. Angular 17's signals-based change detection can outperform React in scenarios with frequent fine-grained updates.\n\n**Learning Curve**\nReact wins here for beginners. JSX, hooks, and component composition are concepts most developers grasp within days. Angular requires understanding TypeScript, decorators, modules (or standalone components), dependency injection, and RxJS — a steeper but ultimately rewarding investment.\n\n**Ecosystem & Tooling**\nReact's ecosystem is larger and more diverse. Angular's ecosystem is more curated — Angular Material, Angular CDK, and the Angular CLI provide a cohesive development experience without decision fatigue.\n\n**Job Market**\nBoth are in high demand. React dominates startup and product company job postings. Angular is prevalent in enterprise, banking, and government sectors. For maximum employability, React has a slight edge in raw job count; Angular commands higher salaries in enterprise roles.\n\n**Verdict**\nLearn React if you want faster time-to-productivity, a larger community, and startup-friendly roles. Learn Angular if you're targeting enterprise development, prefer structure, or are joining a team already using it. Knowing both makes you exceptionally versatile."
+    },
+    {
+      "id": 10,
+      "subtitle": "Java Full Stack",
+      "tag": "Java",
+      "read": "8 min read",
+      "title": "Java Full Stack Development: Spring Boot + React Complete Guide",
+      "desc": "Build a complete full stack application using Spring Boot for the backend and React for the frontend with REST APIs and JWT authentication.",
+      "author": "Aravind Kumar",
+      "date": "Aug 05, 2025",
+      "img": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg",
+      "content": "Java Full Stack development combining Spring Boot and React is one of the most in-demand skill sets in enterprise software. This guide walks through building a production-ready application from scratch.\n\n**Project Architecture**\nThe backend is a Spring Boot REST API. The frontend is a React SPA. They communicate over HTTP/JSON. Authentication uses JWT tokens. The database is PostgreSQL, accessed via Spring Data JPA.\n\n**Setting Up Spring Boot**\nUse Spring Initializr (start.spring.io) to bootstrap your project. Select: Spring Web, Spring Data JPA, Spring Security, PostgreSQL Driver, and Lombok. This gives you a production-ready foundation in minutes.\n\n**Building REST APIs**\nAnnotate your controller with @RestController and @RequestMapping. Use @GetMapping, @PostMapping, @PutMapping, and @DeleteMapping for CRUD operations. Return ResponseEntity objects to control HTTP status codes explicitly.\n\n**JWT Authentication**\nAdd the jjwt library. Create a JwtUtil class to generate and validate tokens. Implement a JwtAuthenticationFilter that intercepts requests, extracts the token from the Authorization header, and sets the SecurityContext. Protect routes using HttpSecurity configuration in your SecurityConfig class.\n\n**React Frontend**\nBootstrap with Create React App or Vite. Use Axios for HTTP requests. Store the JWT in localStorage (or httpOnly cookies for better security). Create an Axios interceptor to attach the token to every request automatically.\n\n**CORS Configuration**\nAdd @CrossOrigin on your controllers or configure a global CORS policy in WebMvcConfigurer. Allow your React dev server origin (localhost:3000) during development.\n\n**Deployment**\nBuild the React app (npm run build) and serve the static files from Spring Boot's resources/static directory. Package everything as a single JAR and deploy to AWS EC2, Elastic Beanstalk, or a Docker container.\n\nThis stack is battle-tested in enterprise environments and gives you a clear separation of concerns, strong typing on both ends, and excellent tooling support."
+    },
+    {
+      "id": 11,
+      "subtitle": "Java Full Stack",
+      "tag": "Java",
+      "read": "6 min read",
+      "title": "Microservices with Spring Boot: Building Scalable Java Applications",
+      "desc": "Learn how to design and implement microservices architecture using Spring Boot, Docker, and Kubernetes for enterprise-grade Java applications.",
+      "author": "Aravind Kumar",
+      "date": "Jul 28, 2025",
+      "img": "https://images.unsplash.com/photo-1605379399642-870262d3d051",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg",
+      "content": "Microservices architecture has become the standard for building scalable, maintainable enterprise Java applications. Spring Boot, combined with Docker and Kubernetes, provides the ideal platform for implementing this pattern.\n\n**What Are Microservices?**\nMicroservices decompose a monolithic application into small, independently deployable services. Each service owns its data, exposes an API, and can be scaled, deployed, and updated independently. This enables teams to work autonomously and systems to scale efficiently.\n\n**Spring Boot for Microservices**\nSpring Boot's auto-configuration and embedded server make it ideal for microservices. Each service is a standalone JAR. Spring Cloud extends this with service discovery (Eureka), API gateway (Spring Cloud Gateway), circuit breakers (Resilience4j), and distributed configuration (Spring Cloud Config).\n\n**Service Communication**\nServices communicate synchronously via REST or gRPC, or asynchronously via message brokers like Apache Kafka or RabbitMQ. Use asynchronous messaging for operations that don't require an immediate response — it improves resilience and decouples services.\n\n**Containerization with Docker**\nEach Spring Boot service gets a Dockerfile. Use multi-stage builds to keep images small: compile in a JDK image, run in a JRE image. Use Docker Compose for local development to spin up all services and their dependencies with a single command.\n\n**Orchestration with Kubernetes**\nIn production, deploy to Kubernetes. Define Deployments, Services, and ConfigMaps for each microservice. Use Horizontal Pod Autoscaler to scale services based on CPU or custom metrics. Kubernetes handles rolling updates, self-healing, and load balancing automatically.\n\n**Observability**\nDistributed systems require distributed tracing. Integrate Micrometer with Zipkin or Jaeger for trace correlation across services. Use Prometheus and Grafana for metrics dashboards. Centralize logs with the ELK stack (Elasticsearch, Logstash, Kibana).\n\n**When Not to Use Microservices**\nMicroservices add operational complexity. For small teams or early-stage products, a well-structured monolith is often the better choice. Migrate to microservices when you have clear service boundaries, multiple teams, and the operational maturity to manage distributed systems."
+    },
+    {
+      "id": 14,
+      "subtitle": "Digital Marketing",
+      "tag": "Marketing",
+      "read": "6 min read",
+      "title": "SEO in 2025: How Google's AI Overviews Are Changing Search Strategy",
+      "desc": "Google's AI-powered search results are reshaping SEO. Learn how to adapt your content strategy to stay visible and drive organic traffic.",
+      "author": "Rajesh Kumar",
+      "date": "Jul 05, 2025",
+      "img": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07",
+      "avatar": "https://randomuser.me/api/portraits/men/10.jpg",
+      "content": "Google's AI Overviews (formerly Search Generative Experience) have fundamentally changed how users interact with search results. For SEO practitioners, this requires a strategic rethink — not a panic.\n\n**What Are AI Overviews?**\nAI Overviews appear at the top of search results for informational queries. Google's AI synthesizes answers from multiple sources and displays them directly in the SERP. This reduces clicks to individual pages for simple queries but creates new opportunities for complex, authoritative content.\n\n**Impact on Organic Traffic**\nEarly data shows AI Overviews reduce click-through rates for simple informational queries by 20–30%. However, pages cited as sources in AI Overviews see increased brand visibility and trust. The goal shifts from ranking #1 to being cited as an authoritative source.\n\n**Content Strategy Adaptation**\nFocus on E-E-A-T: Experience, Expertise, Authoritativeness, and Trustworthiness. Google's AI preferentially cites content from recognized experts. Include author bios, credentials, and first-hand experience in your content.\n\n**Target Long-Tail and Conversational Queries**\nAI Overviews dominate head terms. Long-tail, specific queries still drive traditional blue-link results. Optimize for questions your audience asks at the consideration and decision stages of the funnel.\n\n**Structured Data**\nImplement schema markup (FAQ, HowTo, Article) to help Google understand your content structure. Well-structured content is more likely to be cited in AI Overviews.\n\n**Technical SEO Still Matters**\nPage speed, Core Web Vitals, mobile optimization, and crawlability remain foundational. AI Overviews don't change the technical requirements — they raise the bar for content quality on top of them.\n\n**Diversify Traffic Sources**\nReduce dependence on organic search by building email lists, social media presence, and direct traffic. SEO remains critical but should be one channel in a diversified acquisition strategy.\n\nThe brands that thrive in the AI search era will be those that invest in genuine expertise and comprehensive content — not those chasing algorithm shortcuts."
+    },
+    {
+      "id": 15,
+      "subtitle": "Digital Marketing",
+      "tag": "Marketing",
+      "read": "5 min read",
+      "title": "Performance Marketing Masterclass: Google Ads & Meta Ads in 2025",
+      "desc": "Learn how to run high-converting paid ad campaigns on Google and Meta with smart bidding strategies, audience targeting, and analytics.",
+      "author": "Rajesh Kumar",
+      "date": "Jun 28, 2025",
+      "img": "https://images.unsplash.com/photo-1611532736579-6b16e2b50449",
+      "avatar": "https://randomuser.me/api/portraits/men/10.jpg",
+      "content": "Performance marketing in 2025 is defined by AI-driven automation, privacy-first measurement, and the convergence of search and social advertising. Here's what you need to master.\n\n**Google Ads: Smart Bidding**\nManual CPC bidding is largely obsolete for most campaigns. Smart bidding strategies — Target CPA, Target ROAS, Maximize Conversions — use Google's machine learning to optimize bids in real time across millions of signals. Feed the algorithm quality conversion data and give it sufficient budget to learn (minimum 30–50 conversions per month per campaign).\n\n**Performance Max Campaigns**\nPMax campaigns serve ads across all Google channels (Search, Display, YouTube, Gmail, Maps) from a single campaign. They require strong creative assets and conversion tracking. Use asset group reporting to identify which creative combinations perform best.\n\n**Meta Ads: Advantage+ Campaigns**\nMeta's Advantage+ Shopping Campaigns automate audience targeting, creative testing, and budget allocation. They consistently outperform manual campaigns for e-commerce. Provide 10–20 creative variations and let the algorithm find the winning combinations.\n\n**Audience Strategy**\nWith third-party cookie deprecation, first-party data is your competitive advantage. Upload customer lists as Custom Audiences. Build Lookalike Audiences from your best customers. Use Meta's Conversions API (CAPI) to send server-side events and recover signal lost to iOS privacy changes.\n\n**Attribution**\nLast-click attribution undervalues upper-funnel channels. Use data-driven attribution in Google Ads and Meta's 7-day click / 1-day view window as starting points. Supplement with Marketing Mix Modeling (MMM) for a holistic view of channel contribution.\n\n**Creative is the New Targeting**\nWith AI handling audience optimization, creative quality is the primary differentiator. Invest in video (Reels, YouTube Shorts), user-generated content, and rapid creative iteration. Test hooks aggressively — the first 3 seconds determine whether users stop scrolling.\n\nThe performance marketers who win in 2025 are those who understand both the strategic principles and the platform mechanics — and who treat creative as a data problem."
+    },
+    {
+      "id": 18,
+      "subtitle": "Database",
+      "tag": "Database",
+      "read": "8 min read",
+      "title": "SQL vs NoSQL in 2025: Choosing the Right Database for Your Application",
+      "desc": "Understand the core differences between relational and non-relational databases and learn when to use MySQL, PostgreSQL, MongoDB, or Redis.",
+      "author": "Aravind Kumar",
+      "date": "Jun 05, 2025",
+      "img": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg",
+      "content": "Database selection is one of the most consequential architectural decisions you'll make. The wrong choice creates technical debt that compounds over years. Here's a framework for making the right call.\n\n**The Core Distinction**\nSQL (relational) databases store data in tables with predefined schemas and enforce relationships via foreign keys. NoSQL databases use flexible data models — documents, key-value pairs, wide columns, or graphs — and sacrifice some consistency guarantees for scalability and flexibility.\n\n**When to Use PostgreSQL**\nPostgreSQL is the default choice for most applications. It's ACID-compliant, supports complex queries, JSON columns, full-text search, and has excellent performance. Use it for: e-commerce, financial systems, SaaS applications, and any domain with complex relationships and reporting requirements.\n\n**When to Use MySQL**\nMySQL is battle-tested for read-heavy web applications. It's the backbone of WordPress, Drupal, and countless web apps. Choose MySQL when you need a proven, widely-supported relational database with a large operations community.\n\n**When to Use MongoDB**\nMongoDB excels for: content management systems, product catalogs with variable attributes, real-time analytics, and applications where the schema evolves rapidly. Its document model maps naturally to JSON APIs. Avoid it for applications with complex multi-document transactions.\n\n**When to Use Redis**\nRedis is an in-memory data structure store used for caching, session management, real-time leaderboards, and pub/sub messaging. It's not a primary database — it's a performance layer. Use it alongside your primary database to cache expensive queries and reduce latency.\n\n**The Polyglot Persistence Pattern**\nModern applications often use multiple databases. A typical stack: PostgreSQL for transactional data, Redis for caching and sessions, Elasticsearch for full-text search, and S3 for file storage. Each tool does what it does best.\n\n**CAP Theorem in Practice**\nNoSQL databases make explicit trade-offs between Consistency, Availability, and Partition tolerance. MongoDB prioritizes consistency and partition tolerance. Cassandra prioritizes availability and partition tolerance. Understanding these trade-offs is essential for distributed system design.\n\nStart with PostgreSQL. Add specialized databases only when you have a specific, proven need that PostgreSQL cannot meet efficiently."
+    },
+    {
+      "id": 19,
+      "subtitle": "Database",
+      "tag": "Database",
+      "read": "6 min read",
+      "title": "Database Indexing Explained: How to Speed Up Your Queries by 10x",
+      "desc": "Slow queries killing your app performance? Learn how database indexing works and how to apply the right indexing strategy for faster results.",
+      "author": "Aravind Kumar",
+      "date": "May 28, 2025",
+      "img": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg",
+      "content": "Database indexing is the single most impactful optimization available to application developers. A well-placed index can turn a 10-second query into a 10-millisecond one. Here's everything you need to know.\n\n**What Is an Index?**\nAn index is a separate data structure (typically a B-tree) that the database maintains alongside your table. It stores a sorted copy of one or more columns with pointers to the corresponding rows. When you query by an indexed column, the database traverses the B-tree instead of scanning every row.\n\n**Types of Indexes**\n\n*B-tree indexes* are the default in PostgreSQL and MySQL. They support equality and range queries efficiently. Use them for columns you filter, sort, or join on frequently.\n\n*Hash indexes* are optimized for equality comparisons only. Faster than B-tree for exact matches but useless for range queries.\n\n*Composite indexes* cover multiple columns. Column order matters — the index is most effective when queries filter on the leftmost columns first (the leftmost prefix rule).\n\n*Partial indexes* index only rows matching a condition. Useful for indexing active records in a table with many soft-deleted rows.\n\n*Covering indexes* include all columns needed by a query, allowing the database to answer the query entirely from the index without touching the main table.\n\n**The EXPLAIN Command**\nAlways use EXPLAIN ANALYZE before and after adding an index. Look for Seq Scan (full table scan) vs Index Scan. Check the actual rows vs estimated rows — large discrepancies indicate stale statistics.\n\n**Index Pitfalls**\nIndexes are not free. Each index adds overhead to INSERT, UPDATE, and DELETE operations because the index must be maintained. Don't index every column — index the columns that appear in WHERE clauses, JOIN conditions, and ORDER BY clauses of your slowest queries.\n\n**Practical Strategy**\nIdentify your slowest queries using pg_stat_statements (PostgreSQL) or the slow query log (MySQL). Run EXPLAIN ANALYZE. Add targeted indexes. Re-run and measure. Repeat for the next bottleneck.\n\nIndexing is not a one-time task — it's an ongoing practice as your data grows and query patterns evolve."
     }
   ]
 }

@@ -14,6 +14,30 @@ function validate(f) {
   return e;
 }
 
+const Field = ({ label, name, type = "text", placeholder, icon, form, errors, onChange }) => (
+  <div>
+    <label className="block text-sm font-medium text-gray-700 mb-1">{label} *</label>
+    <div className="relative">
+      {icon && <span className="absolute left-3 top-1/2 -translate-y-1/2 text-green-500">{icon}</span>}
+      <input
+        type={type}
+        name={name}
+        value={form[name]}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={`w-full border rounded-lg py-2.5 focus:outline-none focus:ring-2 transition text-sm text-gray-900 ${icon ? "pl-9 pr-4" : "px-4"} ${
+          errors[name] ? "border-red-400 focus:ring-red-400" : "border-gray-300 focus:ring-indigo-500"
+        }`}
+      />
+    </div>
+    {errors[name] && (
+      <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+        <FaExclamationCircle /> {errors[name]}
+      </p>
+    )}
+  </div>
+);
+
 export default function EnrollForm({ courseName = "", onClose }) {
   const [form, setForm] = useState({ ...INITIAL, course: courseName });
   const [errors, setErrors] = useState({});
@@ -41,30 +65,6 @@ export default function EnrollForm({ courseName = "", onClose }) {
       setLoading(false);
     }
   };
-
-  const Field = ({ label, name, type = "text", placeholder, icon }) => (
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-1">{label} *</label>
-      <div className="relative">
-        {icon && <span className="absolute left-3 top-1/2 -translate-y-1/2 text-green-500">{icon}</span>}
-        <input
-          type={type}
-          name={name}
-          value={form[name]}
-          onChange={handleChange}
-          placeholder={placeholder}
-          className={`w-full border rounded-lg py-2.5 focus:outline-none focus:ring-2 transition text-sm ${icon ? "pl-9 pr-4" : "px-4"} ${
-            errors[name] ? "border-red-400 focus:ring-red-400" : "border-gray-300 focus:ring-indigo-500"
-          }`}
-        />
-      </div>
-      {errors[name] && (
-        <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-          <FaExclamationCircle /> {errors[name]}
-        </p>
-      )}
-    </div>
-  );
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
@@ -101,17 +101,18 @@ export default function EnrollForm({ courseName = "", onClose }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <Field label="Full Name" name="name" placeholder="Your full name" />
-              <Field label="Email Address" name="email" type="email" placeholder="you@example.com" />
+              <Field label="Full Name" name="name" placeholder="Your full name" form={form} errors={errors} onChange={handleChange} />
+              <Field label="Email Address" name="email" type="email" placeholder="you@example.com" form={form} errors={errors} onChange={handleChange} />
 
               <div className="grid grid-cols-2 gap-4">
-                <Field label="Phone Number" name="phone" type="tel" placeholder="+91 9876543210" />
+                <Field label="Phone Number" name="phone" type="tel" placeholder="+91 9876543210" form={form} errors={errors} onChange={handleChange} />
                 <Field
                   label="WhatsApp Number"
                   name="whatsapp"
                   type="tel"
                   placeholder="+91 9876543210"
                   icon={<FaWhatsapp />}
+                  form={form} errors={errors} onChange={handleChange}
                 />
               </div>
 
@@ -124,7 +125,7 @@ export default function EnrollForm({ courseName = "", onClose }) {
                   value={form.course}
                   onChange={handleChange}
                   placeholder="e.g. Full Stack Development"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
@@ -137,7 +138,7 @@ export default function EnrollForm({ courseName = "", onClose }) {
                   onChange={handleChange}
                   rows={3}
                   placeholder="Tell us about your background or any questions..."
-                  className={`w-full border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 transition resize-none ${
+                  className={`w-full border rounded-lg px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 transition resize-none ${
                     errors.message ? "border-red-400 focus:ring-red-400" : "border-gray-300 focus:ring-indigo-500"
                   }`}
                 />

@@ -305,23 +305,23 @@ function CTASection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-medium text-gray-600">FULL NAME</label>
-                  <input type="text" placeholder="John Doe" className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition" />
+                  <input type="text" placeholder="John Doe" className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none transition" />
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-600">WORK EMAIL</label>
-                  <input type="email" placeholder="john@company.com" className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition" />
+                  <input type="email" placeholder="john@company.com" className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none transition" />
                 </div>
               </div>
               <div>
                 <label className="text-xs font-medium text-gray-600">INTERESTED IN</label>
-                <select className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 bg-white focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                <select className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white focus:ring-2 focus:ring-indigo-500 outline-none transition">
                   <option value="">Select course</option>
                   {d.cta.courseOptions.map((opt, i) => <option key={i}>{opt}</option>)}
                 </select>
               </div>
               <div>
                 <label className="text-xs font-medium text-gray-600">MESSAGE (OPTIONAL)</label>
-                <textarea placeholder="How can we help you?" rows={3} className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition resize-none" />
+                <textarea placeholder="How can we help you?" rows={3} className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none transition resize-none" />
               </div>
               <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg transition text-sm">
                 {d.cta.submitBtn}
