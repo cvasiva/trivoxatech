@@ -15,6 +15,7 @@ import Blogs from './pages/blogs';
 import BlogDetail from './pages/BlogDetail';
 import ServicesQuotePage from './pages/ServicesQuote';
 import PortfolioPage from './pages/Portfolio';
+import Sitemap from './pages/Sitemap';
 import {
   AdminLayout, AdminLogin, AdminDashboard,
   AdminHome, AdminAbout, AdminCourses, AdminCourseDetails,
@@ -110,6 +111,7 @@ function App() {
             <Route path="/servicesquote" element={<ServicesQuotePage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/sitemap" element={<Sitemap />} />
 
             {/* ── ADMIN ROUTES ── */}
             <Route path="/admin/login" element={<AdminLogin />} />

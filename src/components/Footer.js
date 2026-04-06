@@ -62,6 +62,7 @@ const Footer = () => {
               <a href="https://trivoxatech.com/privacy" className="hover:text-indigo-400 transition">Privacy Policy</a>
               <a href="https://trivoxatech.com/terms" className="hover:text-indigo-400 transition">Terms of Service</a>
               <a href="https://trivoxatech.com/cookies" className="hover:text-indigo-400 transition">Cookie Policy</a>
+              <Link to="/sitemap" className="hover:text-indigo-400 transition">Sitemap</Link>
             </div>
           </div>
         </div>
