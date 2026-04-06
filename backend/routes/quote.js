@@ -19,12 +19,12 @@ router.post("/", async (req, res) => {
     message: message.trim(),
   });
 
-  await sendNotification({
+  res.json({ success: true, message: "Quote request received. We'll respond within 24 hours." });
+
+  sendNotification({
     subject: `💼 New Quote Request: ${name.trim()}`,
     text: [`Name:     ${name.trim()}`, `Email:    ${email.trim()}`, `Service:  ${service || "—"}`, `Budget:   ${budget || "—"}`, `Timeline: ${timeline || "—"}`, ``, message || "(no message)"].join("\n"),
-  });
-
-  res.json({ success: true, message: "Quote request received. We'll respond within 24 hours." });
+  }).catch((err) => console.error("[EMAIL] background send failed:", err.message));
 });
 
 module.exports = router;

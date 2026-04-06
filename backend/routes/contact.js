@@ -29,13 +29,15 @@ router.post("/", async (req, res) => {
     message: message.trim(),
   });
 
-  await sendNotification({
+  // Respond immediately — don't wait for email
+  res.json({ success: true, message: "Your message has been received. We'll be in touch within 24 hours." });
+
+  // Send email in background (fire-and-forget)
+  sendNotification({
     subject: `📩 New Contact: ${name.trim()}`,
     text: [`Name:     ${name.trim()}`, `Email:    ${email.trim()}`, `Phone:    ${phone || "—"}`, `Interest: ${interest || "—"}`, ``, message.trim()].join("\n"),
     html: `<h2>New Contact Message</h2><table style="border-collapse:collapse;width:100%"><tr><td style="padding:8px;border:1px solid #ddd"><b>Name</b></td><td style="padding:8px;border:1px solid #ddd">${name.trim()}</td></tr><tr><td style="padding:8px;border:1px solid #ddd"><b>Email</b></td><td style="padding:8px;border:1px solid #ddd">${email.trim()}</td></tr><tr><td style="padding:8px;border:1px solid #ddd"><b>Phone</b></td><td style="padding:8px;border:1px solid #ddd">${phone || "—"}</td></tr><tr><td style="padding:8px;border:1px solid #ddd"><b>Interest</b></td><td style="padding:8px;border:1px solid #ddd">${interest || "—"}</td></tr><tr><td style="padding:8px;border:1px solid #ddd"><b>Message</b></td><td style="padding:8px;border:1px solid #ddd">${message.trim()}</td></tr></table>`,
-  });
-
-  res.json({ success: true, message: "Your message has been received. We'll be in touch within 24 hours." });
+  }).catch((err) => console.error("[EMAIL] background send failed:", err.message));
 });
 
 // ── Shared email helper ──────────────────────────────────────
