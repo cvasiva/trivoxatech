@@ -3,9 +3,14 @@
   "name": "Trivoxa Technologies",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "trivoxalogo.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "trivoxalogo.png",
+      "type": "image/png",
+      "sizes": "32x32"
     },
     {
       "src": "trivoxalogo.png",
@@ -15,7 +20,8 @@
     {
       "src": "trivoxalogo.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "/",
