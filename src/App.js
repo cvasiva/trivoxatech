@@ -46,7 +46,9 @@ function RequireAuth({ children }) {
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  useEffect(() => {
+    if (!pathname.startsWith('/portfolio/')) window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 }
 
@@ -123,6 +125,7 @@ function App() {
             <Route path="/servicesquote" element={<ServicesQuotePage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/portfolio/:category" element={<PortfolioPage />} />
             <Route path="/sitemap" element={<Sitemap />} />
 
             {/* ── ADMIN ROUTES ── */}

@@ -3,10 +3,10 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../images/trivoxalogo.png';
 
 const portfolioSubMenu = [
-  { label: 'UI/UX Design', filter: 'UI/UX Design' },
-  { label: 'Frontend Development', filter: 'Web Development' },
-  { label: 'Digital Marketing', filter: 'Digital Marketing' },
-  { label: 'Full Stack', filter: 'Full Stack' },
+  { label: 'UI/UX Design', filter: 'ui-ux-design' },
+  { label: 'Frontend Development', filter: 'web-development' },
+  { label: 'Digital Marketing', filter: 'digital-marketing' },
+  { label: 'Full Stack', filter: 'full-stack' },
 ];
 
 const Navbar = () => {
@@ -74,7 +74,7 @@ const Navbar = () => {
                   </NavLink>
                   {portfolioSubMenu.map((item) => (
                     <button key={item.filter}
-                      onClick={() => { navigate(`/portfolio?category=${encodeURIComponent(item.filter)}`); setPortfolioOpen(false); }}
+                      onClick={() => { navigate(`/portfolio/${item.filter}`); setPortfolioOpen(false); }}
                       className="w-full text-left block px-4 py-2 text-sm text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 transition">
                       {item.label}
                     </button>
@@ -122,7 +122,7 @@ const Navbar = () => {
                     <NavLink to="/portfolio" onClick={() => { setIsOpen(false); setPortfolioOpen(false); }} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-indigo-600">All Projects</NavLink>
                     {portfolioSubMenu.map((item) => (
                       <button key={item.filter}
-                        onClick={() => { navigate(`/portfolio?category=${encodeURIComponent(item.filter)}`); setIsOpen(false); setPortfolioOpen(false); }}
+                        onClick={() => { navigate(`/portfolio/${item.filter}`); setIsOpen(false); setPortfolioOpen(false); }}
                         className="w-full text-left block px-3 py-1.5 text-sm text-gray-600 hover:text-indigo-600">
                         {item.label}
                       </button>

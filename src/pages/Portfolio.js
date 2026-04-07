@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaGlobe, FaUsers, FaBolt, FaArrowUp, FaCheckCircle, FaChartLine, FaFilter } from "react-icons/fa";
 import Footer from "../components/Footer";
 import staticD from "../data/portfolioData.json";
@@ -8,6 +8,9 @@ import usePageData from "../hooks/usePageData";
 import usePageMeta from "../hooks/usePageMeta";
 
 const iconMap = { FaGlobe, FaUsers, FaBolt, FaArrowUp, FaCheckCircle, FaChartLine };
+
+const toSlug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const fromSlug = (slug, services) => services.find((s) => toSlug(s) === slug) || 'All Services';
 
 /* ================= HERO ================= */
 function HeroSection({ d }) {
@@ -38,23 +41,29 @@ function HeroSection({ d }) {
 
 /* ================= SUCCESS GALLERY ================= */
 function SuccessGallery({ d }) {
-  const location = useLocation();
+  const { category } = useParams();
+  const navigate = useNavigate();
 
-  const getCategoryParam = () => new URLSearchParams(location.search).get('category') || 'All Services';
-
+  const resolvedCategory = category ? fromSlug(category, d.gallery.services) : 'All Services';
   const [activeIndustry, setActiveIndustry] = useState("All Industries");
-  const [activeService, setActiveService] = useState(getCategoryParam);
+  const [activeService, setActiveService] = useState(resolvedCategory);
 
   useEffect(() => {
-    const cat = new URLSearchParams(location.search).get('category');
-    setActiveService(cat || 'All Services');
-    if (cat) {
-      setTimeout(() => {
-        const el = document.getElementById('portfolio-gallery');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
+    setActiveService(category ? fromSlug(category, d.gallery.services) : 'All Services');
+    if (category) {
+      const el = document.getElementById('portfolio-gallery');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [location.search]);
+  }, [category, d.gallery.services]);
+
+  const handleServiceClick = (item) => {
+    setActiveService(item);
+    navigate(item === 'All Services' ? '/portfolio' : `/portfolio/${toSlug(item)}`, { replace: true });
+    setTimeout(() => {
+      const el = document.getElementById('portfolio-gallery');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   const filtered = d.gallery.projects.filter((p) => {
     const industryMatch = activeIndustry === "All Industries" || p.tag === activeIndustry;
@@ -87,7 +96,7 @@ function SuccessGallery({ d }) {
 
         <div className="flex gap-2 sm:gap-3 mt-4 flex-wrap">
           {d.gallery.services.map((item) => (
-            <button key={item} onClick={() => setActiveService(item)}
+            <button key={item} onClick={() => handleServiceClick(item)}
               className={`px-3 sm:px-4 py-1 text-xs rounded-full transition ${activeService === item ? "bg-teal-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
               {item}
             </button>
