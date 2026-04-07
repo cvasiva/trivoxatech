@@ -5,7 +5,7 @@ import {
   FaCogs, FaEnvelope, FaImages, FaFileAlt, FaQuoteRight,
   FaBars, FaTimes, FaSignOutAlt, FaChevronRight, FaInbox, FaBell, FaUsersCog,
 } from "react-icons/fa";
-import logo from "../images/trivoxalogo.png";
+import logo from "../images/Trivoxalogo.png";
 import { clearToken, getTokenExpiry } from "../utils/api";
 
 const navItems = [

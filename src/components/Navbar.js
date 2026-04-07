@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import logo from '../images/trivoxalogo.png';
+import logo from '../images/Trivoxalogo.png';
 
 const portfolioSubMenu = [
   { label: 'UI/UX Design', filter: 'UI/UX Design' },
@@ -43,10 +43,10 @@ const Navbar = () => {
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 lg:h-24">
+        <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 lg:h-20">
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="Trivoxa logo" className="h-14 sm:h-14 md:h-16 lg:h-20 w-auto" />
+              <img src={logo} alt="Trivoxa logo" className="w-[120px] min-[1020px]:w-[200px]" />
             </Link>
           </div>
 

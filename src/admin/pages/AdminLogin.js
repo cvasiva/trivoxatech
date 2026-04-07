@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { FaEye, FaEyeSlash, FaCheckCircle } from "react-icons/fa";
 import { api, setToken } from "../../utils/api";
-import logo from "../../images/trivoxalogo.png";
+import logo from "../../images/Trivoxalogo.png";
 
 const INPUT_CLS =
   "w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 bg-gray-50 focus:bg-white transition";
