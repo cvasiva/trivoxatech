@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../images/Trivoxalogo.png';
+import logo from '../images/trivoxalogo.png';
 
 const Footer = () => {
   return (

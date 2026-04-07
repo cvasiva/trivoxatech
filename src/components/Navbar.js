@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import logo from '../images/Trivoxalogo.png';
+import logo from '../images/trivoxalogo.png';
 
 const portfolioSubMenu = [
   { label: 'UI/UX Design', filter: 'UI/UX Design' },
