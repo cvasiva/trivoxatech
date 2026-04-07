@@ -117,7 +117,7 @@ function App() {
             <Route path="/coursedetails/:id" element={<CourseDetailsRedirect />} />
             <Route path="/courses/:slug" element={<CourseDetails />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/:id" element={<BlogDetail />} />
+            <Route path="/blogs/:slug" element={<BlogDetail />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/services" element={<Services />} />
             <Route path="/servicesquote" element={<ServicesQuotePage />} />

@@ -14,6 +14,8 @@ import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
 import usePageMeta from "../hooks/usePageMeta";
 
+const toSlug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 const POSTS_PER_PAGE = 5;
 
 /* ─────────────────────────────────────────
@@ -120,7 +122,7 @@ function FeaturedPost({ blogs }) {
   return (
     <div
       className="border border-gray-200 rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 shadow-sm bg-white cursor-pointer hover:shadow-lg transition-shadow"
-      onClick={() => navigate(`/blogs/${featured.id}`)}
+      onClick={() => navigate(`/blogs/${toSlug(featured.title)}`)}
     >
       <img
         src={featured.img}
@@ -159,7 +161,7 @@ function FeaturedPost({ blogs }) {
             className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-medium transition"
             onClick={(e) => {
               e.stopPropagation();
-              navigate(`/blogs/${featured.id}`);
+              navigate(`/blogs/${toSlug(featured.title)}`);
             }}
           >
             Read Article →
@@ -253,7 +255,7 @@ function BlogList({ blogs, loading, listRef }) {
         paginated.map((blog) => (
           <div
             key={blog.id}
-            onClick={() => navigate(`/blogs/${blog.id}`)}
+            onClick={() => navigate(`/blogs/${toSlug(blog.title)}`)}
             className="flex flex-col sm:flex-row gap-4 bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-md hover:border-indigo-100 transition-all cursor-pointer group"
           >
             <img
@@ -562,7 +564,7 @@ export default function Blogs() {
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "Trivoxa Insights",
-      "url": "https://trivoxatech.com/blogs",
+      "url": "https://trivoxatechnologies.in/blogs",
       "description": staticD.seo.description,
       "publisher": { "@type": "Organization", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com" },
     },

@@ -9,6 +9,8 @@ import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
 import usePageMeta from "../hooks/usePageMeta";
 
+const toSlug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 const blogs = staticBlogDetail.posts;
 export { blogs };
 
@@ -36,18 +38,18 @@ function StickyBack() {
 }
 
 export default function BlogDetail() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const blogDetailData = usePageData("blogDetailData", staticBlogDetail);
   const blogs = blogDetailData?.posts || staticBlogDetail.posts;
-  const blog = blogs.find((b) => b.id === parseInt(id));
+  const blog = blogs.find((b) => toSlug(b.title) === slug) || blogs.find((b) => b.id === parseInt(slug));
   const d = blogDetailData;
   const postSeo = blog?.seo || {};
   usePageMeta({
     title:          postSeo.title       || (blog ? blog.title : ""),
     description:    postSeo.description || (blog ? blog.desc  : ""),
     keywords:       postSeo.keywords    || (blog ? blog.tag   : ""),
-    canonical:      postSeo.canonical   || (blog ? `https://trivoxatech.com/blogs/${blog.id}` : ""),
+    canonical:      postSeo.canonical   || (blog ? `https://trivoxatechnologies.in/blogs/${toSlug(blog.title)}` : ""),
     ogTitle:        postSeo.ogTitle     || (blog ? blog.title : ""),
     ogDescription:  postSeo.ogDescription || (blog ? blog.desc : ""),
     ogImage:        postSeo.ogImage     || (blog ? blog.img   : ""),
@@ -62,7 +64,7 @@ export default function BlogDetail() {
       "datePublished": blog.date,
       "author": { "@type": "Person", "name": blog.author, "image": blog.avatar },
       "publisher": { "@type": "Organization", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com" },
-      "url": postSeo.canonical || `https://trivoxatech.com/blogs/${blog.id}`,
+      "url": postSeo.canonical || `https://trivoxatechnologies.in/blogs/${toSlug(blog.title)}`,
       "articleBody": blog.content,
       "keywords": postSeo.keywords || blog.tag,
       "timeRequired": blog.read
@@ -73,7 +75,7 @@ export default function BlogDetail() {
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trivoxatech.com" },
         { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://trivoxatech.com/blogs" },
-        { "@type": "ListItem", "position": 3, "name": blog.title, "item": postSeo.canonical || `https://trivoxatech.com/blogs/${blog.id}` }
+        { "@type": "ListItem", "position": 3, "name": blog.title, "item": postSeo.canonical || `https://trivoxatechnologies.in/blogs/${toSlug(blog.title)}` }
       ]
     }
   ] : []);
@@ -162,7 +164,7 @@ export default function BlogDetail() {
               <h2 className="text-xl font-bold text-gray-900 mb-6">{d.relatedHeading}</h2>
               <div className="grid sm:grid-cols-3 gap-5">
                 {related.map((b) => (
-                  <div key={b.id} onClick={() => navigate(`/blogs/${b.id}`)}
+                  <div key={b.id} onClick={() => navigate(`/blogs/${toSlug(b.title)}`)}
                     className="bg-white border rounded-2xl overflow-hidden hover:shadow-md transition cursor-pointer">
                     <img src={b.img} alt={b.title} className="w-full h-36 object-cover" />
                     <div className="p-4">
