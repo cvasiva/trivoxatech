@@ -1,7 +1,7 @@
 export const allCourses = [
   {
     id: 1,
-    title: "Full Stack Development MERN",
+    slug: "full-stack-development-mern",
     subtitle: "Career Track",
     desc: "Master MongoDB, Express, React, and Node.js.",
     longDesc: "Master the MERN stack and build production-ready applications from scratch. Join 5,000+ graduates in top tech firms.",
@@ -45,7 +45,7 @@ export const allCourses = [
   },
   {
     id: 2,
-    title: "Advanced UI/UX Design Strategy",
+    slug: "advanced-ui-ux-design",
     subtitle: "Design Track",
     desc: "Learn user psychology and advanced prototyping.",
     longDesc: "Deep dive into user-centered design, design systems, and advanced prototyping tools used by top product teams.",
@@ -88,7 +88,7 @@ export const allCourses = [
   },
   {
     id: 3,
-    title: "Digital Marketing Masterclass",
+    slug: "digital-marketing",
     subtitle: "Marketing Track",
     desc: "SEO, SEM, content strategy, and analytics.",
     longDesc: "Become a full-stack digital marketer. Master SEO, paid ads, content strategy, email marketing, and data analytics.",
@@ -132,7 +132,7 @@ export const allCourses = [
   },
   {
     id: 4,
-    title: "Cloud Engineering with AWS",
+    slug: "cloud-engineering-aws",
     subtitle: "Cloud Track",
     desc: "Deploy scalable cloud infrastructure.",
     longDesc: "Master AWS services, cloud architecture patterns, and infrastructure as code to build and deploy enterprise-grade systems.",
@@ -176,7 +176,7 @@ export const allCourses = [
   },
   {
     id: 5,
-    title: "DevOps & SRE Practices",
+    slug: "devops-sre-practices",
     subtitle: "Cloud Track",
     desc: "CI/CD, Docker, Kubernetes pipelines.",
     longDesc: "Learn modern DevOps practices including CI/CD pipelines, containerization, orchestration, and site reliability engineering.",
@@ -220,7 +220,7 @@ export const allCourses = [
   },
   {
     id: 6,
-    title: "Frontend Excellence with Next.js",
+    slug: "frontend-nextjs",
     subtitle: "Development Track",
     desc: "Build blazing fast modern web apps.",
     longDesc: "Master Next.js, server-side rendering, static generation, and modern frontend architecture for production-grade applications.",
@@ -264,7 +264,7 @@ export const allCourses = [
   },
   {
     id: 7,
-    title: "Python for Data Science",
+    slug: "python-data-science",
     subtitle: "Development Track",
     desc: "NumPy, Pandas, Scikit-learn, and ML basics.",
     longDesc: "Learn Python for data analysis, visualization, and machine learning. Build real data science projects from scratch.",
@@ -307,7 +307,7 @@ export const allCourses = [
   },
   {
     id: 8,
-    title: "Mobile App Development React Native",
+    slug: "mobile-app-development-react-native",
     subtitle: "Development Track",
     desc: "Build iOS and Android apps with React Native.",
     longDesc: "Build cross-platform mobile applications for iOS and Android using React Native and Expo. Ship real apps to the app stores.",
@@ -351,7 +351,7 @@ export const allCourses = [
   },
   {
     id: 9,
-    title: "Graphic Design Fundamentals",
+    slug: "graphic-design-fundamentals",
     subtitle: "Design Track",
     desc: "Adobe Creative Suite, color theory, typography.",
     longDesc: "Master the fundamentals of graphic design including color theory, typography, layout, and the Adobe Creative Suite.",
@@ -395,7 +395,7 @@ export const allCourses = [
   },
   {
     id: 10,
-    title: "Web Design with Figma",
+    slug: "web-design-figma",
     subtitle: "Design Track",
     desc: "Modern UI design, prototyping, and handoff.",
     longDesc: "Learn to design beautiful, functional web interfaces using Figma. Master components, auto-layout, prototyping, and developer handoff.",
@@ -439,7 +439,7 @@ export const allCourses = [
   },
   {
     id: 11,
-    title: "Social Media Marketing Strategy",
+    slug: "social-media-marketing",
     subtitle: "Marketing Track",
     desc: "Instagram, TikTok, LinkedIn growth hacking.",
     longDesc: "Master social media marketing across all major platforms. Learn content creation, community building, paid social, and analytics.",
@@ -483,7 +483,7 @@ export const allCourses = [
   },
   {
     id: 12,
-    title: "Kubernetes & Container Orchestration",
+    slug: "kubernetes-container-orchestration",
     subtitle: "Cloud Track",
     desc: "Master Kubernetes for production deployments.",
     longDesc: "Go deep into Kubernetes architecture, cluster management, networking, storage, and production-grade deployment strategies.",

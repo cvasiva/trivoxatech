@@ -103,7 +103,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/coursedetails/:id" element={<CourseDetails />} />
+            <Route path="/courses/:slug" element={<CourseDetails />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:id" element={<BlogDetail />} />
             <Route path="/careers" element={<CareersPage />} />
