@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { allCourses as staticAllCourses } from './data/courseData';
 import Navbar from './components/Navbar';
 import PageLoader from './components/PageLoader';
 import GoogleSignInModal from './components/GoogleSignInModal';
@@ -26,6 +27,16 @@ import {
 
 const WA_NUMBER = "916300275894"; // ← your number: country code + digits
 const WA_MSG = encodeURIComponent("Hi! I'm interested in enrolling at Trivoxa Technologies. Please guide me.");
+
+function CourseDetailsRedirect() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const course = staticAllCourses.find((c) => c.id === Number(id));
+    navigate(course ? `/courses/${course.slug}` : '/courses', { replace: true });
+  }, [id, navigate]);
+  return null;
+}
 
 function RequireAuth({ children }) {
   return localStorage.getItem('trivoxa_admin_token')
@@ -103,6 +114,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/coursedetails/:id" element={<CourseDetailsRedirect />} />
             <Route path="/courses/:slug" element={<CourseDetails />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:id" element={<BlogDetail />} />

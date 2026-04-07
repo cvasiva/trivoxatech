@@ -351,7 +351,7 @@ function Related({ relatedIds, allCourses, d }) {
             </div>
             <p className="text-sm font-medium">{c.title}</p>
             <button
-              onClick={() => navigate(`/courses/${c.slug}`)}
+              onClick={() => navigate(`/coursedetails/${c.id}`)}
               className="text-indigo-600 text-xs mt-1"
             >
               {d.related.viewBtn}
@@ -377,12 +377,12 @@ function CTA({ cohortDate, onEnroll, d }) {
 
 /* ================= PAGE ================= */
 export default function CoursePage() {
-  const { slug } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const d = usePageData("courseDetailsData", staticCourseDetails);
   const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
   const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
-  const course = allCourses.find((c) => c.slug === slug);
+  const course = allCourses.find((c) => c.id === Number(id));
 
   usePageMeta({
     title:         d.seo?.title       || (course ? course.title : ""),
@@ -391,7 +391,7 @@ export default function CoursePage() {
     ogTitle:       d.seo?.ogTitle     || (course ? course.title : ""),
     ogDescription: d.seo?.ogDescription || (course ? course.longDesc || course.desc : ""),
     ogImage:       d.seo?.ogImage     || (course ? course.img : ""),
-    canonical:     d.seo?.canonical   || (course ? `https://trivoxatechnologies.in/courses/${course.slug}` : ""),
+    canonical:     d.seo?.canonical   || (course ? `https://trivoxatech.com/coursedetails/${course.id}` : ""),
   });
 
   useSchema(course ? [
@@ -400,7 +400,7 @@ export default function CoursePage() {
       "@type": "Course",
       "name": course.title,
       "description": course.longDesc || course.desc,
-      "url": `https://trivoxatechnologies.in/courses/${course.slug}`,
+      "url": `https://trivoxatech.com/coursedetails/${course.id}`,
       "image": course.img,
       "provider": { "@type": "Organization", "name": "Trivoxa Technologies", "url": "https://trivoxatech.com" },
       "educationalLevel": course.level,
@@ -410,7 +410,7 @@ export default function CoursePage() {
         "price": course.price ? course.price.replace(/[^0-9.]/g, "") : "0",
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock",
-        "url": `https://trivoxatechnologies.in/courses/${course.slug}`
+        "url": `https://trivoxatech.com/coursedetails/${course.id}`
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -439,7 +439,7 @@ export default function CoursePage() {
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trivoxatech.com" },
         { "@type": "ListItem", "position": 2, "name": "Courses", "item": "https://trivoxatech.com/courses" },
-        { "@type": "ListItem", "position": 3, "name": course.title, "item": `https://trivoxatechnologies.in/courses/${course.slug}` }
+        { "@type": "ListItem", "position": 3, "name": course.title, "item": `https://trivoxatech.com/coursedetails/${course.id}` }
       ]
     }
   ] : []);
