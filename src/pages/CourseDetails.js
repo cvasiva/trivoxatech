@@ -14,6 +14,8 @@ import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
 import usePageMeta from "../hooks/usePageMeta";
 
+const toSlug = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 const toolIconMap = {
   // Dev
   "React":            <FaReact className="text-[#61DAFB]" />,
@@ -351,7 +353,7 @@ function Related({ relatedIds, allCourses, d }) {
             </div>
             <p className="text-sm font-medium">{c.title}</p>
             <button
-              onClick={() => navigate(`/courses/${c.slug}`)}
+              onClick={() => navigate(`/courses/${c.slug || toSlug(c.title)}`)}
               className="text-indigo-600 text-xs mt-1"
             >
               {d.related.viewBtn}
@@ -382,7 +384,7 @@ export default function CoursePage() {
   const d = usePageData("courseDetailsData", staticCourseDetails);
   const courseDataLive = usePageData("courseData", { courses: staticCourseData.allCourses });
   const allCourses = courseDataLive?.courses || staticCourseData.allCourses;
-  const course = allCourses.find((c) => c.slug === slug);
+  const course = allCourses.find((c) => (c.slug || toSlug(c.title)) === slug);
 
   usePageMeta({
     title:         d.seo?.title       || (course ? course.title : ""),

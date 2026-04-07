@@ -2,7 +2,6 @@
   "courses": [
     {
       "id": 1,
-      "slug": "full-stack-development-mern",
       "title": "Full Stack Development MERN",
       "subtitle": "Career Track",
       "desc": "Master MongoDB, Express, React, and Node.js.",
@@ -92,7 +91,6 @@
     },
     {
       "id": 2,
-      "slug": "advanced-ui-ux-design",
       "title": "Advanced UI/UX Design Strategy",
       "subtitle": "Design Track",
       "desc": "Learn user psychology and advanced prototyping.",
@@ -182,7 +180,6 @@
     },
     {
       "id": 3,
-      "slug": "digital-marketing",
       "title": "Digital Marketing Masterclass",
       "subtitle": "Marketing Track",
       "desc": "SEO, SEM, content strategy, and analytics.",
@@ -272,7 +269,6 @@
     },
     {
       "id": 4,
-      "slug": "cloud-engineering-aws",
       "title": "Cloud Engineering with AWS",
       "subtitle": "Cloud Track",
       "desc": "Deploy scalable cloud infrastructure.",
@@ -362,7 +358,6 @@
     },
     {
       "id": 5,
-      "slug": "devops-sre-practices",
       "title": "DevOps & SRE Practices",
       "subtitle": "Cloud Track",
       "desc": "CI/CD, Docker, Kubernetes pipelines.",
@@ -452,7 +447,6 @@
     },
     {
       "id": 6,
-      "slug": "frontend-nextjs",
       "title": "Frontend Excellence with Next.js",
       "subtitle": "Development Track",
       "desc": "Build blazing fast modern web apps.",
@@ -542,7 +536,6 @@
     },
     {
       "id": 7,
-      "slug": "python-data-science",
       "title": "Python for Data Science",
       "subtitle": "Development Track",
       "desc": "NumPy, Pandas, Scikit-learn, and ML basics.",
@@ -632,7 +625,6 @@
     },
     {
       "id": 8,
-      "slug": "mobile-app-development-react-native",
       "title": "Mobile App Development React Native",
       "subtitle": "Development Track",
       "desc": "Build iOS and Android apps with React Native.",
@@ -722,7 +714,6 @@
     },
     {
       "id": 9,
-      "slug": "graphic-design-fundamentals",
       "title": "Graphic Design Fundamentals",
       "subtitle": "Design Track",
       "desc": "Adobe Creative Suite, color theory, typography.",
@@ -812,7 +803,6 @@
     },
     {
       "id": 10,
-      "slug": "web-design-figma",
       "title": "Web Design with Figma",
       "subtitle": "Design Track",
       "desc": "Modern UI design, prototyping, and handoff.",
@@ -902,7 +892,6 @@
     },
     {
       "id": 11,
-      "slug": "social-media-marketing",
       "title": "Social Media Marketing Strategy",
       "subtitle": "Marketing Track",
       "desc": "Instagram, TikTok, LinkedIn growth hacking.",
@@ -992,7 +981,6 @@
     },
     {
       "id": 12,
-      "slug": "kubernetes-container-orchestration",
       "title": "Kubernetes & Container Orchestration",
       "subtitle": "Cloud Track",
       "desc": "Master Kubernetes for production deployments.",

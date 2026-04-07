@@ -17,6 +17,8 @@ import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
 import usePageMeta from "../hooks/usePageMeta";
 
+const toSlug = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 const iconMap = { FaUsers, FaBriefcase, FaGraduationCap, FaStar, FaGrad, FaLaptopCode };
 const localImgMap = { 1: fullstack, 2: uxuidesign, 3: digitalM };
 const D = createContext(staticD);
@@ -121,8 +123,8 @@ function CoursesSection() {
                 <h3 className="font-semibold text-gray-900 text-base leading-snug">{c.title}</h3>
                 <p className="text-sm text-gray-500 mt-1">{c.subtitle}</p>
                 <div className="flex gap-3 mt-4">
-                  <button onClick={() => navigate(`/coursedetails/${c.id}`)} className="flex-1 bg-indigo-600 text-white text-sm py-2 rounded-lg hover:bg-indigo-700 transition">{d.courses.enrollBtn}</button>
-                  <button onClick={() => navigate(`/coursedetails/${c.id}`)} className="flex-1 border text-sm py-2 rounded-lg hover:bg-gray-50 transition">{d.courses.syllabusBtn}</button>
+                  <button onClick={() => navigate(`/courses/${toSlug(c.title)}`)} className="flex-1 bg-indigo-600 text-white text-sm py-2 rounded-lg hover:bg-indigo-700 transition">{d.courses.enrollBtn}</button>
+                  <button onClick={() => navigate(`/courses/${toSlug(c.title)}`)} className="flex-1 border text-sm py-2 rounded-lg hover:bg-gray-50 transition">{d.courses.syllabusBtn}</button>
                 </div>
               </div>
             </div>
@@ -373,7 +375,7 @@ export default function Home() {
   const d = usePageData("homeData", staticD);
   usePageMeta(d.seo || {});
   useSchema([
-    { "@context": "https://schema.org", "@type": "ItemList", "name": d.courses.heading, "itemListElement": d.courses.items.map((c, i) => ({ "@type": "ListItem", "position": i + 1, "name": c.title, "url": `https://trivoxatechnologies.in/coursedetails/${c.id}` })) },
+    { "@context": "https://schema.org", "@type": "ItemList", "name": d.courses.heading, "itemListElement": d.courses.items.map((c, i) => ({ "@type": "ListItem", "position": i + 1, "name": c.title, "url": `https://trivoxatechnologies.in/courses/${toSlug(c.title)}` })) },
     { "@context": "https://schema.org", "@type": "ItemList", "name": d.testimonials.heading, "itemListElement": d.testimonials.items.map((t, i) => ({ "@type": "ListItem", "position": i + 1, "item": { "@type": "Review", "reviewBody": t.text, "author": { "@type": "Person", "name": t.name }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" } } })) },
   ]);
   return (
