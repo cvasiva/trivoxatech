@@ -12,6 +12,7 @@ const portfolioSubMenu = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
   const portfolioRef = useRef(null);
   const navigate = useNavigate();
 
@@ -95,7 +96,7 @@ const Navbar = () => {
           </div>
 
           <div className="lg:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none p-2">
+            <button onClick={() => { setIsOpen(!isOpen); if (isOpen) setMobilePortfolioOpen(false); }} className="text-gray-700 focus:outline-none p-2">
               <svg className="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
@@ -111,21 +112,32 @@ const Navbar = () => {
               <NavLink to="/services" className={({isActive}) => isActive ? 'block px-3 py-2 border-l-2 border-indigo-600 text-indigo-600 font-semibold text-sm' : 'block text-gray-700 px-3 py-2 text-sm'} onClick={() => setIsOpen(false)}>Services</NavLink>
               {/* Portfolio mobile submenu */}
               <div>
-                <button onClick={() => setPortfolioOpen(!portfolioOpen)} className="w-full flex items-center justify-between px-3 py-2 text-sm text-gray-700">
-                  Portfolio
-                  <svg className={`w-3 h-3 transition-transform ${portfolioOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {portfolioOpen && (
-                  <div className="pl-4 space-y-1 border-l-2 border-indigo-100 ml-3">
-                    <NavLink to="/portfolio" onClick={() => { setIsOpen(false); setPortfolioOpen(false); }} className="block px-3 py-1.5 text-sm text-gray-600 hover:text-indigo-600">All Projects</NavLink>
+                <div className="flex items-center justify-between">
+                  <NavLink
+                    to="/portfolio"
+                    onClick={() => { setIsOpen(false); setMobilePortfolioOpen(false); }}
+                    className={({ isActive }) => isActive ? 'flex-1 px-3 py-2 border-l-2 border-indigo-600 text-indigo-600 font-semibold text-sm' : 'flex-1 px-3 py-2 text-sm text-gray-700'}>
+                    Portfolio
+                  </NavLink>
+                  <button
+                    type="button"
+                    onClick={() => setMobilePortfolioOpen((v) => !v)}
+                    className="px-4 py-3 text-gray-500">
+                    <svg className={`w-3 h-3 transition-transform ${mobilePortfolioOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                </div>
+                {mobilePortfolioOpen && (
+                  <div className="ml-3 border-l-2 border-indigo-100">
                     {portfolioSubMenu.map((item) => (
-                      <button key={item.filter}
-                        onClick={() => { navigate(`/portfolio/${item.filter}`); setIsOpen(false); setPortfolioOpen(false); }}
-                        className="w-full text-left block px-3 py-1.5 text-sm text-gray-600 hover:text-indigo-600">
+                      <Link
+                        key={item.filter}
+                        to={`/portfolio/${item.filter}`}
+                        onClick={() => { setIsOpen(false); setMobilePortfolioOpen(false); }}
+                        className="block px-4 py-3 text-sm text-gray-600 active:bg-indigo-50 active:text-indigo-600">
                         {item.label}
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 )}
