@@ -13,11 +13,18 @@ import fullstack from "../images/fullstack.jpg";
 import uxuidesign from "../images/uxuidesign.jpg";
 import digitalM from "../images/digitalM.jpg";
 import staticD from "../data/homeData.json";
+import { allCourses } from "../data/courseData";
 import useSchema from "../hooks/useSchema";
 import usePageData from "../hooks/usePageData";
 import usePageMeta from "../hooks/usePageMeta";
 
 const toSlug = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+// Resolve slug by matching course id from courseData.js
+const getCourseSlug = (id) => {
+  const course = allCourses.find((c) => c.id === id);
+  return course ? (course.slug || toSlug(course.title)) : null;
+};
 
 const iconMap = { FaUsers, FaBriefcase, FaGraduationCap, FaStar, FaGrad, FaLaptopCode };
 const localImgMap = { 1: fullstack, 2: uxuidesign, 3: digitalM };
@@ -123,8 +130,8 @@ function CoursesSection() {
                 <h3 className="font-semibold text-gray-900 text-base leading-snug">{c.title}</h3>
                 <p className="text-sm text-gray-500 mt-1">{c.subtitle}</p>
                 <div className="flex gap-3 mt-4">
-                  <button onClick={() => navigate(`/courses/${toSlug(c.title)}`)} className="flex-1 bg-indigo-600 text-white text-sm py-2 rounded-lg hover:bg-indigo-700 transition">{d.courses.enrollBtn}</button>
-                  <button onClick={() => navigate(`/courses/${toSlug(c.title)}`)} className="flex-1 border text-sm py-2 rounded-lg hover:bg-gray-50 transition">{d.courses.syllabusBtn}</button>
+                  <button onClick={() => navigate(`/courses/${getCourseSlug(c.id)}`)} className="flex-1 bg-indigo-600 text-white text-sm py-2 rounded-lg hover:bg-indigo-700 transition">{d.courses.enrollBtn}</button>
+                  <button onClick={() => navigate(`/courses/${getCourseSlug(c.id)}`)} className="flex-1 border text-sm py-2 rounded-lg hover:bg-gray-50 transition">{d.courses.syllabusBtn}</button>
                 </div>
               </div>
             </div>
