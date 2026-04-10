@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaCheckCircle, FaExclamationCircle, FaTimes } from "react-icons/fa";
+import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { api } from "../utils/api";
 
 const STORAGE_KEY = "trivoxa_popup_dismissed";
@@ -9,6 +9,7 @@ export default function LeadPopup() {
   const [name,    setName]    = useState("");
   const [email,   setEmail]   = useState("");
   const [phone,   setPhone]   = useState("");
+
   const [loading, setLoading] = useState(false);
   const [done,    setDone]    = useState(false);
   const [errors,  setErrors]  = useState({});
@@ -62,14 +63,14 @@ export default function LeadPopup() {
       <div className="w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-100" style={{ backgroundColor: "#faf5ff" }}>
 
         {/* Header — matches website indigo */}
-        <div className="bg-indigo-600 px-6 py-5 relative">
-          <button onClick={dismiss}
-            className="absolute top-4 right-4 text-indigo-200 hover:text-white transition">
+        <div className="bg-gradient-to-r from-purple-500 to-indigo-600 px-6 py-5 relative">
+          {/* <button onClick={dismiss}
+            className="absolute top-4 right-4 text-white hover:text-white transition">
             <FaTimes className="text-sm" />
-          </button>
-          <p className="text-xs font-semibold text-indigo-200 uppercase tracking-widest mb-1">Free Enrollment</p>
-          <h2 className="text-white font-bold text-lg leading-snug">Get Exclusive Course Updates</h2>
-          <p className="text-indigo-200 text-xs mt-1">Join 500+ students already learning with Trivoxa.</p>
+          </button> */}
+          <p className="text-xs font-semibold text-purple-200 uppercase tracking-widest mb-1">Free Enrollment</p>
+          <h2 className="text-white font-bold text-lg leading-snug">Get Free Course Updates</h2>
+          <p className="text-purple-100 text-xs mt-1">Join 500+ learners already improving their skills.</p>
         </div>
 
         {/* Form */}
@@ -132,8 +133,8 @@ export default function LeadPopup() {
               )}
 
               <button type="submit" disabled={loading}
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg text-sm font-semibold transition disabled:opacity-60 mt-1">
-                {loading ? "Submitting..." : "Get Free Updates →"}
+                className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:opacity-90 text-white py-2.5 rounded-lg text-sm font-semibold transition disabled:opacity-60 mt-1">
+                {loading ? "Submitting..." : "Get Free Updates"}
               </button>
 
               <button type="button" onClick={dismiss}
