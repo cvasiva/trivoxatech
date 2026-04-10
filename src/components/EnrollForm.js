@@ -105,12 +105,12 @@ export default function EnrollForm({ courseName = "", onClose }) {
               <Field label="Email Address" name="email" type="email" placeholder="you@example.com" form={form} errors={errors} onChange={handleChange} />
 
               <div className="grid grid-cols-2 gap-4">
-                <Field label="Phone Number" name="phone" type="tel" placeholder="+91 9876543210" form={form} errors={errors} onChange={handleChange} />
+                <Field label="Phone Number" name="phone" type="tel" placeholder="+91 xxxxxxxxxx" form={form} errors={errors} onChange={handleChange} />
                 <Field
                   label="WhatsApp Number"
                   name="whatsapp"
                   type="tel"
-                  placeholder="+91 9876543210"
+                  placeholder="+91 xxxxxxxxxx"
                   icon={<FaWhatsapp />}
                   form={form} errors={errors} onChange={handleChange}
                 />

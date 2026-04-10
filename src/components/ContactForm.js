@@ -99,7 +99,7 @@ const ContactForm = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Phone (Optional)</label>
           <input type="tel" name="phone" value={formData.phone} onChange={handleChange}
-            placeholder="+91 9876543210"
+            placeholder="+91 xxxxxxxxxx"
             className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 transition text-gray-900 ${errors.phone ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-indigo-300'}`} />
           {errors.phone && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-xs" /> {errors.phone}</p>}
         </div>

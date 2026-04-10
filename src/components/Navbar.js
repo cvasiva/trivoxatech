@@ -5,6 +5,7 @@ import logo from '../images/trivoxalogo.png';
 const portfolioSubMenu = [
   { label: 'UI/UX Design', filter: 'ui-ux-design' },
   { label: 'Frontend Development', filter: 'web-development' },
+  { label: 'Cloud Engineering', filter: 'cloud-engineering' },
   { label: 'Digital Marketing', filter: 'digital-marketing' },
   { label: 'Full Stack', filter: 'full-stack' },
 ];

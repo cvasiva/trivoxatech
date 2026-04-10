@@ -115,7 +115,7 @@ export default function LeadPopup() {
               {/* Phone */}
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Mobile Number <span className="text-red-500">*</span></label>
-                <input type="tel" placeholder="98765 43210" value={phone}
+                <input type="tel" placeholder="+91 xxxxx xxxx" value={phone}
                   maxLength={10}
                   onChange={(e) => { setPhone(e.target.value.replace(/\D/g, "").slice(0, 10)); setErrors((p) => ({ ...p, phone: "" })); }}
                   className={inp("phone")} />

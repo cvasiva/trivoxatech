@@ -89,7 +89,7 @@ const CTAForm = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Phone (Optional)</label>
           <input type="tel" name="phone" value={form.phone} onChange={handleChange}
-            placeholder="+91 9876543210" className={inp("phone")} />
+            placeholder="+91 xxxxxxxxxx" className={inp("phone")} />
           {errors.phone && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><FaExclamationCircle className="text-[10px]" />{errors.phone}</p>}
         </div>
 
